@@ -1,12 +1,7 @@
 /**
- * utils/supabase.ts — Dual-mode Supabase client
+ * utils/supabase.ts — Supabase REST client
  *
- * In Tasklet preview: CSP blocks direct fetch() to external URLs.
- * We route requests through window.tasklet.runTool('run_command', curl ...)
- * which runs in the agent sandbox (no CSP).
- *
- * In deployed app (Vercel/GitHub Pages): window.tasklet doesn't exist,
- * so we use direct fetch().
+ * Uses direct fetch() for all environments (Tasklet preview + deployed).
  */
 
 const SUPABASE_URL = 'https://ctbeturbytzfrvxpyiuo.supabase.co';
@@ -15,32 +10,11 @@ export const SUPABASE_KEY =
 
 export const REST = `${SUPABASE_URL}/rest/v1`;
 
-// Detect if running inside Tasklet preview (window.tasklet exists)
-export const IN_TASKLET =
-  typeof window !== 'undefined' &&
-  typeof (window as unknown as { tasklet?: unknown }).tasklet !== 'undefined';
-
-type RunResult = { log: string; exitCode: number };
-
 /**
  * GET request to Supabase REST API.
  * @param path e.g. "partner_edits?select=partner_id,field,value"
  */
 export async function sbGet(path: string): Promise<unknown> {
-  if (IN_TASKLET) {
-    const result = (await (window as any).tasklet.runTool('run_command', {
-      command: `curl -sf "${REST}/${path}" -H "apikey: ${SUPABASE_KEY}" -H "Authorization: Bearer ${SUPABASE_KEY}"`,
-      action_pending: 'Loading...',
-      action_finished: 'Done',
-      action_error: 'Failed',
-    })) as RunResult;
-    if (result.exitCode !== 0) {
-      console.error('sbGet failed:', result.log);
-      throw new Error(`Supabase query failed: ${result.log}`);
-    }
-    return JSON.parse(result.log);
-  }
-
   const r = await fetch(`${REST}/${path}`, {
     headers: {
       apikey: SUPABASE_KEY,
@@ -52,33 +26,13 @@ export async function sbGet(path: string): Promise<unknown> {
 }
 
 /**
- * POST/PATCH request to Supabase REST API.
- * Uses base64 encoding to safely pass arbitrary JSON through the shell.
+ * POST/PATCH/DELETE request to Supabase REST API.
  */
 export async function sbWrite(
   path: string,
-  body: object | object[],
+  body: object | object[] | null,
   method = 'POST',
 ): Promise<void> {
-  if (IN_TASKLET) {
-    // Encode JSON as base64 to avoid shell quoting issues with special characters
-    const json = JSON.stringify(body);
-    const b64 = btoa(
-      encodeURIComponent(json).replace(
-        /%([0-9A-F]{2})/g,
-        (_m, p) => String.fromCharCode(parseInt(p, 16)),
-      ),
-    );
-    const tmp = `/tmp/sb_${Date.now()}.json`;
-    await (window as any).tasklet.runTool('run_command', {
-      command: `printf '%s' "${b64}" | base64 -d > ${tmp} && curl -sf -X ${method} "${REST}/${path}" -H "apikey: ${SUPABASE_KEY}" -H "Authorization: Bearer ${SUPABASE_KEY}" -H "Content-Type: application/json" -H "Prefer: resolution=merge-duplicates,return=minimal" -d @${tmp}; rm -f ${tmp}`,
-      action_pending: 'Saving...',
-      action_finished: 'Saved',
-      action_error: 'Save failed',
-    });
-    return;
-  }
-
   const r = await fetch(`${REST}/${path}`, {
     method,
     headers: {
@@ -87,7 +41,7 @@ export async function sbWrite(
       'Content-Type': 'application/json',
       Prefer: 'resolution=merge-duplicates,return=minimal',
     },
-    body: JSON.stringify(body),
+    body: body !== null ? JSON.stringify(body) : undefined,
   });
   if (!r.ok) throw new Error(`Supabase ${r.status}: ${await r.text()}`);
 }
