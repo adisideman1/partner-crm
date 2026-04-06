@@ -13622,7 +13622,14 @@
     "\u{1F4AC} Slack": "\u{1F4AC}",
     "\u{1F91D} In-Person": "\u{1F91D}",
     "\u{1F4F9} Video Call": "\u{1F4F9}",
-    "\u{1F4DD} Other": "\u{1F4DD}"
+    "\u{1F4DD} Other": "\u{1F4DD}",
+    // Also match stripped-emoji keys from Supabase
+    "Call": "\u{1F4DE}",
+    "Email": "\u{1F4E7}",
+    "Slack": "\u{1F4AC}",
+    "In-Person": "\u{1F91D}",
+    "Video Call": "\u{1F4F9}",
+    "Other": "\u{1F4DD}"
   };
   var PartnerDetail = ({
     partner,

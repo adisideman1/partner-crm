@@ -81,6 +81,13 @@ const CHANNEL_ICONS: Record<string, string> = {
   '🤝 In-Person': '🤝',
   '📹 Video Call': '📹',
   '📝 Other': '📝',
+  // Also match stripped-emoji keys from Supabase
+  'Call': '📞',
+  'Email': '📧',
+  'Slack': '💬',
+  'In-Person': '🤝',
+  'Video Call': '📹',
+  'Other': '📝',
 };
 
 export const PartnerDetail: React.FC<PartnerDetailProps> = ({
