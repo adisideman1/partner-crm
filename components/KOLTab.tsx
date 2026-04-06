@@ -301,7 +301,7 @@ const KOLSection: React.FC<{
 };
 
 // ---- Main KOL Tab ----
-export const KOLTab: React.FC = () => {
+export const KOLTab: React.FC<{ onCountChange?: (n: number) => void }> = ({ onCountChange }) => {
   const [kols, setKols] = useState<KOL[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -309,6 +309,9 @@ export const KOLTab: React.FC = () => {
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
   const draggingIdRef = useRef<string | null>(null);
   const draggingTierRef = useRef<string | null>(null);
+
+  // Report count changes up to parent
+  useEffect(() => { onCountChange?.(kols.length); }, [kols.length, onCountChange]);
 
   useEffect(() => {
     loadKOLs().then(k => {

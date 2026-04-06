@@ -15,6 +15,7 @@ import { FilterBar } from './components/FilterBar';
 import { PartnerList } from './components/PartnerList';
 import { PartnerDetail } from './components/PartnerDetail';
 import { KOLTab } from './components/KOLTab';
+import { loadAllEdits as loadAllEditsRaw } from './utils/db';
 
 type AppTab = 'partners' | 'kols';
 
@@ -246,6 +247,7 @@ const App: React.FC = () => {
   });
   const [showArchived, setShowArchived] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [kolCount, setKolCount] = useState(0);
   const editsRef = useRef<Record<string, Record<string, string>>>({});
   const loadingRef = useRef(false);
 
@@ -265,6 +267,11 @@ const App: React.FC = () => {
         loadEdits(),
       ]);
       editsRef.current = edits;
+      // Count KOLs (not deleted)
+      const kCount = Object.entries(edits).filter(
+        ([, f]) => f.isKOL === 'true' && f.name && f.deleted !== 'true',
+      ).length;
+      setKolCount(kCount);
       const merged = mergeOnboardingData(partnerList, onb);
       const withEdits = applyEdits(merged, edits);
       setPartners(withEdits);
@@ -466,19 +473,32 @@ const App: React.FC = () => {
       ) : (
         <>
           {/* Tab Navigation */}
-          <div className="tabs tabs-boxed bg-base-200 w-fit">
+          <div className="flex gap-3 mb-1">
             <button
-              className={`tab gap-2 ${activeTab === 'partners' ? 'tab-active' : ''}`}
+              className={`btn btn-lg gap-3 flex-1 text-lg font-bold ${
+                activeTab === 'partners'
+                  ? 'btn-primary shadow-lg'
+                  : 'btn-ghost bg-base-200 hover:bg-base-300'
+              }`}
               onClick={() => setActiveTab('partners')}
             >
               🤝 Partners
-              <span className="badge badge-sm badge-ghost">{partners.filter(p => p.onboardingStage !== '📦 Archived').length}</span>
+              <span className={`badge badge-lg ${activeTab === 'partners' ? 'badge-primary-content bg-white/20' : 'badge-ghost'}`}>
+                {partners.filter(p => p.onboardingStage !== '📦 Archived').length}
+              </span>
             </button>
             <button
-              className={`tab gap-2 ${activeTab === 'kols' ? 'tab-active' : ''}`}
+              className={`btn btn-lg gap-3 flex-1 text-lg font-bold ${
+                activeTab === 'kols'
+                  ? 'btn-primary shadow-lg'
+                  : 'btn-ghost bg-base-200 hover:bg-base-300'
+              }`}
               onClick={() => setActiveTab('kols')}
             >
               🎯 KOLs
+              <span className={`badge badge-lg ${activeTab === 'kols' ? 'badge-primary-content bg-white/20' : 'badge-ghost'}`}>
+                {kolCount}
+              </span>
             </button>
           </div>
 
@@ -551,7 +571,7 @@ const App: React.FC = () => {
             </>
           )}
 
-          {activeTab === 'kols' && <KOLTab />}
+          {activeTab === 'kols' && <KOLTab onCountChange={setKolCount} />}
 
           {showAddModal && (
             <AddPartnerModal
