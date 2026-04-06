@@ -9,7 +9,7 @@ import {
   fetchOnboardingTable,
   mergeOnboardingData,
 } from './utils/notion';
-import { loadAllEdits, saveField, saveFields, deletePartner } from './utils/db';
+import { loadAllEdits, saveField, saveFields, deletePartner, saveConversation } from './utils/db';
 import { StatsBar } from './components/StatsBar';
 import { FilterBar } from './components/FilterBar';
 import { PartnerList } from './components/PartnerList';
@@ -294,6 +294,11 @@ const App: React.FC = () => {
     setSelectedPartner(partner);
     setPartnerConversations([]);
 
+    // Always fetch conversations
+    fetchConversationsForPartner(partner.id)
+      .then(setPartnerConversations)
+      .catch((err) => console.error('Failed to load conversations:', err));
+
     if (partner.detailsLoaded || partner.id.startsWith('onb-') || partner.id.startsWith('manual-')) {
       return;
     }
@@ -302,7 +307,7 @@ const App: React.FC = () => {
     try {
       const [details, convos] = await Promise.all([
         fetchPartnerDetail(partner.id),
-        fetchConversationsForPartner(partner.name),
+        fetchConversationsForPartner(partner.id),
       ]);
 
       if (details) {
@@ -389,6 +394,20 @@ const App: React.FC = () => {
   const handleNextStepsChange = useCallback((id: string, v: string) => handleFieldChange(id, 'nextSteps', v), [handleFieldChange]);
   // channelStatus handler removed
 
+  const handleAddConversation = useCallback(async (partnerId: string, entry: {
+    title: string; date: string; channel: string; summary: string;
+    key_takeaways: string; next_steps: string; logged_by: string;
+  }) => {
+    try {
+      await saveConversation(partnerId, entry);
+      // Refresh conversations
+      const convos = await fetchConversationsForPartner(partnerId);
+      setPartnerConversations(convos);
+    } catch (err) {
+      console.error('Failed to save conversation:', err);
+    }
+  }, []);
+
   const handleDeletePartner = useCallback(async (id: string) => {
     setPartners(prev => prev.filter(p => p.id !== id));
     setSelectedPartner(prev => prev?.id === id ? null : prev);
@@ -469,6 +488,7 @@ const App: React.FC = () => {
           onManagerChange={handleManagerChange}
           onDescriptionChange={handleDescriptionChange}
           onNextStepsChange={handleNextStepsChange}
+          onAddConversation={handleAddConversation}
         />
       ) : (
         <>

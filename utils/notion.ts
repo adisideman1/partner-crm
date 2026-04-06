@@ -101,13 +101,29 @@ export async function fetchPartnerDetail(id: string): Promise<Partner | null> {
 }
 
 /**
- * Conversations — not yet cached in Supabase, return empty for standalone app.
- * The Tasklet-hosted version can still fetch these via Notion.
+ * Fetch conversations for a partner from Supabase conversation_log table.
  */
-export async function fetchConversationsForPartner(_partnerName: string): Promise<Conversation[]> {
-  // Conversations are not cached in Supabase yet.
-  // They will appear empty in the standalone app.
-  return [];
+export async function fetchConversationsForPartner(partnerId: string): Promise<Conversation[]> {
+  try {
+    const rows = (await sbFetch(
+      `conversation_log?partner_id=eq.${encodeURIComponent(partnerId)}&select=*&order=date.desc`
+    )) as any[];
+    return rows.map((row: any) => ({
+      id: row.id,
+      url: row.notion_url || '',
+      title: row.title || '',
+      customerUrl: '',
+      channel: row.channel || '',
+      loggedBy: row.logged_by || '',
+      summary: row.summary || '',
+      keyTakeaways: row.key_takeaways || '',
+      nextSteps: row.next_steps || '',
+      date: row.date || '',
+    }));
+  } catch (err) {
+    console.error(`fetchConversationsForPartner(${partnerId}) failed:`, err);
+    return [];
+  }
 }
 
 /**

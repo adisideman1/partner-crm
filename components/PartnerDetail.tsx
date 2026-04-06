@@ -11,6 +11,7 @@ import {
   Clock,
   CalendarDays,
   Youtube,
+  Plus,
 } from 'lucide-react';
 import { Partner, Conversation, STAGE_COLORS, EDITABLE_STAGES, EDITABLE_MANAGERS } from '../types';
 
@@ -23,6 +24,10 @@ interface PartnerDetailProps {
   onManagerChange: (partnerId: string, newManager: string) => void;
   onDescriptionChange: (partnerId: string, newDesc: string) => void;
   onNextStepsChange: (partnerId: string, val: string) => void;
+  onAddConversation: (partnerId: string, entry: {
+    title: string; date: string; channel: string; summary: string;
+    key_takeaways: string; next_steps: string; logged_by: string;
+  }) => void;
 }
 
 /** Auto-growing inline textarea */
@@ -87,6 +92,7 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
   onManagerChange,
   onDescriptionChange,
   onNextStepsChange,
+  onAddConversation,
 }) => {
   const sorted = [...conversations].sort((a, b) => {
     if (!a.date && !b.date) return 0;
@@ -96,6 +102,51 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
   });
 
   const stageClass = STAGE_COLORS[partner.onboardingStage] || 'badge-ghost';
+
+  // Add Conversation form state
+  const [showConvoForm, setShowConvoForm] = useState(false);
+  const [convoSaving, setConvoSaving] = useState(false);
+  const [convoSuccess, setConvoSuccess] = useState(false);
+  const [convoTitle, setConvoTitle] = useState('');
+  const [convoDate, setConvoDate] = useState(() => new Date().toISOString().slice(0, 10));
+  const [convoChannel, setConvoChannel] = useState('Call');
+  const [convoLoggedBy, setConvoLoggedBy] = useState('');
+  const [convoSummary, setConvoSummary] = useState('');
+  const [convoTakeaways, setConvoTakeaways] = useState('');
+  const [convoNextSteps, setConvoNextSteps] = useState('');
+
+  const resetConvoForm = () => {
+    setConvoTitle('');
+    setConvoDate(new Date().toISOString().slice(0, 10));
+    setConvoChannel('Call');
+    setConvoLoggedBy('');
+    setConvoSummary('');
+    setConvoTakeaways('');
+    setConvoNextSteps('');
+  };
+
+  const handleSaveConvo = async () => {
+    setConvoSaving(true);
+    try {
+      await onAddConversation(partner.id, {
+        title: convoTitle,
+        date: convoDate,
+        channel: convoChannel,
+        summary: convoSummary,
+        key_takeaways: convoTakeaways,
+        next_steps: convoNextSteps,
+        logged_by: convoLoggedBy,
+      });
+      resetConvoForm();
+      setShowConvoForm(false);
+      setConvoSuccess(true);
+      setTimeout(() => setConvoSuccess(false), 3000);
+    } catch (err) {
+      console.error('Failed to save conversation:', err);
+    } finally {
+      setConvoSaving(false);
+    }
+  };
 
   return (
     <div className="space-y-4">
@@ -297,9 +348,127 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
           <MessageSquare size={18} className="text-primary" />
           <h3 className="font-semibold">Conversation History</h3>
           <span className="badge badge-sm badge-primary">{sorted.length}</span>
+          <button
+            className="btn btn-ghost btn-xs gap-1 ml-auto"
+            onClick={() => setShowConvoForm(!showConvoForm)}
+          >
+            <Plus size={14} />
+            Log Conversation
+          </button>
         </div>
 
-        {sorted.length === 0 ? (
+        {convoSuccess && (
+          <div className="alert alert-success text-sm py-2">
+            ✅ Conversation logged successfully!
+          </div>
+        )}
+
+        {showConvoForm && (
+          <div className="card bg-base-200">
+            <div className="card-body p-4 gap-3">
+              <h4 className="font-semibold text-sm">New Conversation Entry</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="label pb-0"><span className="label-text text-xs">Title</span></label>
+                  <input
+                    className="input input-bordered w-full input-sm"
+                    placeholder="e.g. Onboarding kickoff call"
+                    value={convoTitle}
+                    onChange={(e) => setConvoTitle(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="label pb-0"><span className="label-text text-xs">Date</span></label>
+                  <input
+                    type="date"
+                    className="input input-bordered w-full input-sm"
+                    value={convoDate}
+                    onChange={(e) => setConvoDate(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="label pb-0"><span className="label-text text-xs">Channel</span></label>
+                  <select
+                    className="select select-bordered w-full select-sm"
+                    value={convoChannel}
+                    onChange={(e) => setConvoChannel(e.target.value)}
+                  >
+                    <option value="Call">📞 Call</option>
+                    <option value="Email">📧 Email</option>
+                    <option value="Slack">💬 Slack</option>
+                    <option value="In-Person">🤝 In-Person</option>
+                    <option value="Video Call">📹 Video Call</option>
+                    <option value="Other">📝 Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="label pb-0"><span className="label-text text-xs">Logged By</span></label>
+                  <select
+                    className="select select-bordered w-full select-sm"
+                    value={convoLoggedBy}
+                    onChange={(e) => setConvoLoggedBy(e.target.value)}
+                  >
+                    <option value="">— Select</option>
+                    <option value="Adi">Adi</option>
+                    <option value="Tess">Tess</option>
+                    <option value="Ben">Ben</option>
+                    <option value="Cydel">Cydel</option>
+                    <option value="Agent 🤖">Agent 🤖</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label className="label pb-0"><span className="label-text text-xs">Summary</span></label>
+                <textarea
+                  className="textarea textarea-bordered w-full text-sm"
+                  rows={3}
+                  placeholder="What was discussed?"
+                  value={convoSummary}
+                  onChange={(e) => setConvoSummary(e.target.value)}
+                />
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="label pb-0"><span className="label-text text-xs">Key Takeaways</span></label>
+                  <textarea
+                    className="textarea textarea-bordered w-full text-sm"
+                    rows={2}
+                    placeholder="Important points..."
+                    value={convoTakeaways}
+                    onChange={(e) => setConvoTakeaways(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="label pb-0"><span className="label-text text-xs">Next Steps</span></label>
+                  <textarea
+                    className="textarea textarea-bordered w-full text-sm"
+                    rows={2}
+                    placeholder="Action items..."
+                    value={convoNextSteps}
+                    onChange={(e) => setConvoNextSteps(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="flex justify-end gap-2 mt-1">
+                <button
+                  className="btn btn-ghost btn-sm"
+                  onClick={() => { resetConvoForm(); setShowConvoForm(false); }}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="btn btn-primary btn-sm"
+                  onClick={handleSaveConvo}
+                  disabled={convoSaving}
+                >
+                  {convoSaving ? <span className="loading loading-spinner loading-xs" /> : 'Save Entry'}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {sorted.length === 0 && !showConvoForm ? (
           <p className="text-sm text-base-content/50 pl-7">No conversations logged yet.</p>
         ) : (
           <div className="space-y-2">

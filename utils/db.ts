@@ -43,3 +43,20 @@ export async function saveFields(
 export async function deletePartner(partnerId: string): Promise<void> {
   await saveField(partnerId, 'deleted', 'true');
 }
+
+/** Insert a new conversation log entry into Supabase. */
+export async function saveConversation(partnerId: string, entry: {
+  title: string; date: string; channel: string; summary: string;
+  key_takeaways: string; next_steps: string; logged_by: string;
+}): Promise<void> {
+  await sbWrite('conversation_log', {
+    partner_id: partnerId,
+    title: entry.title,
+    date: entry.date || null,
+    channel: entry.channel,
+    summary: entry.summary,
+    key_takeaways: entry.key_takeaways,
+    next_steps: entry.next_steps,
+    logged_by: entry.logged_by,
+  });
+}
