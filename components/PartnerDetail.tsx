@@ -13,6 +13,13 @@ import {
   Youtube,
   Plus,
 } from 'lucide-react';
+
+// Helper to open external links — works inside iframes where target="_blank" gets blocked
+const openExternal = (e: React.MouseEvent, url: string) => {
+  e.preventDefault();
+  e.stopPropagation();
+  try { (window.top || window).open(url, '_blank'); } catch { window.open(url, '_blank'); }
+};
 import { Partner, Conversation, STAGE_COLORS, EDITABLE_STAGES, EDITABLE_MANAGERS } from '../types';
 
 interface PartnerDetailProps {
@@ -204,10 +211,9 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
               {partner.url && (
                 <a
                   href={partner.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="btn btn-ghost btn-sm btn-square"
                   title="Open in Notion"
+                  onClick={(e) => openExternal(e, partner.url!)}
                 >
                   <ExternalLink size={14} />
                 </a>
@@ -268,9 +274,8 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
                 <span className="text-base-content/60">Popcorn User ID:</span>
                 <a
                   href={`https://app.popcorn.co/admin/users/${partner.appUserId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-xs bg-base-300 px-1.5 py-0.5 rounded link link-primary"
+                  className="font-mono text-xs bg-base-300 px-1.5 py-0.5 rounded link link-primary cursor-pointer"
+                  onClick={(e) => openExternal(e, `https://app.popcorn.co/admin/users/${partner.appUserId}`)}
                 >
                   {partner.appUserId} ↗
                 </a>
@@ -281,7 +286,8 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
               <span className="opacity-60">📁</span>
               <span className="text-base-content/60">Drive Folder:</span>
               {(partner as any).driveFolder ? (
-                <a href={(partner as any).driveFolder} target="_blank" rel="noopener noreferrer" className="link link-primary truncate max-w-[200px]">
+                <a href={(partner as any).driveFolder} className="link link-primary truncate max-w-[200px] cursor-pointer"
+                  onClick={(e) => openExternal(e, (partner as any).driveFolder)}>
                   Open Folder ↗
                 </a>
               ) : (
@@ -304,7 +310,8 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
             {partner.channelLink && !partner.youtubeChannel && !partner.popcornChannel && (
               <div className="flex items-center gap-2 text-sm">
                 <Link size={14} className="opacity-60" />
-                <a href={partner.channelLink} target="_blank" rel="noopener noreferrer" className="link link-primary truncate">
+                <a href={partner.channelLink} className="link link-primary truncate cursor-pointer"
+                  onClick={(e) => openExternal(e, partner.channelLink!)}>
                   Channel Link
                 </a>
               </div>
@@ -317,9 +324,8 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
               {partner.youtubeChannel && (
                 <a
                   href={partner.youtubeChannel}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="btn btn-sm btn-outline gap-2"
+                  onClick={(e) => openExternal(e, partner.youtubeChannel!)}
                 >
                   <Youtube size={16} className="text-red-500" />
                   YouTube Channel
@@ -328,9 +334,8 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
               {partner.popcornChannel && (
                 <a
                   href={partner.popcornChannel}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="btn btn-sm btn-outline gap-2"
+                  onClick={(e) => openExternal(e, partner.popcornChannel!)}
                 >
                   🍿 Popcorn Channel
                 </a>
@@ -338,9 +343,8 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
               {(partner as any).driveFolder && (
                 <a
                   href={(partner as any).driveFolder}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="btn btn-sm btn-outline gap-2"
+                  onClick={(e) => openExternal(e, (partner as any).driveFolder)}
                 >
                   📁 Drive Folder
                 </a>

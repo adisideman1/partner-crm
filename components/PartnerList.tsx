@@ -48,16 +48,21 @@ function summarize(text: string, maxWords: number): string {
   return words.slice(0, maxWords).join(' ') + '…';
 }
 
+// Helper to open external links — works inside iframes where target="_blank" gets blocked
+const openExternal = (e: React.MouseEvent, url: string) => {
+  e.preventDefault();
+  e.stopPropagation();
+  try { (window.top || window).open(url, '_blank'); } catch { window.open(url, '_blank'); }
+};
+
 const ChannelBadge: React.FC<{ url: string }> = ({ url }) => {
   const isYt = url.includes('youtube.com') || url.includes('youtu.be');
   if (isYt) {
     return (
       <a
         href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-1 text-red-500 hover:text-red-400 transition-colors"
-        onClick={(e) => e.stopPropagation()}
+        className="flex items-center gap-1 text-red-500 hover:text-red-400 transition-colors cursor-pointer"
+        onClick={(e) => openExternal(e, url)}
         title="YouTube Channel"
       >
         <Youtube size={14} /> <span className="underline">YouTube</span>
@@ -67,10 +72,8 @@ const ChannelBadge: React.FC<{ url: string }> = ({ url }) => {
   return (
     <a
       href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-1 link link-primary"
-      onClick={(e) => e.stopPropagation()}
+      className="flex items-center gap-1 link link-primary cursor-pointer"
+      onClick={(e) => openExternal(e, url)}
       title="Channel Link"
     >
       <ExternalLink size={12} /> <span className="underline">Channel</span>
@@ -197,10 +200,8 @@ export const PartnerList: React.FC<PartnerListProps> = ({
                 {p.popcornChannel && (
                   <a
                     href={p.popcornChannel}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-amber-500 hover:text-amber-400 transition-colors"
-                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center gap-1 text-amber-500 hover:text-amber-400 transition-colors cursor-pointer"
+                    onClick={(e) => openExternal(e, p.popcornChannel!)}
                     title="Popcorn Channel"
                   >
                     🍿 <span className="underline">Popcorn</span>
@@ -209,10 +210,8 @@ export const PartnerList: React.FC<PartnerListProps> = ({
                 {(p as any).driveFolder && (
                   <a
                     href={(p as any).driveFolder}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors"
-                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors cursor-pointer"
+                    onClick={(e) => openExternal(e, (p as any).driveFolder)}
                     title="Google Drive Folder"
                   >
                     📁 <span className="underline">Drive</span>

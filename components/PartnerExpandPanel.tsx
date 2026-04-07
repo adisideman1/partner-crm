@@ -66,6 +66,13 @@ const CHANNEL_ICONS: Record<string, string> = {
   '📝 Other': '📝', 'Other': '📝',
 };
 
+// Helper to open external links — works inside iframes where target="_blank" gets blocked
+const openExternal = (e: React.MouseEvent, url: string) => {
+  e.preventDefault();
+  e.stopPropagation();
+  try { (window.top || window).open(url, '_blank'); } catch { window.open(url, '_blank'); }
+};
+
 export const PartnerExpandPanel: React.FC<PartnerExpandPanelProps> = ({
   partner, conversations, loadingConversations,
   onOpenFullView, onDescriptionChange, onNextStepsChange,
@@ -119,9 +126,8 @@ export const PartnerExpandPanel: React.FC<PartnerExpandPanelProps> = ({
           {partner.appUserId && (
             <a
               href={`https://app.popcorn.co/admin/users/${partner.appUserId}`}
-              target="_blank" rel="noopener noreferrer"
-              className="link link-primary flex items-center gap-1 font-mono"
-              onClick={(e) => e.stopPropagation()}
+              className="link link-primary flex items-center gap-1 font-mono cursor-pointer"
+              onClick={(e) => openExternal(e, `https://app.popcorn.co/admin/users/${partner.appUserId}`)}
             >
               <User size={12} /> 🔑 {partner.appUserId}
             </a>
@@ -159,9 +165,8 @@ export const PartnerExpandPanel: React.FC<PartnerExpandPanelProps> = ({
         {(partner as any).driveFolder ? (
           <a
             href={(partner as any).driveFolder}
-            target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-1 text-blue-500 hover:text-blue-400"
-            onClick={(e) => e.stopPropagation()}
+            className="flex items-center gap-1 text-blue-500 hover:text-blue-400 cursor-pointer"
+            onClick={(e) => openExternal(e, (partner as any).driveFolder)}
           >
             📁 <span className="underline">Drive Folder</span>
           </a>
@@ -180,23 +185,23 @@ export const PartnerExpandPanel: React.FC<PartnerExpandPanelProps> = ({
         )}
         {/* Link buttons */}
         {partner.youtubeChannel && (
-          <a href={partner.youtubeChannel} target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-1 text-red-500 hover:text-red-400"
-            onClick={(e) => e.stopPropagation()}>
+          <a href={partner.youtubeChannel}
+            className="flex items-center gap-1 text-red-500 hover:text-red-400 cursor-pointer"
+            onClick={(e) => openExternal(e, partner.youtubeChannel!)}>
             <Youtube size={14} /> YouTube
           </a>
         )}
         {partner.popcornChannel && (
-          <a href={partner.popcornChannel} target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-1 text-amber-500 hover:text-amber-400"
-            onClick={(e) => e.stopPropagation()}>
+          <a href={partner.popcornChannel}
+            className="flex items-center gap-1 text-amber-500 hover:text-amber-400 cursor-pointer"
+            onClick={(e) => openExternal(e, partner.popcornChannel!)}>
             🍿 Popcorn
           </a>
         )}
         {partner.url && (
-          <a href={partner.url} target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-1 text-base-content/40 hover:text-base-content/60"
-            onClick={(e) => e.stopPropagation()}>
+          <a href={partner.url}
+            className="flex items-center gap-1 text-base-content/40 hover:text-base-content/60 cursor-pointer"
+            onClick={(e) => openExternal(e, partner.url!)}>
             <ExternalLink size={12} /> Notion
           </a>
         )}

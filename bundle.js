@@ -13442,6 +13442,15 @@
     "\u{1F4DD} Other": "\u{1F4DD}",
     "Other": "\u{1F4DD}"
   };
+  var openExternal = (e, url) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      (window.top || window).open(url, "_blank");
+    } catch {
+      window.open(url, "_blank");
+    }
+  };
   var PartnerExpandPanel = ({
     partner,
     conversations,
@@ -13508,10 +13517,8 @@
                 "a",
                 {
                   href: `https://app.popcorn.co/admin/users/${partner.appUserId}`,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                  className: "link link-primary flex items-center gap-1 font-mono",
-                  onClick: (e) => e.stopPropagation(),
+                  className: "link link-primary flex items-center gap-1 font-mono cursor-pointer",
+                  onClick: (e) => openExternal(e, `https://app.popcorn.co/admin/users/${partner.appUserId}`),
                   children: [
                     /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(User, { size: 12 }),
                     " \u{1F511} ",
@@ -13560,10 +13567,8 @@
               "a",
               {
                 href: partner.driveFolder,
-                target: "_blank",
-                rel: "noopener noreferrer",
-                className: "flex items-center gap-1 text-blue-500 hover:text-blue-400",
-                onClick: (e) => e.stopPropagation(),
+                className: "flex items-center gap-1 text-blue-500 hover:text-blue-400 cursor-pointer",
+                onClick: (e) => openExternal(e, partner.driveFolder),
                 children: [
                   "\u{1F4C1} ",
                   /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "underline", children: "Drive Folder" })
@@ -13591,10 +13596,8 @@
               "a",
               {
                 href: partner.youtubeChannel,
-                target: "_blank",
-                rel: "noopener noreferrer",
-                className: "flex items-center gap-1 text-red-500 hover:text-red-400",
-                onClick: (e) => e.stopPropagation(),
+                className: "flex items-center gap-1 text-red-500 hover:text-red-400 cursor-pointer",
+                onClick: (e) => openExternal(e, partner.youtubeChannel),
                 children: [
                   /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Youtube, { size: 14 }),
                   " YouTube"
@@ -13605,10 +13608,8 @@
               "a",
               {
                 href: partner.popcornChannel,
-                target: "_blank",
-                rel: "noopener noreferrer",
-                className: "flex items-center gap-1 text-amber-500 hover:text-amber-400",
-                onClick: (e) => e.stopPropagation(),
+                className: "flex items-center gap-1 text-amber-500 hover:text-amber-400 cursor-pointer",
+                onClick: (e) => openExternal(e, partner.popcornChannel),
                 children: "\u{1F37F} Popcorn"
               }
             ),
@@ -13616,10 +13617,8 @@
               "a",
               {
                 href: partner.url,
-                target: "_blank",
-                rel: "noopener noreferrer",
-                className: "flex items-center gap-1 text-base-content/40 hover:text-base-content/60",
-                onClick: (e) => e.stopPropagation(),
+                className: "flex items-center gap-1 text-base-content/40 hover:text-base-content/60 cursor-pointer",
+                onClick: (e) => openExternal(e, partner.url),
                 children: [
                   /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ExternalLink, { size: 12 }),
                   " Notion"
@@ -13804,6 +13803,15 @@
     if (words.length <= maxWords) return clean;
     return words.slice(0, maxWords).join(" ") + "\u2026";
   }
+  var openExternal2 = (e, url) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      (window.top || window).open(url, "_blank");
+    } catch {
+      window.open(url, "_blank");
+    }
+  };
   var ChannelBadge = ({ url }) => {
     const isYt = url.includes("youtube.com") || url.includes("youtu.be");
     if (isYt) {
@@ -13811,10 +13819,8 @@
         "a",
         {
           href: url,
-          target: "_blank",
-          rel: "noopener noreferrer",
-          className: "flex items-center gap-1 text-red-500 hover:text-red-400 transition-colors",
-          onClick: (e) => e.stopPropagation(),
+          className: "flex items-center gap-1 text-red-500 hover:text-red-400 transition-colors cursor-pointer",
+          onClick: (e) => openExternal2(e, url),
           title: "YouTube Channel",
           children: [
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Youtube, { size: 14 }),
@@ -13828,10 +13834,8 @@
       "a",
       {
         href: url,
-        target: "_blank",
-        rel: "noopener noreferrer",
-        className: "flex items-center gap-1 link link-primary",
-        onClick: (e) => e.stopPropagation(),
+        className: "flex items-center gap-1 link link-primary cursor-pointer",
+        onClick: (e) => openExternal2(e, url),
         title: "Channel Link",
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ExternalLink, { size: 12 }),
@@ -13966,10 +13970,8 @@
                   "a",
                   {
                     href: p.popcornChannel,
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                    className: "flex items-center gap-1 text-amber-500 hover:text-amber-400 transition-colors",
-                    onClick: (e) => e.stopPropagation(),
+                    className: "flex items-center gap-1 text-amber-500 hover:text-amber-400 transition-colors cursor-pointer",
+                    onClick: (e) => openExternal2(e, p.popcornChannel),
                     title: "Popcorn Channel",
                     children: [
                       "\u{1F37F} ",
@@ -13981,10 +13983,8 @@
                   "a",
                   {
                     href: p.driveFolder,
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                    className: "flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors",
-                    onClick: (e) => e.stopPropagation(),
+                    className: "flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors cursor-pointer",
+                    onClick: (e) => openExternal2(e, p.driveFolder),
                     title: "Google Drive Folder",
                     children: [
                       "\u{1F4C1} ",
@@ -14036,6 +14036,15 @@
   // components/PartnerDetail.tsx
   var import_react5 = __toESM(require_react());
   var import_jsx_runtime5 = __toESM(require_jsx_runtime());
+  var openExternal3 = (e, url) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      (window.top || window).open(url, "_blank");
+    } catch {
+      window.open(url, "_blank");
+    }
+  };
   var InlineEdit2 = ({ value, placeholder, onChange }) => {
     const [draft, setDraft] = (0, import_react5.useState)(value);
     const ref = (0, import_react5.useRef)(null);
@@ -14186,10 +14195,9 @@
               "a",
               {
                 href: partner.url,
-                target: "_blank",
-                rel: "noopener noreferrer",
                 className: "btn btn-ghost btn-sm btn-square",
                 title: "Open in Notion",
+                onClick: (e) => openExternal3(e, partner.url),
                 children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ExternalLink, { size: 14 })
               }
             )
@@ -14243,9 +14251,8 @@
               "a",
               {
                 href: `https://app.popcorn.co/admin/users/${partner.appUserId}`,
-                target: "_blank",
-                rel: "noopener noreferrer",
-                className: "font-mono text-xs bg-base-300 px-1.5 py-0.5 rounded link link-primary",
+                className: "font-mono text-xs bg-base-300 px-1.5 py-0.5 rounded link link-primary cursor-pointer",
+                onClick: (e) => openExternal3(e, `https://app.popcorn.co/admin/users/${partner.appUserId}`),
                 children: [
                   partner.appUserId,
                   " \u2197"
@@ -14256,7 +14263,15 @@
           /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
             /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "opacity-60", children: "\u{1F4C1}" }),
             /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-base-content/60", children: "Drive Folder:" }),
-            partner.driveFolder ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", { href: partner.driveFolder, target: "_blank", rel: "noopener noreferrer", className: "link link-primary truncate max-w-[200px]", children: "Open Folder \u2197" }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-base-content/30 italic", children: "Not set" }),
+            partner.driveFolder ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+              "a",
+              {
+                href: partner.driveFolder,
+                className: "link link-primary truncate max-w-[200px] cursor-pointer",
+                onClick: (e) => openExternal3(e, partner.driveFolder),
+                children: "Open Folder \u2197"
+              }
+            ) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-base-content/30 italic", children: "Not set" }),
             /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "input",
               {
@@ -14278,7 +14293,15 @@
           ] }),
           partner.channelLink && !partner.youtubeChannel && !partner.popcornChannel && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
             /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Link, { size: 14, className: "opacity-60" }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", { href: partner.channelLink, target: "_blank", rel: "noopener noreferrer", className: "link link-primary truncate", children: "Channel Link" })
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+              "a",
+              {
+                href: partner.channelLink,
+                className: "link link-primary truncate cursor-pointer",
+                onClick: (e) => openExternal3(e, partner.channelLink),
+                children: "Channel Link"
+              }
+            )
           ] })
         ] }),
         (partner.youtubeChannel || partner.popcornChannel || partner.driveFolder) && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-wrap gap-2 mt-2", children: [
@@ -14286,9 +14309,8 @@
             "a",
             {
               href: partner.youtubeChannel,
-              target: "_blank",
-              rel: "noopener noreferrer",
               className: "btn btn-sm btn-outline gap-2",
+              onClick: (e) => openExternal3(e, partner.youtubeChannel),
               children: [
                 /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Youtube, { size: 16, className: "text-red-500" }),
                 "YouTube Channel"
@@ -14299,9 +14321,8 @@
             "a",
             {
               href: partner.popcornChannel,
-              target: "_blank",
-              rel: "noopener noreferrer",
               className: "btn btn-sm btn-outline gap-2",
+              onClick: (e) => openExternal3(e, partner.popcornChannel),
               children: "\u{1F37F} Popcorn Channel"
             }
           ),
@@ -14309,9 +14330,8 @@
             "a",
             {
               href: partner.driveFolder,
-              target: "_blank",
-              rel: "noopener noreferrer",
               className: "btn btn-sm btn-outline gap-2",
+              onClick: (e) => openExternal3(e, partner.driveFolder),
               children: "\u{1F4C1} Drive Folder"
             }
           )
@@ -14653,9 +14673,16 @@
               "a",
               {
                 href: kol.kolMovieLink,
-                target: "_blank",
-                rel: "noreferrer",
                 className: "btn btn-xs btn-primary gap-1",
+                onClick: (e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  try {
+                    (window.top || window).open(kol.kolMovieLink, "_blank");
+                  } catch {
+                    window.open(kol.kolMovieLink, "_blank");
+                  }
+                },
                 children: [
                   /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Film, { size: 10 }),
                   " Watch"

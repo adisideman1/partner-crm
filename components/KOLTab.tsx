@@ -164,9 +164,8 @@ const KOLRow: React.FC<{
           <div className="flex items-center gap-1">
             <a
               href={kol.kolMovieLink}
-              target="_blank"
-              rel="noreferrer"
               className="btn btn-xs btn-primary gap-1"
+              onClick={(e: React.MouseEvent) => { e.preventDefault(); e.stopPropagation(); try { (window.top || window).open(kol.kolMovieLink, '_blank'); } catch { window.open(kol.kolMovieLink, '_blank'); } }}
             >
               <Film size={10} /> Watch
             </a>
