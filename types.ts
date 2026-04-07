@@ -12,6 +12,7 @@ export interface Partner {
   channelStatus: string;
   youtubeChannel: string;
   popcornChannel: string;
+  driveFolder: string;
   useCase: string;
   nextSteps: string;
   lastConversation: string;

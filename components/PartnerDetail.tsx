@@ -24,6 +24,8 @@ interface PartnerDetailProps {
   onManagerChange: (partnerId: string, newManager: string) => void;
   onDescriptionChange: (partnerId: string, newDesc: string) => void;
   onNextStepsChange: (partnerId: string, val: string) => void;
+  onDriveFolderChange: (partnerId: string, url: string) => void;
+  onFollowUpChange: (partnerId: string, date: string) => void;
   onAddConversation: (partnerId: string, entry: {
     title: string; date: string; channel: string; summary: string;
     key_takeaways: string; next_steps: string; logged_by: string;
@@ -99,6 +101,8 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
   onManagerChange,
   onDescriptionChange,
   onNextStepsChange,
+  onDriveFolderChange,
+  onFollowUpChange,
   onAddConversation,
 }) => {
   const sorted = [...conversations].sort((a, b) => {
@@ -245,22 +249,58 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
                 <span>{formatDate(partner.lastConversation)}</span>
               </div>
             )}
-            {partner.nextFollowUp && (
-              <div className="flex items-center gap-2 text-sm">
-                <CalendarDays size={14} className="opacity-60" />
-                <span className="text-base-content/60">Next follow-up:</span>
-                <span>{formatDate(partner.nextFollowUp)}</span>
-              </div>
-            )}
+            <div className={`flex items-center gap-2 text-sm ${partner.nextFollowUp && new Date(partner.nextFollowUp) < new Date() ? 'text-error font-semibold' : ''}`}>
+              <CalendarDays size={14} className="opacity-60" />
+              <span className="text-base-content/60">Next follow-up:</span>
+              <input
+                type="date"
+                className={`input input-ghost input-xs ${partner.nextFollowUp && new Date(partner.nextFollowUp) < new Date() ? 'text-error' : ''}`}
+                value={partner.nextFollowUp || ''}
+                onChange={(e) => onFollowUpChange(partner.id, e.target.value)}
+              />
+              {partner.nextFollowUp && new Date(partner.nextFollowUp) < new Date() && (
+                <span className="badge badge-error badge-xs">overdue!</span>
+              )}
+            </div>
             {partner.appUserId && (
               <div className="flex items-center gap-2 text-sm">
                 <User size={14} className="opacity-60" />
-                <span className="text-base-content/60">App User ID:</span>
-                <span className="font-mono text-xs bg-base-300 px-1.5 py-0.5 rounded">
-                  {partner.appUserId}
-                </span>
+                <span className="text-base-content/60">Popcorn User ID:</span>
+                <a
+                  href={`https://app.popcorn.co/admin/users/${partner.appUserId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-xs bg-base-300 px-1.5 py-0.5 rounded link link-primary"
+                >
+                  {partner.appUserId} ↗
+                </a>
               </div>
             )}
+            {/* Drive Folder */}
+            <div className="flex items-center gap-2 text-sm">
+              <span className="opacity-60">📁</span>
+              <span className="text-base-content/60">Drive Folder:</span>
+              {(partner as any).driveFolder ? (
+                <a href={(partner as any).driveFolder} target="_blank" rel="noopener noreferrer" className="link link-primary truncate max-w-[200px]">
+                  Open Folder ↗
+                </a>
+              ) : (
+                <span className="text-base-content/30 italic">Not set</span>
+              )}
+              <input
+                type="text"
+                className="input input-ghost input-xs w-40 text-xs"
+                placeholder="Paste Drive URL..."
+                defaultValue={(partner as any).driveFolder || ''}
+                onBlur={(e) => {
+                  if (e.target.value !== ((partner as any).driveFolder || '')) {
+                    onDriveFolderChange(partner.id, e.target.value);
+                  }
+                }}
+                onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
             {partner.channelLink && !partner.youtubeChannel && !partner.popcornChannel && (
               <div className="flex items-center gap-2 text-sm">
                 <Link size={14} className="opacity-60" />
@@ -271,8 +311,8 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
             )}
           </div>
 
-          {/* YouTube & Popcorn Channel buttons */}
-          {(partner.youtubeChannel || partner.popcornChannel) && (
+          {/* YouTube, Popcorn & Drive buttons */}
+          {(partner.youtubeChannel || partner.popcornChannel || (partner as any).driveFolder) && (
             <div className="flex flex-wrap gap-2 mt-2">
               {partner.youtubeChannel && (
                 <a
@@ -293,6 +333,16 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
                   className="btn btn-sm btn-outline gap-2"
                 >
                   🍿 Popcorn Channel
+                </a>
+              )}
+              {(partner as any).driveFolder && (
+                <a
+                  href={(partner as any).driveFolder}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-sm btn-outline gap-2"
+                >
+                  📁 Drive Folder
                 </a>
               )}
             </div>

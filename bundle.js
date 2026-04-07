@@ -13186,6 +13186,7 @@
       channelStatus: "",
       youtubeChannel: row.youtube_channel || "",
       popcornChannel: row.popcorn_channel || "",
+      driveFolder: "",
       useCase: row.use_case || "",
       nextSteps: row.next_steps || "",
       lastConversation: row.last_conversation || "",
@@ -13549,6 +13550,21 @@
                   ]
                 }
               ),
+              p.driveFolder && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+                "a",
+                {
+                  href: p.driveFolder,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  className: "flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors",
+                  onClick: (e) => e.stopPropagation(),
+                  title: "Google Drive Folder",
+                  children: [
+                    "\u{1F4C1} ",
+                    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "underline", children: "Drive" })
+                  ]
+                }
+              ),
               p.company && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { children: [
                 "\u{1F3E2} ",
                 p.company
@@ -13640,6 +13656,8 @@
     onManagerChange,
     onDescriptionChange,
     onNextStepsChange,
+    onDriveFolderChange,
+    onFollowUpChange,
     onAddConversation
   }) => {
     const sorted = [...conversations].sort((a, b) => {
@@ -13761,22 +13779,66 @@
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/60", children: "Last contact:" }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: formatDate2(partner.lastConversation) })
           ] }),
-          partner.nextFollowUp && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `flex items-center gap-2 text-sm ${partner.nextFollowUp && new Date(partner.nextFollowUp) < /* @__PURE__ */ new Date() ? "text-error font-semibold" : ""}`, children: [
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CalendarDays, { size: 14, className: "opacity-60" }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/60", children: "Next follow-up:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: formatDate2(partner.nextFollowUp) })
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "input",
+              {
+                type: "date",
+                className: `input input-ghost input-xs ${partner.nextFollowUp && new Date(partner.nextFollowUp) < /* @__PURE__ */ new Date() ? "text-error" : ""}`,
+                value: partner.nextFollowUp || "",
+                onChange: (e) => onFollowUpChange(partner.id, e.target.value)
+              }
+            ),
+            partner.nextFollowUp && new Date(partner.nextFollowUp) < /* @__PURE__ */ new Date() && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "badge badge-error badge-xs", children: "overdue!" })
           ] }),
           partner.appUserId && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(User, { size: 14, className: "opacity-60" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/60", children: "App User ID:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-mono text-xs bg-base-300 px-1.5 py-0.5 rounded", children: partner.appUserId })
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/60", children: "Popcorn User ID:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+              "a",
+              {
+                href: `https://app.popcorn.co/admin/users/${partner.appUserId}`,
+                target: "_blank",
+                rel: "noopener noreferrer",
+                className: "font-mono text-xs bg-base-300 px-1.5 py-0.5 rounded link link-primary",
+                children: [
+                  partner.appUserId,
+                  " \u2197"
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "opacity-60", children: "\u{1F4C1}" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/60", children: "Drive Folder:" }),
+            partner.driveFolder ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: partner.driveFolder, target: "_blank", rel: "noopener noreferrer", className: "link link-primary truncate max-w-[200px]", children: "Open Folder \u2197" }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/30 italic", children: "Not set" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "input",
+              {
+                type: "text",
+                className: "input input-ghost input-xs w-40 text-xs",
+                placeholder: "Paste Drive URL...",
+                defaultValue: partner.driveFolder || "",
+                onBlur: (e) => {
+                  if (e.target.value !== (partner.driveFolder || "")) {
+                    onDriveFolderChange(partner.id, e.target.value);
+                  }
+                },
+                onKeyDown: (e) => {
+                  if (e.key === "Enter") e.target.blur();
+                },
+                onClick: (e) => e.stopPropagation()
+              }
+            )
           ] }),
           partner.channelLink && !partner.youtubeChannel && !partner.popcornChannel && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Link, { size: 14, className: "opacity-60" }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: partner.channelLink, target: "_blank", rel: "noopener noreferrer", className: "link link-primary truncate", children: "Channel Link" })
           ] })
         ] }),
-        (partner.youtubeChannel || partner.popcornChannel) && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-wrap gap-2 mt-2", children: [
+        (partner.youtubeChannel || partner.popcornChannel || partner.driveFolder) && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-wrap gap-2 mt-2", children: [
           partner.youtubeChannel && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
             "a",
             {
@@ -13798,6 +13860,16 @@
               rel: "noopener noreferrer",
               className: "btn btn-sm btn-outline gap-2",
               children: "\u{1F37F} Popcorn Channel"
+            }
+          ),
+          partner.driveFolder && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+            "a",
+            {
+              href: partner.driveFolder,
+              target: "_blank",
+              rel: "noopener noreferrer",
+              className: "btn btn-sm btn-outline gap-2",
+              children: "\u{1F4C1} Drive Folder"
             }
           )
         ] })
@@ -14507,6 +14579,9 @@
             if (e2.accountManager !== void 0) stub.accountManager = e2.accountManager;
             if (e2.useCase !== void 0) stub.useCase = e2.useCase;
             if (e2.nextSteps !== void 0) stub.nextSteps = e2.nextSteps;
+            if (e2.driveFolder !== void 0) stub.driveFolder = e2.driveFolder;
+            if (e2.nextFollowUp !== void 0) stub.nextFollowUp = e2.nextFollowUp;
+            if (e2.lastConversation !== void 0) stub.lastConversation = e2.lastConversation;
             if (e2.channelLink !== void 0) stub.channelLink = e2.channelLink;
             if (e2.email !== void 0) stub.email = e2.email;
             if (e2.company !== void 0) stub.company = e2.company;
@@ -14529,6 +14604,9 @@
       if (e.accountManager !== void 0) updated.accountManager = e.accountManager;
       if (e.useCase !== void 0) updated.useCase = e.useCase;
       if (e.nextSteps !== void 0) updated.nextSteps = e.nextSteps;
+      if (e.driveFolder !== void 0) updated.driveFolder = e.driveFolder;
+      if (e.nextFollowUp !== void 0) updated.nextFollowUp = e.nextFollowUp;
+      if (e.lastConversation !== void 0) updated.lastConversation = e.lastConversation;
       if (e.channelLink !== void 0 && !updated.channelLink) updated.channelLink = e.channelLink;
       if (e.email !== void 0 && !updated.email) updated.email = e.email;
       if (e.company !== void 0 && !updated.company) updated.company = e.company;
@@ -14556,6 +14634,7 @@
           channelStatus: "",
           youtubeChannel: e.youtubeChannel || "",
           popcornChannel: e.popcornChannel || "",
+          driveFolder: e.driveFolder || "",
           useCase: e.useCase || "",
           nextSteps: e.nextSteps || "",
           lastConversation: e.lastConversation || "",
@@ -14724,6 +14803,9 @@
             if (e.accountManager !== void 0) merged.accountManager = e.accountManager;
             if (e.useCase !== void 0) merged.useCase = e.useCase;
             if (e.nextSteps !== void 0) merged.nextSteps = e.nextSteps;
+            if (e.driveFolder !== void 0) merged.driveFolder = e.driveFolder;
+            if (e.nextFollowUp !== void 0) merged.nextFollowUp = e.nextFollowUp;
+            if (e.lastConversation !== void 0) merged.lastConversation = e.lastConversation;
           }
           setSelectedPartner(merged);
           setPartners((prev) => prev.map((p) => p.id === partner.id ? merged : p));
@@ -14777,15 +14859,23 @@
     const handleManagerChange = (0, import_react6.useCallback)((id, v) => handleFieldChange(id, "accountManager", v), [handleFieldChange]);
     const handleDescriptionChange = (0, import_react6.useCallback)((id, v) => handleFieldChange(id, "useCase", v), [handleFieldChange]);
     const handleNextStepsChange = (0, import_react6.useCallback)((id, v) => handleFieldChange(id, "nextSteps", v), [handleFieldChange]);
+    const handleDriveFolderChange = (0, import_react6.useCallback)((id, v) => handleFieldChange(id, "driveFolder", v), [handleFieldChange]);
+    const handleFollowUpChange = (0, import_react6.useCallback)((id, v) => handleFieldChange(id, "nextFollowUp", v), [handleFieldChange]);
     const handleAddConversation = (0, import_react6.useCallback)(async (partnerId, entry) => {
       try {
         await saveConversation(partnerId, entry);
         const convos = await fetchConversationsForPartner(partnerId);
         setPartnerConversations(convos);
+        if (convos.length > 0) {
+          const sorted = [...convos].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+          if (sorted[0].date) {
+            handleFieldChange(partnerId, "lastConversation", sorted[0].date);
+          }
+        }
       } catch (err) {
         console.error("Failed to save conversation:", err);
       }
-    }, []);
+    }, [handleFieldChange]);
     const handleDeletePartner = (0, import_react6.useCallback)(async (id) => {
       setPartners((prev) => prev.filter((p) => p.id !== id));
       setSelectedPartner((prev) => prev?.id === id ? null : prev);
@@ -14824,6 +14914,7 @@
         channelStatus: "",
         youtubeChannel: "",
         popcornChannel: "",
+        driveFolder: "",
         useCase: "",
         nextSteps: "",
         lastConversation: "",
@@ -14863,6 +14954,8 @@
         onManagerChange: handleManagerChange,
         onDescriptionChange: handleDescriptionChange,
         onNextStepsChange: handleNextStepsChange,
+        onDriveFolderChange: handleDriveFolderChange,
+        onFollowUpChange: handleFollowUpChange,
         onAddConversation: handleAddConversation
       }
     ) : /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [

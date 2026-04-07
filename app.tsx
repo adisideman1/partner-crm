@@ -21,7 +21,7 @@ type AppTab = 'partners' | 'kols';
 
 // ---- Persistence helpers ----
 
-const EDITABLE_FIELDS = ['onboardingStage', 'accountManager', 'useCase', 'nextSteps'] as const;
+const EDITABLE_FIELDS = ['onboardingStage', 'accountManager', 'useCase', 'nextSteps', 'driveFolder', 'nextFollowUp', 'lastConversation'] as const;
 type EditableField = typeof EDITABLE_FIELDS[number];
 
 async function loadEdits(): Promise<Record<string, Record<string, string>>> {
@@ -80,6 +80,9 @@ function applyEdits(partners: Partner[], edits: Record<string, Record<string, st
           if (e.accountManager !== undefined) stub.accountManager = e.accountManager;
           if (e.useCase !== undefined) stub.useCase = e.useCase;
           if (e.nextSteps !== undefined) stub.nextSteps = e.nextSteps;
+          if (e.driveFolder !== undefined) (stub as any).driveFolder = e.driveFolder;
+          if (e.nextFollowUp !== undefined) stub.nextFollowUp = e.nextFollowUp;
+          if (e.lastConversation !== undefined) stub.lastConversation = e.lastConversation;
           if (e.channelLink !== undefined) stub.channelLink = e.channelLink;
           if (e.email !== undefined) stub.email = e.email;
           if (e.company !== undefined) stub.company = e.company;
@@ -99,6 +102,9 @@ function applyEdits(partners: Partner[], edits: Record<string, Record<string, st
     if (e.accountManager !== undefined) updated.accountManager = e.accountManager;
     if (e.useCase !== undefined) updated.useCase = e.useCase;
     if (e.nextSteps !== undefined) updated.nextSteps = e.nextSteps;
+    if (e.driveFolder !== undefined) (updated as any).driveFolder = e.driveFolder;
+    if (e.nextFollowUp !== undefined) updated.nextFollowUp = e.nextFollowUp;
+    if (e.lastConversation !== undefined) updated.lastConversation = e.lastConversation;
     if (e.channelLink !== undefined && !updated.channelLink) updated.channelLink = e.channelLink;
     if (e.email !== undefined && !updated.email) updated.email = e.email;
     if (e.company !== undefined && !updated.company) updated.company = e.company;
@@ -129,6 +135,7 @@ function applyEdits(partners: Partner[], edits: Record<string, Record<string, st
         channelStatus: '',
         youtubeChannel: e.youtubeChannel || '',
         popcornChannel: e.popcornChannel || '',
+        driveFolder: e.driveFolder || '',
         useCase: e.useCase || '',
         nextSteps: e.nextSteps || '',
         lastConversation: e.lastConversation || '',
@@ -328,6 +335,9 @@ const App: React.FC = () => {
           if (e.accountManager !== undefined) merged.accountManager = e.accountManager;
           if (e.useCase !== undefined) merged.useCase = e.useCase;
           if (e.nextSteps !== undefined) merged.nextSteps = e.nextSteps;
+          if (e.driveFolder !== undefined) (merged as any).driveFolder = e.driveFolder;
+          if (e.nextFollowUp !== undefined) merged.nextFollowUp = e.nextFollowUp;
+          if (e.lastConversation !== undefined) merged.lastConversation = e.lastConversation;
           // channelStatus removed — merged into nextSteps
         }
         setSelectedPartner(merged);
@@ -392,6 +402,8 @@ const App: React.FC = () => {
   const handleManagerChange = useCallback((id: string, v: string) => handleFieldChange(id, 'accountManager', v), [handleFieldChange]);
   const handleDescriptionChange = useCallback((id: string, v: string) => handleFieldChange(id, 'useCase', v), [handleFieldChange]);
   const handleNextStepsChange = useCallback((id: string, v: string) => handleFieldChange(id, 'nextSteps', v), [handleFieldChange]);
+  const handleDriveFolderChange = useCallback((id: string, v: string) => handleFieldChange(id, 'driveFolder', v), [handleFieldChange]);
+  const handleFollowUpChange = useCallback((id: string, v: string) => handleFieldChange(id, 'nextFollowUp', v), [handleFieldChange]);
   // channelStatus handler removed
 
   const handleAddConversation = useCallback(async (partnerId: string, entry: {
@@ -403,10 +415,17 @@ const App: React.FC = () => {
       // Refresh conversations
       const convos = await fetchConversationsForPartner(partnerId);
       setPartnerConversations(convos);
+      // Auto-update lastConversation to the most recent date
+      if (convos.length > 0) {
+        const sorted = [...convos].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        if (sorted[0].date) {
+          handleFieldChange(partnerId, 'lastConversation', sorted[0].date);
+        }
+      }
     } catch (err) {
       console.error('Failed to save conversation:', err);
     }
-  }, []);
+  }, [handleFieldChange]);
 
   const handleDeletePartner = useCallback(async (id: string) => {
     setPartners(prev => prev.filter(p => p.id !== id));
@@ -439,6 +458,7 @@ const App: React.FC = () => {
       channelStatus: '',
       youtubeChannel: '',
       popcornChannel: '',
+      driveFolder: '',
       useCase: '',
       nextSteps: '',
       lastConversation: '',
@@ -488,6 +508,8 @@ const App: React.FC = () => {
           onManagerChange={handleManagerChange}
           onDescriptionChange={handleDescriptionChange}
           onNextStepsChange={handleNextStepsChange}
+          onDriveFolderChange={handleDriveFolderChange}
+          onFollowUpChange={handleFollowUpChange}
           onAddConversation={handleAddConversation}
         />
       ) : (

@@ -63,6 +63,7 @@ function rowToPartner(row: CacheRow): Partner {
     channelStatus: '',
     youtubeChannel: row.youtube_channel || '',
     popcornChannel: row.popcorn_channel || '',
+    driveFolder: '',
     useCase: row.use_case || '',
     nextSteps: row.next_steps || '',
     lastConversation: row.last_conversation || '',

@@ -183,6 +183,18 @@ export const PartnerList: React.FC<PartnerListProps> = ({ partners, onSelect, se
                     🍿 <span className="underline">Popcorn</span>
                   </a>
                 )}
+                {(p as any).driveFolder && (
+                  <a
+                    href={(p as any).driveFolder}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                    title="Google Drive Folder"
+                  >
+                    📁 <span className="underline">Drive</span>
+                  </a>
+                )}
                 {p.company && <span>🏢 {p.company}</span>}
                 {p.appUserId && <span className="font-mono bg-base-300 px-1 py-0.5 rounded">🔑 ID</span>}
 
