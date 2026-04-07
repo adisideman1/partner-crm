@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ExternalLink, Star, ChevronRight, Clock, Lightbulb, Youtube, Trash2 } from 'lucide-react';
-import { Partner, STAGE_COLORS, EDITABLE_STAGES, EDITABLE_MANAGERS } from '../types';
+import { ExternalLink, Star, ChevronRight, ChevronDown, Clock, Lightbulb, Youtube, Trash2 } from 'lucide-react';
+import { Partner, Conversation, STAGE_COLORS, EDITABLE_STAGES, EDITABLE_MANAGERS } from '../types';
+import { PartnerExpandPanel } from './PartnerExpandPanel';
 
 interface PartnerListProps {
   partners: Partner[];
@@ -9,6 +10,19 @@ interface PartnerListProps {
   onStageChange: (partnerId: string, newStage: string) => void;
   onManagerChange: (partnerId: string, newManager: string) => void;
   onDelete?: (partnerId: string) => void;
+  // Expansion panel props
+  expandedId: string | null;
+  onExpand: (partner: Partner | null) => void;
+  expandedConversations: Conversation[];
+  loadingExpandConversations: boolean;
+  onDescriptionChange: (partnerId: string, val: string) => void;
+  onNextStepsChange: (partnerId: string, val: string) => void;
+  onDriveFolderChange: (partnerId: string, url: string) => void;
+  onFollowUpChange: (partnerId: string, date: string) => void;
+  onAddConversation: (partnerId: string, entry: {
+    title: string; date: string; channel: string; summary: string;
+    key_takeaways: string; next_steps: string; logged_by: string;
+  }) => void;
 }
 
 function formatDate(d: string): string {
@@ -64,7 +78,11 @@ const ChannelBadge: React.FC<{ url: string }> = ({ url }) => {
   );
 };
 
-export const PartnerList: React.FC<PartnerListProps> = ({ partners, onSelect, selectedId, onStageChange, onManagerChange, onDelete }) => {
+export const PartnerList: React.FC<PartnerListProps> = ({
+  partners, onSelect, selectedId, onStageChange, onManagerChange, onDelete,
+  expandedId, onExpand, expandedConversations, loadingExpandConversations,
+  onDescriptionChange, onNextStepsChange, onDriveFolderChange, onFollowUpChange, onAddConversation,
+}) => {
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
   if (partners.length === 0) {
@@ -81,6 +99,7 @@ export const PartnerList: React.FC<PartnerListProps> = ({ partners, onSelect, se
       {partners.map((p) => {
         const stageClass = STAGE_COLORS[p.onboardingStage] || 'badge-ghost';
         const isSelected = selectedId === p.id;
+        const isExpanded = expandedId === p.id;
         const overdue = isOverdue(p.nextFollowUp);
         const isConfirming = confirmDeleteId === p.id;
 
@@ -88,9 +107,9 @@ export const PartnerList: React.FC<PartnerListProps> = ({ partners, onSelect, se
           <div
             key={p.id}
             className={`card bg-base-200 cursor-pointer transition-all hover:bg-base-300 group ${
-              isSelected ? 'ring-2 ring-primary' : ''
+              isExpanded ? 'ring-2 ring-primary/50 shadow-lg' : isSelected ? 'ring-2 ring-primary' : ''
             }`}
-            onClick={() => { setConfirmDeleteId(null); onSelect(p); }}
+            onClick={() => { setConfirmDeleteId(null); onExpand(isExpanded ? null : p); }}
           >
             <div className="card-body p-4 gap-2">
               <div className="flex items-start justify-between gap-2">
@@ -134,7 +153,11 @@ export const PartnerList: React.FC<PartnerListProps> = ({ partners, onSelect, se
                       </button>
                     )
                   )}
-                  <ChevronRight size={16} className="opacity-40" />
+                  {isExpanded ? (
+                    <ChevronDown size={16} className="opacity-60 text-primary" />
+                  ) : (
+                    <ChevronRight size={16} className="opacity-40" />
+                  )}
                 </div>
               </div>
 
@@ -217,6 +240,21 @@ export const PartnerList: React.FC<PartnerListProps> = ({ partners, onSelect, se
                 )}
               </div>
             </div>
+            {/* Expansion Panel */}
+            {isExpanded && (
+              <PartnerExpandPanel
+                partner={p}
+                conversations={expandedConversations}
+                loadingConversations={loadingExpandConversations}
+                onOpenFullView={() => onSelect(p)}
+                onDescriptionChange={onDescriptionChange}
+                onNextStepsChange={onNextStepsChange}
+                onDriveFolderChange={onDriveFolderChange}
+                onFollowUpChange={onFollowUpChange}
+                onManagerChange={onManagerChange}
+                onAddConversation={onAddConversation}
+              />
+            )}
           </div>
         );
       })}

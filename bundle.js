@@ -767,7 +767,7 @@
   var require_react_dom_production = __commonJS({
     "../tasklet-deps/partner-crm-1bbbd014417f/node_modules/react-dom/cjs/react-dom.production.js"(exports) {
       "use strict";
-      var React5 = require_react();
+      var React6 = require_react();
       function formatProdErrorMessage(code) {
         var url = "https://react.dev/errors/" + code;
         if (1 < arguments.length) {
@@ -807,7 +807,7 @@
           implementation
         };
       }
-      var ReactSharedInternals = React5.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      var ReactSharedInternals = React6.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       function getCrossOriginStringAs(as, input) {
         if ("font" === as) return "";
         if ("string" === typeof input)
@@ -943,7 +943,7 @@
     "../tasklet-deps/partner-crm-1bbbd014417f/node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
       "use strict";
       var Scheduler = require_scheduler();
-      var React5 = require_react();
+      var React6 = require_react();
       var ReactDOM = require_react_dom();
       function formatProdErrorMessage(code) {
         var url = "https://react.dev/errors/" + code;
@@ -1138,7 +1138,7 @@
         return null;
       }
       var isArrayImpl = Array.isArray;
-      var ReactSharedInternals = React5.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      var ReactSharedInternals = React6.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       var ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       var sharedNotPendingObject = {
         pending: false,
@@ -12584,7 +12584,7 @@
           0 === i && attemptExplicitHydrationTarget(target);
         }
       };
-      var isomorphicReactPackageVersion$jscomp$inline_1840 = React5.version;
+      var isomorphicReactPackageVersion$jscomp$inline_1840 = React6.version;
       if ("19.2.4" !== isomorphicReactPackageVersion$jscomp$inline_1840)
         throw Error(
           formatProdErrorMessage(
@@ -12752,7 +12752,7 @@
   });
 
   // app.tsx
-  var import_react6 = __toESM(require_react());
+  var import_react7 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/createLucideIcon.js
@@ -12866,34 +12866,38 @@
   ];
   var CalendarDays = createLucideIcon("calendar-days", __iconNode2);
 
+  // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/chevron-down.js
+  var __iconNode3 = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+  var ChevronDown = createLucideIcon("chevron-down", __iconNode3);
+
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/chevron-right.js
-  var __iconNode3 = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
-  var ChevronRight = createLucideIcon("chevron-right", __iconNode3);
+  var __iconNode4 = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+  var ChevronRight = createLucideIcon("chevron-right", __iconNode4);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/circle-check-big.js
-  var __iconNode4 = [
+  var __iconNode5 = [
     ["path", { d: "M21.801 10A10 10 0 1 1 17 3.335", key: "yps3ct" }],
     ["path", { d: "m9 11 3 3L22 4", key: "1pflzl" }]
   ];
-  var CircleCheckBig = createLucideIcon("circle-check-big", __iconNode4);
+  var CircleCheckBig = createLucideIcon("circle-check-big", __iconNode5);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/clock.js
-  var __iconNode5 = [
+  var __iconNode6 = [
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
     ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
   ];
-  var Clock = createLucideIcon("clock", __iconNode5);
+  var Clock = createLucideIcon("clock", __iconNode6);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/external-link.js
-  var __iconNode6 = [
+  var __iconNode7 = [
     ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
     ["path", { d: "M10 14 21 3", key: "gplh6r" }],
     ["path", { d: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6", key: "a6xqqp" }]
   ];
-  var ExternalLink = createLucideIcon("external-link", __iconNode6);
+  var ExternalLink = createLucideIcon("external-link", __iconNode7);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/film.js
-  var __iconNode7 = [
+  var __iconNode8 = [
     ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
     ["path", { d: "M7 3v18", key: "bbkbws" }],
     ["path", { d: "M3 7.5h4", key: "zfgn84" }],
@@ -12903,10 +12907,10 @@
     ["path", { d: "M17 7.5h4", key: "myr1c1" }],
     ["path", { d: "M17 16.5h4", key: "go4c1d" }]
   ];
-  var Film = createLucideIcon("film", __iconNode7);
+  var Film = createLucideIcon("film", __iconNode8);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/grip-vertical.js
-  var __iconNode8 = [
+  var __iconNode9 = [
     ["circle", { cx: "9", cy: "12", r: "1", key: "1vctgf" }],
     ["circle", { cx: "9", cy: "5", r: "1", key: "hp0tcf" }],
     ["circle", { cx: "9", cy: "19", r: "1", key: "fkjjf6" }],
@@ -12914,10 +12918,10 @@
     ["circle", { cx: "15", cy: "5", r: "1", key: "19l28e" }],
     ["circle", { cx: "15", cy: "19", r: "1", key: "f4zoj3" }]
   ];
-  var GripVertical = createLucideIcon("grip-vertical", __iconNode8);
+  var GripVertical = createLucideIcon("grip-vertical", __iconNode9);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/key-round.js
-  var __iconNode9 = [
+  var __iconNode10 = [
     [
       "path",
       {
@@ -12927,10 +12931,10 @@
     ],
     ["circle", { cx: "16.5", cy: "7.5", r: ".5", fill: "currentColor", key: "w0ekpg" }]
   ];
-  var KeyRound = createLucideIcon("key-round", __iconNode9);
+  var KeyRound = createLucideIcon("key-round", __iconNode10);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/lightbulb.js
-  var __iconNode10 = [
+  var __iconNode11 = [
     [
       "path",
       {
@@ -12941,53 +12945,62 @@
     ["path", { d: "M9 18h6", key: "x1upvd" }],
     ["path", { d: "M10 22h4", key: "ceow96" }]
   ];
-  var Lightbulb = createLucideIcon("lightbulb", __iconNode10);
+  var Lightbulb = createLucideIcon("lightbulb", __iconNode11);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/link.js
-  var __iconNode11 = [
+  var __iconNode12 = [
     ["path", { d: "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71", key: "1cjeqo" }],
     ["path", { d: "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71", key: "19qd67" }]
   ];
-  var Link = createLucideIcon("link", __iconNode11);
+  var Link = createLucideIcon("link", __iconNode12);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/mail.js
-  var __iconNode12 = [
+  var __iconNode13 = [
     ["path", { d: "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7", key: "132q7q" }],
     ["rect", { x: "2", y: "4", width: "20", height: "16", rx: "2", key: "izxlao" }]
   ];
-  var Mail = createLucideIcon("mail", __iconNode12);
+  var Mail = createLucideIcon("mail", __iconNode13);
+
+  // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/maximize-2.js
+  var __iconNode14 = [
+    ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
+    ["path", { d: "m21 3-7 7", key: "1l2asr" }],
+    ["path", { d: "m3 21 7-7", key: "tjx5ai" }],
+    ["path", { d: "M9 21H3v-6", key: "wtvkvv" }]
+  ];
+  var Maximize2 = createLucideIcon("maximize-2", __iconNode14);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/message-square.js
-  var __iconNode13 = [
+  var __iconNode15 = [
     ["path", { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", key: "1lielz" }]
   ];
-  var MessageSquare = createLucideIcon("message-square", __iconNode13);
+  var MessageSquare = createLucideIcon("message-square", __iconNode15);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/plus.js
-  var __iconNode14 = [
+  var __iconNode16 = [
     ["path", { d: "M5 12h14", key: "1ays0h" }],
     ["path", { d: "M12 5v14", key: "s699le" }]
   ];
-  var Plus = createLucideIcon("plus", __iconNode14);
+  var Plus = createLucideIcon("plus", __iconNode16);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/refresh-cw.js
-  var __iconNode15 = [
+  var __iconNode17 = [
     ["path", { d: "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8", key: "v9h5vc" }],
     ["path", { d: "M21 3v5h-5", key: "1q7to0" }],
     ["path", { d: "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16", key: "3uifl3" }],
     ["path", { d: "M8 16H3v5", key: "1cv678" }]
   ];
-  var RefreshCw = createLucideIcon("refresh-cw", __iconNode15);
+  var RefreshCw = createLucideIcon("refresh-cw", __iconNode17);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/search.js
-  var __iconNode16 = [
+  var __iconNode18 = [
     ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
     ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
   ];
-  var Search = createLucideIcon("search", __iconNode16);
+  var Search = createLucideIcon("search", __iconNode18);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/star.js
-  var __iconNode17 = [
+  var __iconNode19 = [
     [
       "path",
       {
@@ -12996,20 +13009,20 @@
       }
     ]
   ];
-  var Star = createLucideIcon("star", __iconNode17);
+  var Star = createLucideIcon("star", __iconNode19);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/trash-2.js
-  var __iconNode18 = [
+  var __iconNode20 = [
     ["path", { d: "M3 6h18", key: "d0wm0j" }],
     ["path", { d: "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6", key: "4alrt4" }],
     ["path", { d: "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2", key: "v07s0e" }],
     ["line", { x1: "10", x2: "10", y1: "11", y2: "17", key: "1uufr5" }],
     ["line", { x1: "14", x2: "14", y1: "11", y2: "17", key: "xtxkd" }]
   ];
-  var Trash2 = createLucideIcon("trash-2", __iconNode18);
+  var Trash2 = createLucideIcon("trash-2", __iconNode20);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/triangle-alert.js
-  var __iconNode19 = [
+  var __iconNode21 = [
     [
       "path",
       {
@@ -13020,33 +13033,33 @@
     ["path", { d: "M12 9v4", key: "juzpu7" }],
     ["path", { d: "M12 17h.01", key: "p32p05" }]
   ];
-  var TriangleAlert = createLucideIcon("triangle-alert", __iconNode19);
+  var TriangleAlert = createLucideIcon("triangle-alert", __iconNode21);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/user.js
-  var __iconNode20 = [
+  var __iconNode22 = [
     ["path", { d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", key: "975kel" }],
     ["circle", { cx: "12", cy: "7", r: "4", key: "17ys0d" }]
   ];
-  var User = createLucideIcon("user", __iconNode20);
+  var User = createLucideIcon("user", __iconNode22);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/users.js
-  var __iconNode21 = [
+  var __iconNode23 = [
     ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
     ["path", { d: "M16 3.128a4 4 0 0 1 0 7.744", key: "16gr8j" }],
     ["path", { d: "M22 21v-2a4 4 0 0 0-3-3.87", key: "kshegd" }],
     ["circle", { cx: "9", cy: "7", r: "4", key: "nufk8" }]
   ];
-  var Users = createLucideIcon("users", __iconNode21);
+  var Users = createLucideIcon("users", __iconNode23);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/x.js
-  var __iconNode22 = [
+  var __iconNode24 = [
     ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
     ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
   ];
-  var X = createLucideIcon("x", __iconNode22);
+  var X = createLucideIcon("x", __iconNode24);
 
   // ../tasklet-deps/partner-crm-1bbbd014417f/node_modules/lucide-react/dist/esm/icons/youtube.js
-  var __iconNode23 = [
+  var __iconNode25 = [
     [
       "path",
       {
@@ -13056,7 +13069,7 @@
     ],
     ["path", { d: "m10 15 5-3-5-3z", key: "1jp15x" }]
   ];
-  var Youtube = createLucideIcon("youtube", __iconNode23);
+  var Youtube = createLucideIcon("youtube", __iconNode25);
 
   // types.ts
   var STAGES = [
@@ -13374,9 +13387,405 @@
   };
 
   // components/PartnerList.tsx
+  var import_react4 = __toESM(require_react());
+
+  // components/PartnerExpandPanel.tsx
   var import_react3 = __toESM(require_react());
   var import_jsx_runtime3 = __toESM(require_jsx_runtime());
+  var InlineEdit = ({ value, placeholder, onChange }) => {
+    const [draft, setDraft] = (0, import_react3.useState)(value);
+    const ref = (0, import_react3.useRef)(null);
+    (0, import_react3.useEffect)(() => {
+      setDraft(value);
+    }, [value]);
+    (0, import_react3.useEffect)(() => {
+      if (ref.current) {
+        ref.current.style.height = "auto";
+        ref.current.style.height = ref.current.scrollHeight + "px";
+      }
+    }, [draft]);
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+      "textarea",
+      {
+        ref,
+        className: "textarea textarea-ghost w-full text-sm leading-relaxed p-1 min-h-[1.8rem] resize-none focus:outline-none focus:bg-base-300/40 rounded transition-colors",
+        value: draft,
+        placeholder,
+        rows: 1,
+        onChange: (e) => setDraft(e.target.value),
+        onBlur: () => {
+          if (draft !== value) onChange(draft);
+        },
+        onClick: (e) => e.stopPropagation()
+      }
+    );
+  };
   function formatDate(d) {
+    if (!d) return "\u2014";
+    try {
+      return new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    } catch {
+      return d;
+    }
+  }
+  var CHANNEL_ICONS = {
+    "\u{1F4DE} Call": "\u{1F4DE}",
+    "Call": "\u{1F4DE}",
+    "\u{1F4E7} Email": "\u{1F4E7}",
+    "Email": "\u{1F4E7}",
+    "\u{1F4AC} Slack": "\u{1F4AC}",
+    "Slack": "\u{1F4AC}",
+    "\u{1F91D} In-Person": "\u{1F91D}",
+    "In-Person": "\u{1F91D}",
+    "\u{1F4F9} Video Call": "\u{1F4F9}",
+    "Video Call": "\u{1F4F9}",
+    "\u{1F4DD} Other": "\u{1F4DD}",
+    "Other": "\u{1F4DD}"
+  };
+  var PartnerExpandPanel = ({
+    partner,
+    conversations,
+    loadingConversations,
+    onOpenFullView,
+    onDescriptionChange,
+    onNextStepsChange,
+    onDriveFolderChange,
+    onFollowUpChange,
+    onManagerChange,
+    onAddConversation
+  }) => {
+    const sorted = [...conversations].sort((a, b) => {
+      if (!a.date && !b.date) return 0;
+      if (!a.date) return 1;
+      if (!b.date) return -1;
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+    const recentConvos = sorted.slice(0, 3);
+    const isOverdue2 = partner.nextFollowUp ? new Date(partner.nextFollowUp) < /* @__PURE__ */ new Date() : false;
+    const [showQuickAdd, setShowQuickAdd] = (0, import_react3.useState)(false);
+    const [saving, setSaving] = (0, import_react3.useState)(false);
+    const [qTitle, setQTitle] = (0, import_react3.useState)("");
+    const [qDate, setQDate] = (0, import_react3.useState)(() => (/* @__PURE__ */ new Date()).toISOString().slice(0, 10));
+    const [qChannel, setQChannel] = (0, import_react3.useState)("Call");
+    const [qSummary, setQSummary] = (0, import_react3.useState)("");
+    const [qLoggedBy, setQLoggedBy] = (0, import_react3.useState)("");
+    const handleQuickSave = async () => {
+      setSaving(true);
+      try {
+        await onAddConversation(partner.id, {
+          title: qTitle,
+          date: qDate,
+          channel: qChannel,
+          summary: qSummary,
+          key_takeaways: "",
+          next_steps: "",
+          logged_by: qLoggedBy
+        });
+        setQTitle("");
+        setQSummary("");
+        setShowQuickAdd(false);
+        setQDate((/* @__PURE__ */ new Date()).toISOString().slice(0, 10));
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setSaving(false);
+      }
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+      "div",
+      {
+        className: "border-t border-base-300 bg-base-100/50 px-4 pb-4 pt-3 space-y-3",
+        onClick: (e) => e.stopPropagation(),
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center gap-3 text-xs text-base-content/50", children: [
+              partner.email && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("a", { href: `mailto:${partner.email}`, className: "link link-primary flex items-center gap-1", onClick: (e) => e.stopPropagation(), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Mail, { size: 12 }),
+                " ",
+                partner.email
+              ] }),
+              partner.appUserId && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+                "a",
+                {
+                  href: `https://app.popcorn.co/admin/users/${partner.appUserId}`,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  className: "link link-primary flex items-center gap-1 font-mono",
+                  onClick: (e) => e.stopPropagation(),
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(User, { size: 12 }),
+                    " \u{1F511} ",
+                    partner.appUserId
+                  ]
+                }
+              )
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+              "button",
+              {
+                className: "btn btn-ghost btn-xs gap-1 text-primary",
+                onClick: (e) => {
+                  e.stopPropagation();
+                  onOpenFullView();
+                },
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Maximize2, { size: 13 }),
+                  " Full View"
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex flex-wrap items-center gap-x-4 gap-y-2 text-sm", children: [
+            partner.lastConversation && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { className: "flex items-center gap-1.5 text-base-content/60", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Clock, { size: 13 }),
+              " Last: ",
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "font-medium text-base-content/80", children: formatDate(partner.lastConversation) })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { className: `flex items-center gap-1.5 ${isOverdue2 ? "text-error font-semibold" : "text-base-content/60"}`, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CalendarDays, { size: 13 }),
+              " Follow-up:",
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+                "input",
+                {
+                  type: "date",
+                  className: `input input-ghost input-xs text-sm ${isOverdue2 ? "text-error" : ""}`,
+                  value: partner.nextFollowUp || "",
+                  onChange: (e) => onFollowUpChange(partner.id, e.target.value),
+                  onClick: (e) => e.stopPropagation()
+                }
+              ),
+              isOverdue2 && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "badge badge-error badge-xs", children: "overdue!" })
+            ] }),
+            partner.driveFolder ? /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+              "a",
+              {
+                href: partner.driveFolder,
+                target: "_blank",
+                rel: "noopener noreferrer",
+                className: "flex items-center gap-1 text-blue-500 hover:text-blue-400",
+                onClick: (e) => e.stopPropagation(),
+                children: [
+                  "\u{1F4C1} ",
+                  /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "underline", children: "Drive Folder" })
+                ]
+              }
+            ) : /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { className: "flex items-center gap-1 text-base-content/30", children: [
+              "\u{1F4C1}",
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+                "input",
+                {
+                  type: "text",
+                  className: "input input-ghost input-xs w-28 text-xs",
+                  placeholder: "+ Drive URL",
+                  onBlur: (e) => {
+                    if (e.target.value) onDriveFolderChange(partner.id, e.target.value);
+                  },
+                  onKeyDown: (e) => {
+                    if (e.key === "Enter") e.target.blur();
+                  },
+                  onClick: (e) => e.stopPropagation()
+                }
+              )
+            ] }),
+            partner.youtubeChannel && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+              "a",
+              {
+                href: partner.youtubeChannel,
+                target: "_blank",
+                rel: "noopener noreferrer",
+                className: "flex items-center gap-1 text-red-500 hover:text-red-400",
+                onClick: (e) => e.stopPropagation(),
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Youtube, { size: 14 }),
+                  " YouTube"
+                ]
+              }
+            ),
+            partner.popcornChannel && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "a",
+              {
+                href: partner.popcornChannel,
+                target: "_blank",
+                rel: "noopener noreferrer",
+                className: "flex items-center gap-1 text-amber-500 hover:text-amber-400",
+                onClick: (e) => e.stopPropagation(),
+                children: "\u{1F37F} Popcorn"
+              }
+            ),
+            partner.url && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+              "a",
+              {
+                href: partner.url,
+                target: "_blank",
+                rel: "noopener noreferrer",
+                className: "flex items-center gap-1 text-base-content/40 hover:text-base-content/60",
+                onClick: (e) => e.stopPropagation(),
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ExternalLink, { size: 12 }),
+                  " Notion"
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "bg-base-200 rounded-lg p-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center gap-1.5 text-xs font-semibold text-secondary mb-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Lightbulb, { size: 13 }),
+                " Creative Idea"
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+                InlineEdit,
+                {
+                  value: partner.useCase || "",
+                  placeholder: "Click to add idea...",
+                  onChange: (val) => onDescriptionChange(partner.id, val)
+                }
+              )
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "bg-base-200 rounded-lg p-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "flex items-center gap-1.5 text-xs font-semibold text-base-content/60 mb-1", children: "\u{1F4CB} Next Steps" }),
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+                InlineEdit,
+                {
+                  value: partner.nextSteps || "",
+                  placeholder: "Click to add next steps...",
+                  onChange: (val) => onNextStepsChange(partner.id, val)
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "bg-base-200 rounded-lg p-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center justify-between mb-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center gap-1.5 text-xs font-semibold text-primary", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(MessageSquare, { size: 13 }),
+                " Conversations",
+                loadingConversations ? /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "loading loading-spinner loading-xs" }) : /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "badge badge-xs badge-primary", children: sorted.length })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center gap-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+                  "button",
+                  {
+                    className: "btn btn-ghost btn-xs gap-1",
+                    onClick: (e) => {
+                      e.stopPropagation();
+                      setShowQuickAdd(!showQuickAdd);
+                    },
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Plus, { size: 12 }),
+                      " Log"
+                    ]
+                  }
+                ),
+                sorted.length > 3 && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+                  "button",
+                  {
+                    className: "btn btn-ghost btn-xs text-primary",
+                    onClick: (e) => {
+                      e.stopPropagation();
+                      onOpenFullView();
+                    },
+                    children: [
+                      "View all ",
+                      sorted.length,
+                      " \u2192"
+                    ]
+                  }
+                )
+              ] })
+            ] }),
+            showQuickAdd && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "mb-3 p-3 bg-base-300 rounded-lg space-y-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+                  "input",
+                  {
+                    className: "input input-bordered input-xs",
+                    placeholder: "Title",
+                    value: qTitle,
+                    onChange: (e) => setQTitle(e.target.value),
+                    onClick: (e) => e.stopPropagation()
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+                  "input",
+                  {
+                    type: "date",
+                    className: "input input-bordered input-xs",
+                    value: qDate,
+                    onChange: (e) => setQDate(e.target.value),
+                    onClick: (e) => e.stopPropagation()
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+                  "select",
+                  {
+                    className: "select select-bordered select-xs",
+                    value: qChannel,
+                    onChange: (e) => setQChannel(e.target.value),
+                    onClick: (e) => e.stopPropagation(),
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "Call", children: "\u{1F4DE} Call" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "Email", children: "\u{1F4E7} Email" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "Slack", children: "\u{1F4AC} Slack" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "Video Call", children: "\u{1F4F9} Video" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "In-Person", children: "\u{1F91D} In-Person" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "Other", children: "\u{1F4DD} Other" })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+                  "select",
+                  {
+                    className: "select select-bordered select-xs",
+                    value: qLoggedBy,
+                    onChange: (e) => setQLoggedBy(e.target.value),
+                    onClick: (e) => e.stopPropagation(),
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "", children: "Logged by" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "Adi", children: "Adi" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "Tess", children: "Tess" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "Ben", children: "Ben" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "Cydel", children: "Cydel" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "Agent \u{1F916}", children: "Agent \u{1F916}" })
+                    ]
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+                "textarea",
+                {
+                  className: "textarea textarea-bordered w-full text-xs",
+                  rows: 2,
+                  placeholder: "Summary...",
+                  value: qSummary,
+                  onChange: (e) => setQSummary(e.target.value),
+                  onClick: (e) => e.stopPropagation()
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex justify-end gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("button", { className: "btn btn-ghost btn-xs", onClick: () => setShowQuickAdd(false), children: "Cancel" }),
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("button", { className: "btn btn-primary btn-xs", onClick: handleQuickSave, disabled: saving, children: saving ? /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "loading loading-spinner loading-xs" }) : "Save" })
+              ] })
+            ] }),
+            !loadingConversations && recentConvos.length === 0 && !showQuickAdd && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "text-xs text-base-content/40 italic", children: "No conversations yet \u2014 click Log to add one." }),
+            recentConvos.map((c) => /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-start gap-2 py-1.5 border-b border-base-300 last:border-0 text-xs", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "shrink-0 mt-0.5", children: CHANNEL_ICONS[c.channel] || "\u{1F4AC}" }),
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "min-w-0 flex-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center justify-between gap-2", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "font-medium truncate", children: c.title || c.channel || "Untitled" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "text-base-content/40 whitespace-nowrap", children: c.date ? formatDate(c.date) : "" })
+                ] }),
+                c.summary && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "text-base-content/60 line-clamp-2 mt-0.5", children: c.summary })
+              ] })
+            ] }, c.id))
+          ] })
+        ]
+      }
+    );
+  };
+
+  // components/PartnerList.tsx
+  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
+  function formatDate2(d) {
     if (!d) return "\u2014";
     try {
       return new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
@@ -13398,7 +13807,7 @@
   var ChannelBadge = ({ url }) => {
     const isYt = url.includes("youtube.com") || url.includes("youtu.be");
     if (isYt) {
-      return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+      return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
         "a",
         {
           href: url,
@@ -13408,14 +13817,14 @@
           onClick: (e) => e.stopPropagation(),
           title: "YouTube Channel",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Youtube, { size: 14 }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Youtube, { size: 14 }),
             " ",
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "underline", children: "YouTube" })
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "underline", children: "YouTube" })
           ]
         }
       );
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
       "a",
       {
         href: url,
@@ -13425,165 +13834,199 @@
         onClick: (e) => e.stopPropagation(),
         title: "Channel Link",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ExternalLink, { size: 12 }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ExternalLink, { size: 12 }),
           " ",
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "underline", children: "Channel" })
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "underline", children: "Channel" })
         ]
       }
     );
   };
-  var PartnerList = ({ partners, onSelect, selectedId, onStageChange, onManagerChange, onDelete }) => {
-    const [confirmDeleteId, setConfirmDeleteId] = (0, import_react3.useState)(null);
+  var PartnerList = ({
+    partners,
+    onSelect,
+    selectedId,
+    onStageChange,
+    onManagerChange,
+    onDelete,
+    expandedId,
+    onExpand,
+    expandedConversations,
+    loadingExpandConversations,
+    onDescriptionChange,
+    onNextStepsChange,
+    onDriveFolderChange,
+    onFollowUpChange,
+    onAddConversation
+  }) => {
+    const [confirmDeleteId, setConfirmDeleteId] = (0, import_react4.useState)(null);
     if (partners.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "text-center py-12 text-base-content/60", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "text-lg", children: "No partners found" }),
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "text-sm mt-1", children: "Try adjusting your filters" })
+      return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "text-center py-12 text-base-content/60", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-lg", children: "No partners found" }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-sm mt-1", children: "Try adjusting your filters" })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "space-y-2", children: partners.map((p) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "space-y-2", children: partners.map((p) => {
       const stageClass = STAGE_COLORS[p.onboardingStage] || "badge-ghost";
       const isSelected = selectedId === p.id;
+      const isExpanded = expandedId === p.id;
       const overdue = isOverdue(p.nextFollowUp);
       const isConfirming = confirmDeleteId === p.id;
-      return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
         "div",
         {
-          className: `card bg-base-200 cursor-pointer transition-all hover:bg-base-300 group ${isSelected ? "ring-2 ring-primary" : ""}`,
+          className: `card bg-base-200 cursor-pointer transition-all hover:bg-base-300 group ${isExpanded ? "ring-2 ring-primary/50 shadow-lg" : isSelected ? "ring-2 ring-primary" : ""}`,
           onClick: () => {
             setConfirmDeleteId(null);
-            onSelect(p);
+            onExpand(isExpanded ? null : p);
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "card-body p-4 gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center gap-2 min-w-0", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("h3", { className: "font-semibold truncate", children: p.name }),
-                p.priority === "\u2B50 VIP" && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Star, { size: 14, className: "text-warning shrink-0 fill-current" })
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "card-body p-4 gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 min-w-0", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h3", { className: "font-semibold truncate", children: p.name }),
+                  p.priority === "\u2B50 VIP" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Star, { size: 14, className: "text-warning shrink-0 fill-current" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 shrink-0", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+                    "select",
+                    {
+                      className: `select select-bordered select-xs font-medium ${stageClass}`,
+                      value: p.onboardingStage,
+                      onClick: (e) => e.stopPropagation(),
+                      onChange: (e) => {
+                        e.stopPropagation();
+                        onStageChange(p.id, e.target.value);
+                      },
+                      children: [
+                        EDITABLE_STAGES.map((s) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: s, children: s }, s)),
+                        !EDITABLE_STAGES.includes(p.onboardingStage) && p.onboardingStage && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: p.onboardingStage, children: p.onboardingStage })
+                      ]
+                    }
+                  ),
+                  onDelete && (isConfirming ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+                    "button",
+                    {
+                      className: "btn btn-xs btn-error gap-1 animate-pulse",
+                      onClick: (e) => {
+                        e.stopPropagation();
+                        onDelete(p.id);
+                        setConfirmDeleteId(null);
+                      },
+                      title: "Confirm remove",
+                      children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Trash2, { size: 11 }),
+                        " Remove?"
+                      ]
+                    }
+                  ) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                    "button",
+                    {
+                      className: "btn btn-xs btn-ghost btn-square opacity-0 group-hover:opacity-60 hover:!opacity-100 hover:btn-error transition-opacity",
+                      onClick: (e) => {
+                        e.stopPropagation();
+                        setConfirmDeleteId(p.id);
+                      },
+                      title: "Remove partner",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Trash2, { size: 13 })
+                    }
+                  )),
+                  isExpanded ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ChevronDown, { size: 16, className: "opacity-60 text-primary" }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ChevronRight, { size: 16, className: "opacity-40" })
+                ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center gap-2 shrink-0", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
-                  "select",
+              p.useCase && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-start gap-1.5 text-sm text-base-content/70", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Lightbulb, { size: 13, className: "shrink-0 mt-0.5 text-secondary" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: summarize(p.useCase, 10) })
+              ] }),
+              p.nextSteps && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-start gap-1.5 text-xs text-base-content/50", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "shrink-0", children: "\u{1F4CB}" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "italic", children: summarize(p.nextSteps, 8) })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-base-content/50 mt-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "flex items-center gap-1", onClick: (e) => e.stopPropagation(), children: [
+                  "\u{1F464}",
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+                    "select",
+                    {
+                      className: "select select-ghost select-xs text-xs py-0 h-5 min-h-0",
+                      value: p.accountManager || "",
+                      onChange: (e) => {
+                        e.stopPropagation();
+                        onManagerChange(p.id, e.target.value);
+                      },
+                      children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "", children: "\u2014" }),
+                        EDITABLE_MANAGERS.map((m) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: m, children: m }, m)),
+                        p.accountManager && !EDITABLE_MANAGERS.includes(p.accountManager) && p.accountManager !== "" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: p.accountManager, children: p.accountManager })
+                      ]
+                    }
+                  )
+                ] }),
+                (p.youtubeChannel || p.channelLink) && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ChannelBadge, { url: p.youtubeChannel || p.channelLink || "" }),
+                p.popcornChannel && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+                  "a",
                   {
-                    className: `select select-bordered select-xs font-medium ${stageClass}`,
-                    value: p.onboardingStage,
+                    href: p.popcornChannel,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    className: "flex items-center gap-1 text-amber-500 hover:text-amber-400 transition-colors",
                     onClick: (e) => e.stopPropagation(),
-                    onChange: (e) => {
-                      e.stopPropagation();
-                      onStageChange(p.id, e.target.value);
-                    },
+                    title: "Popcorn Channel",
                     children: [
-                      EDITABLE_STAGES.map((s) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: s, children: s }, s)),
-                      !EDITABLE_STAGES.includes(p.onboardingStage) && p.onboardingStage && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: p.onboardingStage, children: p.onboardingStage })
+                      "\u{1F37F} ",
+                      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "underline", children: "Popcorn" })
                     ]
                   }
                 ),
-                onDelete && (isConfirming ? /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
-                  "button",
+                p.driveFolder && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+                  "a",
                   {
-                    className: "btn btn-xs btn-error gap-1 animate-pulse",
-                    onClick: (e) => {
-                      e.stopPropagation();
-                      onDelete(p.id);
-                      setConfirmDeleteId(null);
-                    },
-                    title: "Confirm remove",
+                    href: p.driveFolder,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    className: "flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors",
+                    onClick: (e) => e.stopPropagation(),
+                    title: "Google Drive Folder",
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Trash2, { size: 11 }),
-                      " Remove?"
+                      "\u{1F4C1} ",
+                      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "underline", children: "Drive" })
                     ]
                   }
-                ) : /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
-                  "button",
-                  {
-                    className: "btn btn-xs btn-ghost btn-square opacity-0 group-hover:opacity-60 hover:!opacity-100 hover:btn-error transition-opacity",
-                    onClick: (e) => {
-                      e.stopPropagation();
-                      setConfirmDeleteId(p.id);
-                    },
-                    title: "Remove partner",
-                    children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Trash2, { size: 13 })
-                  }
-                )),
-                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ChevronRight, { size: 16, className: "opacity-40" })
+                ),
+                p.company && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
+                  "\u{1F3E2} ",
+                  p.company
+                ] }),
+                p.appUserId && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-mono bg-base-300 px-1 py-0.5 rounded", children: "\u{1F511} ID" }),
+                p.source === "onboarding" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "badge badge-xs badge-outline", children: "onboarding only" }),
+                !p.detailsLoaded && !p.id.startsWith("onb-") && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/30 italic", children: "click for details" }),
+                p.lastConversation && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "flex items-center gap-1", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Clock, { size: 11 }),
+                  " Last: ",
+                  formatDate2(p.lastConversation)
+                ] }),
+                p.nextFollowUp && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: `flex items-center gap-1 ${overdue ? "text-error font-medium" : ""}`, children: [
+                  "\u{1F4C5} Follow-up: ",
+                  formatDate2(p.nextFollowUp),
+                  overdue && " (overdue)"
+                ] })
               ] })
             ] }),
-            p.useCase && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-start gap-1.5 text-sm text-base-content/70", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Lightbulb, { size: 13, className: "shrink-0 mt-0.5 text-secondary" }),
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: summarize(p.useCase, 10) })
-            ] }),
-            p.nextSteps && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-start gap-1.5 text-xs text-base-content/50", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "shrink-0", children: "\u{1F4CB}" }),
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "italic", children: summarize(p.nextSteps, 8) })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-base-content/50 mt-1", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { className: "flex items-center gap-1", onClick: (e) => e.stopPropagation(), children: [
-                "\u{1F464}",
-                /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
-                  "select",
-                  {
-                    className: "select select-ghost select-xs text-xs py-0 h-5 min-h-0",
-                    value: p.accountManager || "",
-                    onChange: (e) => {
-                      e.stopPropagation();
-                      onManagerChange(p.id, e.target.value);
-                    },
-                    children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: "", children: "\u2014" }),
-                      EDITABLE_MANAGERS.map((m) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: m, children: m }, m)),
-                      p.accountManager && !EDITABLE_MANAGERS.includes(p.accountManager) && p.accountManager !== "" && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("option", { value: p.accountManager, children: p.accountManager })
-                    ]
-                  }
-                )
-              ] }),
-              (p.youtubeChannel || p.channelLink) && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ChannelBadge, { url: p.youtubeChannel || p.channelLink || "" }),
-              p.popcornChannel && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
-                "a",
-                {
-                  href: p.popcornChannel,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                  className: "flex items-center gap-1 text-amber-500 hover:text-amber-400 transition-colors",
-                  onClick: (e) => e.stopPropagation(),
-                  title: "Popcorn Channel",
-                  children: [
-                    "\u{1F37F} ",
-                    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "underline", children: "Popcorn" })
-                  ]
-                }
-              ),
-              p.driveFolder && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
-                "a",
-                {
-                  href: p.driveFolder,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                  className: "flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors",
-                  onClick: (e) => e.stopPropagation(),
-                  title: "Google Drive Folder",
-                  children: [
-                    "\u{1F4C1} ",
-                    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "underline", children: "Drive" })
-                  ]
-                }
-              ),
-              p.company && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { children: [
-                "\u{1F3E2} ",
-                p.company
-              ] }),
-              p.appUserId && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "font-mono bg-base-300 px-1 py-0.5 rounded", children: "\u{1F511} ID" }),
-              p.source === "onboarding" && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "badge badge-xs badge-outline", children: "onboarding only" }),
-              !p.detailsLoaded && !p.id.startsWith("onb-") && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "text-base-content/30 italic", children: "click for details" }),
-              p.lastConversation && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { className: "flex items-center gap-1", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Clock, { size: 11 }),
-                " Last: ",
-                formatDate(p.lastConversation)
-              ] }),
-              p.nextFollowUp && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { className: `flex items-center gap-1 ${overdue ? "text-error font-medium" : ""}`, children: [
-                "\u{1F4C5} Follow-up: ",
-                formatDate(p.nextFollowUp),
-                overdue && " (overdue)"
-              ] })
-            ] })
-          ] })
+            isExpanded && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              PartnerExpandPanel,
+              {
+                partner: p,
+                conversations: expandedConversations,
+                loadingConversations: loadingExpandConversations,
+                onOpenFullView: () => onSelect(p),
+                onDescriptionChange,
+                onNextStepsChange,
+                onDriveFolderChange,
+                onFollowUpChange,
+                onManagerChange,
+                onAddConversation
+              }
+            )
+          ]
         },
         p.id
       );
@@ -13591,21 +14034,21 @@
   };
 
   // components/PartnerDetail.tsx
-  var import_react4 = __toESM(require_react());
-  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
-  var InlineEdit = ({ value, placeholder, onChange }) => {
-    const [draft, setDraft] = (0, import_react4.useState)(value);
-    const ref = (0, import_react4.useRef)(null);
-    (0, import_react4.useEffect)(() => {
+  var import_react5 = __toESM(require_react());
+  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
+  var InlineEdit2 = ({ value, placeholder, onChange }) => {
+    const [draft, setDraft] = (0, import_react5.useState)(value);
+    const ref = (0, import_react5.useRef)(null);
+    (0, import_react5.useEffect)(() => {
       setDraft(value);
     }, [value]);
-    (0, import_react4.useEffect)(() => {
+    (0, import_react5.useEffect)(() => {
       if (ref.current) {
         ref.current.style.height = "auto";
         ref.current.style.height = ref.current.scrollHeight + "px";
       }
     }, [draft]);
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
       "textarea",
       {
         ref,
@@ -13620,7 +14063,7 @@
       }
     );
   };
-  function formatDate2(d) {
+  function formatDate3(d) {
     if (!d) return "\u2014";
     try {
       return new Date(d).toLocaleDateString("en-US", {
@@ -13632,7 +14075,7 @@
       return d;
     }
   }
-  var CHANNEL_ICONS = {
+  var CHANNEL_ICONS2 = {
     "\u{1F4DE} Call": "\u{1F4DE}",
     "\u{1F4E7} Email": "\u{1F4E7}",
     "\u{1F4AC} Slack": "\u{1F4AC}",
@@ -13667,16 +14110,16 @@
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
     const stageClass = STAGE_COLORS[partner.onboardingStage] || "badge-ghost";
-    const [showConvoForm, setShowConvoForm] = (0, import_react4.useState)(false);
-    const [convoSaving, setConvoSaving] = (0, import_react4.useState)(false);
-    const [convoSuccess, setConvoSuccess] = (0, import_react4.useState)(false);
-    const [convoTitle, setConvoTitle] = (0, import_react4.useState)("");
-    const [convoDate, setConvoDate] = (0, import_react4.useState)(() => (/* @__PURE__ */ new Date()).toISOString().slice(0, 10));
-    const [convoChannel, setConvoChannel] = (0, import_react4.useState)("Call");
-    const [convoLoggedBy, setConvoLoggedBy] = (0, import_react4.useState)("");
-    const [convoSummary, setConvoSummary] = (0, import_react4.useState)("");
-    const [convoTakeaways, setConvoTakeaways] = (0, import_react4.useState)("");
-    const [convoNextSteps, setConvoNextSteps] = (0, import_react4.useState)("");
+    const [showConvoForm, setShowConvoForm] = (0, import_react5.useState)(false);
+    const [convoSaving, setConvoSaving] = (0, import_react5.useState)(false);
+    const [convoSuccess, setConvoSuccess] = (0, import_react5.useState)(false);
+    const [convoTitle, setConvoTitle] = (0, import_react5.useState)("");
+    const [convoDate, setConvoDate] = (0, import_react5.useState)(() => (/* @__PURE__ */ new Date()).toISOString().slice(0, 10));
+    const [convoChannel, setConvoChannel] = (0, import_react5.useState)("Call");
+    const [convoLoggedBy, setConvoLoggedBy] = (0, import_react5.useState)("");
+    const [convoSummary, setConvoSummary] = (0, import_react5.useState)("");
+    const [convoTakeaways, setConvoTakeaways] = (0, import_react5.useState)("");
+    const [convoNextSteps, setConvoNextSteps] = (0, import_react5.useState)("");
     const resetConvoForm = () => {
       setConvoTitle("");
       setConvoDate((/* @__PURE__ */ new Date()).toISOString().slice(0, 10));
@@ -13708,38 +14151,38 @@
         setConvoSaving(false);
       }
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("button", { className: "btn btn-ghost btn-sm gap-1", onClick: onBack, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ArrowLeft, { size: 16 }),
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("button", { className: "btn btn-ghost btn-sm gap-1", onClick: onBack, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ArrowLeft, { size: 16 }),
         " Back to list"
       ] }),
-      loadingDetail && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-sm text-base-content/60 px-1", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "loading loading-spinner loading-sm" }),
+      loadingDetail && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 text-sm text-base-content/60 px-1", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "loading loading-spinner loading-sm" }),
         "Loading full details from Notion..."
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "card bg-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "card-body p-5 gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-start justify-between gap-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h2", { className: "text-xl font-bold", children: partner.name }),
-              partner.priority === "\u2B50 VIP" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Star, { size: 18, className: "text-warning fill-current" })
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "card bg-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "card-body p-5 gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-start justify-between gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h2", { className: "text-xl font-bold", children: partner.name }),
+              partner.priority === "\u2B50 VIP" && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Star, { size: 18, className: "text-warning fill-current" })
             ] }),
-            partner.company && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-sm text-base-content/60 mt-0.5", children: partner.company })
+            partner.company && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { className: "text-sm text-base-content/60 mt-0.5", children: partner.company })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
               "select",
               {
                 className: `select select-bordered select-sm font-semibold text-sm ${stageClass}`,
                 value: partner.onboardingStage,
                 onChange: (e) => onStageChange(partner.id, e.target.value),
                 children: [
-                  EDITABLE_STAGES.map((s) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: s, children: s }, s)),
-                  !EDITABLE_STAGES.includes(partner.onboardingStage) && partner.onboardingStage && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: partner.onboardingStage, children: partner.onboardingStage })
+                  EDITABLE_STAGES.map((s) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: s, children: s }, s)),
+                  !EDITABLE_STAGES.includes(partner.onboardingStage) && partner.onboardingStage && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: partner.onboardingStage, children: partner.onboardingStage })
                 ]
               }
             ),
-            partner.url && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+            partner.url && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "a",
               {
                 href: partner.url,
@@ -13747,42 +14190,42 @@
                 rel: "noopener noreferrer",
                 className: "btn btn-ghost btn-sm btn-square",
                 title: "Open in Notion",
-                children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ExternalLink, { size: 14 })
+                children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ExternalLink, { size: 14 })
               }
             )
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(User, { size: 14, className: "opacity-60" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/60", children: "Manager:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(User, { size: 14, className: "opacity-60" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-base-content/60", children: "Manager:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
               "select",
               {
                 className: "select select-ghost select-xs font-medium",
                 value: partner.accountManager || "",
                 onChange: (e) => onManagerChange(partner.id, e.target.value),
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "", children: "Unassigned" }),
-                  EDITABLE_MANAGERS.map((m) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: m, children: m }, m)),
-                  partner.accountManager && !EDITABLE_MANAGERS.includes(partner.accountManager) && partner.accountManager !== "" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: partner.accountManager, children: partner.accountManager })
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "", children: "Unassigned" }),
+                  EDITABLE_MANAGERS.map((m) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: m, children: m }, m)),
+                  partner.accountManager && !EDITABLE_MANAGERS.includes(partner.accountManager) && partner.accountManager !== "" && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: partner.accountManager, children: partner.accountManager })
                 ]
               }
             )
           ] }),
-          partner.email && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Mail, { size: 14, className: "opacity-60" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: `mailto:${partner.email}`, className: "link link-primary", children: partner.email })
+          partner.email && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Mail, { size: 14, className: "opacity-60" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", { href: `mailto:${partner.email}`, className: "link link-primary", children: partner.email })
           ] }),
-          partner.lastConversation && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Clock, { size: 14, className: "opacity-60" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/60", children: "Last contact:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: formatDate2(partner.lastConversation) })
+          partner.lastConversation && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Clock, { size: 14, className: "opacity-60" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-base-content/60", children: "Last contact:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: formatDate3(partner.lastConversation) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `flex items-center gap-2 text-sm ${partner.nextFollowUp && new Date(partner.nextFollowUp) < /* @__PURE__ */ new Date() ? "text-error font-semibold" : ""}`, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CalendarDays, { size: 14, className: "opacity-60" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/60", children: "Next follow-up:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: `flex items-center gap-2 text-sm ${partner.nextFollowUp && new Date(partner.nextFollowUp) < /* @__PURE__ */ new Date() ? "text-error font-semibold" : ""}`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(CalendarDays, { size: 14, className: "opacity-60" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-base-content/60", children: "Next follow-up:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "input",
               {
                 type: "date",
@@ -13791,12 +14234,12 @@
                 onChange: (e) => onFollowUpChange(partner.id, e.target.value)
               }
             ),
-            partner.nextFollowUp && new Date(partner.nextFollowUp) < /* @__PURE__ */ new Date() && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "badge badge-error badge-xs", children: "overdue!" })
+            partner.nextFollowUp && new Date(partner.nextFollowUp) < /* @__PURE__ */ new Date() && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "badge badge-error badge-xs", children: "overdue!" })
           ] }),
-          partner.appUserId && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(User, { size: 14, className: "opacity-60" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/60", children: "Popcorn User ID:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+          partner.appUserId && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(User, { size: 14, className: "opacity-60" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-base-content/60", children: "Popcorn User ID:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
               "a",
               {
                 href: `https://app.popcorn.co/admin/users/${partner.appUserId}`,
@@ -13810,11 +14253,11 @@
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "opacity-60", children: "\u{1F4C1}" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/60", children: "Drive Folder:" }),
-            partner.driveFolder ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: partner.driveFolder, target: "_blank", rel: "noopener noreferrer", className: "link link-primary truncate max-w-[200px]", children: "Open Folder \u2197" }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/30 italic", children: "Not set" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "opacity-60", children: "\u{1F4C1}" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-base-content/60", children: "Drive Folder:" }),
+            partner.driveFolder ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", { href: partner.driveFolder, target: "_blank", rel: "noopener noreferrer", className: "link link-primary truncate max-w-[200px]", children: "Open Folder \u2197" }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-base-content/30 italic", children: "Not set" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "input",
               {
                 type: "text",
@@ -13833,13 +14276,13 @@
               }
             )
           ] }),
-          partner.channelLink && !partner.youtubeChannel && !partner.popcornChannel && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Link, { size: 14, className: "opacity-60" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: partner.channelLink, target: "_blank", rel: "noopener noreferrer", className: "link link-primary truncate", children: "Channel Link" })
+          partner.channelLink && !partner.youtubeChannel && !partner.popcornChannel && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 text-sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Link, { size: 14, className: "opacity-60" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", { href: partner.channelLink, target: "_blank", rel: "noopener noreferrer", className: "link link-primary truncate", children: "Channel Link" })
           ] })
         ] }),
-        (partner.youtubeChannel || partner.popcornChannel || partner.driveFolder) && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-wrap gap-2 mt-2", children: [
-          partner.youtubeChannel && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+        (partner.youtubeChannel || partner.popcornChannel || partner.driveFolder) && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-wrap gap-2 mt-2", children: [
+          partner.youtubeChannel && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
             "a",
             {
               href: partner.youtubeChannel,
@@ -13847,12 +14290,12 @@
               rel: "noopener noreferrer",
               className: "btn btn-sm btn-outline gap-2",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Youtube, { size: 16, className: "text-red-500" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Youtube, { size: 16, className: "text-red-500" }),
                 "YouTube Channel"
               ]
             }
           ),
-          partner.popcornChannel && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          partner.popcornChannel && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
             "a",
             {
               href: partner.popcornChannel,
@@ -13862,7 +14305,7 @@
               children: "\u{1F37F} Popcorn Channel"
             }
           ),
-          partner.driveFolder && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          partner.driveFolder && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
             "a",
             {
               href: partner.driveFolder,
@@ -13874,13 +14317,13 @@
           )
         ] })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "card bg-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "card-body p-5 gap-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Lightbulb, { size: 18, className: "text-secondary" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h3", { className: "font-semibold", children: "Creative Idea / Description" })
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "card bg-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "card-body p-5 gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Lightbulb, { size: 18, className: "text-secondary" }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h3", { className: "font-semibold", children: "Creative Idea / Description" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-          InlineEdit,
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+          InlineEdit2,
           {
             value: partner.useCase || "",
             placeholder: "Type a creative idea, use case, or notes...",
@@ -13888,10 +14331,10 @@
           }
         )
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "card bg-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "card-body p-5 gap-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h3", { className: "font-semibold", children: "\u{1F4CB} Next Steps" }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-          InlineEdit,
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "card bg-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "card-body p-5 gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h3", { className: "font-semibold", children: "\u{1F4CB} Next Steps" }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+          InlineEdit2,
           {
             value: partner.nextSteps || "",
             placeholder: "Type next steps for this partner...",
@@ -13899,41 +14342,41 @@
           }
         )
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "card bg-base-200 border border-dashed border-base-content/20", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "card-body p-5 gap-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h3", { className: "font-semibold", children: "\u{1F37F} Popcorn Publishing Status" }),
-        partner.appUserId ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "text-sm text-base-content/60", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "card bg-base-200 border border-dashed border-base-content/20", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "card-body p-5 gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h3", { className: "font-semibold", children: "\u{1F37F} Popcorn Publishing Status" }),
+        partner.appUserId ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "text-sm text-base-content/60", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { children: [
             "App User ID: ",
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-mono bg-base-300 px-1.5 py-0.5 rounded", children: partner.appUserId })
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-mono bg-base-300 px-1.5 py-0.5 rounded", children: partner.appUserId })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "mt-1 text-base-content/40 italic", children: "API integration coming soon \u2014 provide the Popcorn Publishing API to see live status here." })
-        ] }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-sm text-base-content/40 italic", children: "No App User ID set \u2014 partner hasn't been linked to Popcorn Publishing yet." })
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { className: "mt-1 text-base-content/40 italic", children: "API integration coming soon \u2014 provide the Popcorn Publishing API to see live status here." })
+        ] }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { className: "text-sm text-base-content/40 italic", children: "No App User ID set \u2014 partner hasn't been linked to Popcorn Publishing yet." })
       ] }) }),
-      partner.source === "onboarding" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "alert alert-info text-sm", children: "\u2139\uFE0F This partner is from the Onboarding table only \u2014 not yet added to the main CRM database." }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "space-y-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(MessageSquare, { size: 18, className: "text-primary" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h3", { className: "font-semibold", children: "Conversation History" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "badge badge-sm badge-primary", children: sorted.length }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+      partner.source === "onboarding" && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "alert alert-info text-sm", children: "\u2139\uFE0F This partner is from the Onboarding table only \u2014 not yet added to the main CRM database." }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(MessageSquare, { size: 18, className: "text-primary" }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h3", { className: "font-semibold", children: "Conversation History" }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "badge badge-sm badge-primary", children: sorted.length }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
             "button",
             {
               className: "btn btn-ghost btn-xs gap-1 ml-auto",
               onClick: () => setShowConvoForm(!showConvoForm),
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Plus, { size: 14 }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Plus, { size: 14 }),
                 "Log Conversation"
               ]
             }
           )
         ] }),
-        convoSuccess && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "alert alert-success text-sm py-2", children: "\u2705 Conversation logged successfully!" }),
-        showConvoForm && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "card bg-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "card-body p-4 gap-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { className: "font-semibold text-sm", children: "New Conversation Entry" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "label-text text-xs", children: "Title" }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+        convoSuccess && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "alert alert-success text-sm py-2", children: "\u2705 Conversation logged successfully!" }),
+        showConvoForm && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "card bg-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "card-body p-4 gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h4", { className: "font-semibold text-sm", children: "New Conversation Entry" }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "label-text text-xs", children: "Title" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "input",
                 {
                   className: "input input-bordered w-full input-sm",
@@ -13943,9 +14386,9 @@
                 }
               )
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "label-text text-xs", children: "Date" }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "label-text text-xs", children: "Date" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "input",
                 {
                   type: "date",
@@ -13955,48 +14398,48 @@
                 }
               )
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "label-text text-xs", children: "Channel" }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "label-text text-xs", children: "Channel" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                 "select",
                 {
                   className: "select select-bordered w-full select-sm",
                   value: convoChannel,
                   onChange: (e) => setConvoChannel(e.target.value),
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "Call", children: "\u{1F4DE} Call" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "Email", children: "\u{1F4E7} Email" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "Slack", children: "\u{1F4AC} Slack" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "In-Person", children: "\u{1F91D} In-Person" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "Video Call", children: "\u{1F4F9} Video Call" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "Other", children: "\u{1F4DD} Other" })
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "Call", children: "\u{1F4DE} Call" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "Email", children: "\u{1F4E7} Email" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "Slack", children: "\u{1F4AC} Slack" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "In-Person", children: "\u{1F91D} In-Person" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "Video Call", children: "\u{1F4F9} Video Call" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "Other", children: "\u{1F4DD} Other" })
                   ]
                 }
               )
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "label-text text-xs", children: "Logged By" }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "label-text text-xs", children: "Logged By" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                 "select",
                 {
                   className: "select select-bordered w-full select-sm",
                   value: convoLoggedBy,
                   onChange: (e) => setConvoLoggedBy(e.target.value),
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "", children: "\u2014 Select" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "Adi", children: "Adi" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "Tess", children: "Tess" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "Ben", children: "Ben" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "Cydel", children: "Cydel" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: "Agent \u{1F916}", children: "Agent \u{1F916}" })
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "", children: "\u2014 Select" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "Adi", children: "Adi" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "Tess", children: "Tess" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "Ben", children: "Ben" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "Cydel", children: "Cydel" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "Agent \u{1F916}", children: "Agent \u{1F916}" })
                   ]
                 }
               )
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "label-text text-xs", children: "Summary" }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "label-text text-xs", children: "Summary" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "textarea",
               {
                 className: "textarea textarea-bordered w-full text-sm",
@@ -14007,10 +14450,10 @@
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "label-text text-xs", children: "Key Takeaways" }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "label-text text-xs", children: "Key Takeaways" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "textarea",
                 {
                   className: "textarea textarea-bordered w-full text-sm",
@@ -14021,9 +14464,9 @@
                 }
               )
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "label-text text-xs", children: "Next Steps" }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "label-text text-xs", children: "Next Steps" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                 "textarea",
                 {
                   className: "textarea textarea-bordered w-full text-sm",
@@ -14035,8 +14478,8 @@
               )
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex justify-end gap-2 mt-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex justify-end gap-2 mt-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "button",
               {
                 className: "btn btn-ghost btn-sm",
@@ -14047,41 +14490,41 @@
                 children: "Cancel"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
               "button",
               {
                 className: "btn btn-primary btn-sm",
                 onClick: handleSaveConvo,
                 disabled: convoSaving,
-                children: convoSaving ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "loading loading-spinner loading-xs" }) : "Save Entry"
+                children: convoSaving ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "loading loading-spinner loading-xs" }) : "Save Entry"
               }
             )
           ] })
         ] }) }),
-        sorted.length === 0 && !showConvoForm ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-sm text-base-content/50 pl-7", children: "No conversations logged yet." }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "space-y-2", children: sorted.map((c) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "card bg-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "card-body p-4 gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: CHANNEL_ICONS[c.channel] || "\u{1F4AC}" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-medium text-sm", children: c.title || c.channel || "Untitled" })
+        sorted.length === 0 && !showConvoForm ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { className: "text-sm text-base-content/50 pl-7", children: "No conversations logged yet." }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "space-y-2", children: sorted.map((c) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "card bg-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "card-body p-4 gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: CHANNEL_ICONS2[c.channel] || "\u{1F4AC}" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-medium text-sm", children: c.title || c.channel || "Untitled" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-xs text-base-content/50", children: [
-              c.loggedBy && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 text-xs text-base-content/50", children: [
+              c.loggedBy && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
                 "by ",
                 c.loggedBy
               ] }),
-              c.date && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: formatDate2(c.date) })
+              c.date && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: formatDate3(c.date) })
             ] })
           ] }),
-          c.summary && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-sm text-base-content/80", children: c.summary }),
-          c.keyTakeaways && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "text-xs mt-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-medium text-base-content/60", children: "Key takeaways:" }),
+          c.summary && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { className: "text-sm text-base-content/80", children: c.summary }),
+          c.keyTakeaways && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "text-xs mt-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-medium text-base-content/60", children: "Key takeaways:" }),
             " ",
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/70", children: c.keyTakeaways })
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-base-content/70", children: c.keyTakeaways })
           ] }),
-          c.nextSteps && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "text-xs", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-medium text-base-content/60", children: "Next steps:" }),
+          c.nextSteps && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-medium text-base-content/60", children: "Next steps:" }),
             " ",
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base-content/70", children: c.nextSteps })
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-base-content/70", children: c.nextSteps })
           ] })
         ] }) }, c.id)) })
       ] })
@@ -14089,8 +14532,8 @@
   };
 
   // components/KOLTab.tsx
-  var import_react5 = __toESM(require_react());
-  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
+  var import_react6 = __toESM(require_react());
+  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
   async function loadKOLs() {
     const rows = await loadAllEdits();
     const byId = {};
@@ -14124,18 +14567,18 @@
     "Converted": "badge-success badge-outline"
   };
   var AddKOLModal = ({ onAdd, onClose }) => {
-    const [name, setName] = (0, import_react5.useState)("");
-    const [tier, setTier] = (0, import_react5.useState)("Initial Target");
+    const [name, setName] = (0, import_react6.useState)("");
+    const [tier, setTier] = (0, import_react6.useState)("Initial Target");
     const handleSubmit = () => {
       if (!name.trim()) return;
       onAdd(name.trim(), tier);
       onClose();
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "modal modal-open", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "modal-box max-w-sm", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h3", { className: "font-bold text-lg mb-4", children: "Add KOL" }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "space-y-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "modal modal-open", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "modal-box max-w-sm", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h3", { className: "font-bold text-lg mb-4", children: "Add KOL" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "space-y-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
             "input",
             {
               className: "input input-bordered w-full",
@@ -14146,32 +14589,32 @@
               onKeyDown: (e) => e.key === "Enter" && handleSubmit()
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
             "select",
             {
               className: "select select-bordered w-full",
               value: tier,
               onChange: (e) => setTier(e.target.value),
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { children: "Initial Target" }),
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { children: "Potential Outreach" })
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { children: "Initial Target" }),
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { children: "Potential Outreach" })
               ]
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "modal-action", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("button", { className: "btn btn-ghost btn-sm", onClick: onClose, children: "Cancel" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("button", { className: "btn btn-primary btn-sm", onClick: handleSubmit, disabled: !name.trim(), children: "Add" })
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "modal-action", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn btn-ghost btn-sm", onClick: onClose, children: "Cancel" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn btn-primary btn-sm", onClick: handleSubmit, disabled: !name.trim(), children: "Add" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "modal-backdrop", onClick: onClose })
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "modal-backdrop", onClick: onClose })
     ] });
   };
   var KOLRow = ({ kol, isDragOver, confirmDeleteId, onStatusChange, onNotesChange, onMovieChange, onDelete, onConfirmDelete, onDragStart, onDragOver, onDrop, onDragEnd }) => {
-    const [editingMovie, setEditingMovie] = (0, import_react5.useState)(false);
-    const [movieDraft, setMovieDraft] = (0, import_react5.useState)(kol.kolMovieLink);
+    const [editingMovie, setEditingMovie] = (0, import_react6.useState)(false);
+    const [movieDraft, setMovieDraft] = (0, import_react6.useState)(kol.kolMovieLink);
     const isConfirming = confirmDeleteId === kol.id;
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
       "tr",
       {
         draggable: true,
@@ -14181,21 +14624,21 @@
         onDragEnd,
         className: `hover cursor-grab active:cursor-grabbing transition-colors group ${isDragOver ? "bg-primary/10 border-t-2 border-primary" : ""}`,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "w-6 px-1", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(GripVertical, { size: 14, className: "text-base-content/25 cursor-grab" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "min-w-[130px]", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-medium text-sm leading-snug", children: kol.name }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("td", { className: "min-w-[140px]", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("td", { className: "w-6 px-1", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(GripVertical, { size: 14, className: "text-base-content/25 cursor-grab" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("td", { className: "min-w-[130px]", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "font-medium text-sm leading-snug", children: kol.name }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("td", { className: "min-w-[140px]", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
               "select",
               {
                 className: "select select-xs select-bordered w-full text-xs",
                 value: kol.kolStatus,
                 onChange: (e) => onStatusChange(kol.id, e.target.value),
-                children: STATUS_OPTIONS.map((s) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: s, children: s || "\u2014 No Status \u2014" }, s))
+                children: STATUS_OPTIONS.map((s) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: s, children: s || "\u2014 No Status \u2014" }, s))
               }
             ),
-            kol.kolStatus && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "mt-1", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: `badge badge-xs ${STATUS_COLORS[kol.kolStatus] || "badge-ghost"}`, children: kol.kolStatus }) })
+            kol.kolStatus && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "mt-1", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: `badge badge-xs ${STATUS_COLORS[kol.kolStatus] || "badge-ghost"}`, children: kol.kolStatus }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "min-w-[200px]", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("td", { className: "min-w-[200px]", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
             "input",
             {
               className: "input input-xs w-full bg-transparent focus:bg-base-200 transition-colors rounded px-2 py-1 border border-transparent focus:border-base-300",
@@ -14205,8 +14648,8 @@
               placeholder: "Add notes..."
             }
           ) }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "min-w-[120px]", children: kol.kolMovieLink && !editingMovie ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("td", { className: "min-w-[120px]", children: kol.kolMovieLink && !editingMovie ? /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
               "a",
               {
                 href: kol.kolMovieLink,
@@ -14214,12 +14657,12 @@
                 rel: "noreferrer",
                 className: "btn btn-xs btn-primary gap-1",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Film, { size: 10 }),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Film, { size: 10 }),
                   " Watch"
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
               "button",
               {
                 className: "btn btn-xs btn-ghost btn-square",
@@ -14228,10 +14671,10 @@
                   setMovieDraft(kol.kolMovieLink);
                 },
                 title: "Edit link",
-                children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(X, { size: 10 })
+                children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(X, { size: 10 })
               }
             )
-          ] }) : editingMovie ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+          ] }) : editingMovie ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
             "input",
             {
               className: "input input-xs input-bordered w-full",
@@ -14251,18 +14694,18 @@
               },
               placeholder: "https://popcorn.co/..."
             }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          ) : /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
             "button",
             {
               className: "btn btn-xs btn-ghost gap-1 text-base-content/40",
               onClick: () => setEditingMovie(true),
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Plus, { size: 10 }),
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Plus, { size: 10 }),
                 " Add link"
               ]
             }
           ) }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "w-8 px-1", children: isConfirming ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("td", { className: "w-8 px-1", children: isConfirming ? /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
             "button",
             {
               className: "btn btn-xs btn-error gap-1 animate-pulse",
@@ -14272,17 +14715,17 @@
               },
               title: "Confirm remove",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Trash2, { size: 10 }),
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Trash2, { size: 10 }),
                 "?"
               ]
             }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+          ) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
             "button",
             {
               className: "btn btn-xs btn-ghost btn-square opacity-0 group-hover:opacity-50 hover:!opacity-100 hover:btn-error transition-opacity",
               onClick: () => onConfirmDelete(kol.id),
               title: "Remove KOL",
-              children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Trash2, { size: 12 })
+              children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Trash2, { size: 12 })
             }
           ) })
         ]
@@ -14292,30 +14735,30 @@
   var KOLSection = ({ title, tier, emoji, kols, dragOverId, confirmDeleteId, onStatusChange, onNotesChange, onMovieChange, onDelete, onConfirmDelete, onDragStart, onDragOver, onDrop, onDragEnd }) => {
     if (kols.length === 0) return null;
     const endDropId = `__end__${tier}`;
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("h3", { className: "text-xs font-semibold text-base-content/50 uppercase tracking-widest mb-2", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("h3", { className: "text-xs font-semibold text-base-content/50 uppercase tracking-widest mb-2", children: [
         emoji,
         " ",
         title,
         " ",
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "text-base-content/30 normal-case font-normal", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "text-base-content/30 normal-case font-normal", children: [
           "(",
           kols.length,
           ")"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "ml-2 text-base-content/25 normal-case font-normal text-[10px]", children: "drag to reorder or move between sections" })
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "ml-2 text-base-content/25 normal-case font-normal text-[10px]", children: "drag to reorder or move between sections" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "overflow-x-auto rounded-xl border border-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("table", { className: "table table-sm w-full", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("tr", { className: "text-xs text-base-content/40 border-b border-base-200", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "w-6" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { children: "Name" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { children: "Status" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { children: "Notes" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { children: "Movie" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "w-8" })
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "overflow-x-auto rounded-xl border border-base-200", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("table", { className: "table table-sm w-full", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("tr", { className: "text-xs text-base-content/40 border-b border-base-200", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { className: "w-6" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { children: "Name" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { children: "Status" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { children: "Notes" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { children: "Movie" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { className: "w-8" })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("tbody", { children: [
-          kols.map((kol) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("tbody", { children: [
+          kols.map((kol) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
             KOLRow,
             {
               kol,
@@ -14333,7 +14776,7 @@
             },
             kol.id
           )),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
             "tr",
             {
               className: `h-6 transition-colors ${dragOverId === endDropId ? "bg-primary/10 border-t-2 border-primary" : ""}`,
@@ -14342,7 +14785,7 @@
                 onDragOver(e, endDropId);
               },
               onDrop: (e) => onDrop(e, endDropId, tier),
-              children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { colSpan: 6 })
+              children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("td", { colSpan: 6 })
             }
           )
         ] })
@@ -14350,17 +14793,17 @@
     ] });
   };
   var KOLTab = ({ onCountChange }) => {
-    const [kols, setKols] = (0, import_react5.useState)([]);
-    const [loading, setLoading] = (0, import_react5.useState)(true);
-    const [showAddModal, setShowAddModal] = (0, import_react5.useState)(false);
-    const [dragOverId, setDragOverId] = (0, import_react5.useState)(null);
-    const [confirmDeleteId, setConfirmDeleteId] = (0, import_react5.useState)(null);
-    const draggingIdRef = (0, import_react5.useRef)(null);
-    const draggingTierRef = (0, import_react5.useRef)(null);
-    (0, import_react5.useEffect)(() => {
+    const [kols, setKols] = (0, import_react6.useState)([]);
+    const [loading, setLoading] = (0, import_react6.useState)(true);
+    const [showAddModal, setShowAddModal] = (0, import_react6.useState)(false);
+    const [dragOverId, setDragOverId] = (0, import_react6.useState)(null);
+    const [confirmDeleteId, setConfirmDeleteId] = (0, import_react6.useState)(null);
+    const draggingIdRef = (0, import_react6.useRef)(null);
+    const draggingTierRef = (0, import_react6.useRef)(null);
+    (0, import_react6.useEffect)(() => {
       onCountChange?.(kols.length);
     }, [kols.length, onCountChange]);
-    (0, import_react5.useEffect)(() => {
+    (0, import_react6.useEffect)(() => {
       loadKOLs().then((k) => {
         const sorted = [...k].sort((a, b) => {
           const tierOrder = (t) => t === "Initial Target" ? 0 : 1;
@@ -14372,18 +14815,18 @@
         setLoading(false);
       });
     }, []);
-    const handleStatusChange = (0, import_react5.useCallback)((id, value) => {
+    const handleStatusChange = (0, import_react6.useCallback)((id, value) => {
       setKols((prev) => prev.map((k) => k.id === id ? { ...k, kolStatus: value } : k));
       saveKOLField(id, "kolStatus", value);
     }, []);
-    const handleNotesChange = (0, import_react5.useCallback)((id, value) => {
+    const handleNotesChange = (0, import_react6.useCallback)((id, value) => {
       setKols((prev) => prev.map((k) => k.id === id ? { ...k, kolNotes: value } : k));
     }, []);
-    const handleMovieChange = (0, import_react5.useCallback)((id, value) => {
+    const handleMovieChange = (0, import_react6.useCallback)((id, value) => {
       setKols((prev) => prev.map((k) => k.id === id ? { ...k, kolMovieLink: value } : k));
       saveKOLField(id, "kolMovieLink", value);
     }, []);
-    const handleDeleteKOL = (0, import_react5.useCallback)(async (id) => {
+    const handleDeleteKOL = (0, import_react6.useCallback)(async (id) => {
       setKols((prev) => prev.filter((k) => k.id !== id));
       try {
         await saveField(id, "isKOL", "false");
@@ -14392,17 +14835,17 @@
         console.error("Failed to delete KOL:", err);
       }
     }, []);
-    const handleDragStart = (0, import_react5.useCallback)((e, kolId, tier) => {
+    const handleDragStart = (0, import_react6.useCallback)((e, kolId, tier) => {
       draggingIdRef.current = kolId;
       draggingTierRef.current = tier;
       e.dataTransfer.effectAllowed = "move";
     }, []);
-    const handleDragOver = (0, import_react5.useCallback)((e, targetId) => {
+    const handleDragOver = (0, import_react6.useCallback)((e, targetId) => {
       e.preventDefault();
       e.dataTransfer.dropEffect = "move";
       setDragOverId(targetId);
     }, []);
-    const handleDrop = (0, import_react5.useCallback)((e, targetId, targetTier) => {
+    const handleDrop = (0, import_react6.useCallback)((e, targetId, targetTier) => {
       e.preventDefault();
       const fromId = draggingIdRef.current;
       if (!fromId || fromId === targetId) {
@@ -14446,12 +14889,12 @@
       draggingIdRef.current = null;
       draggingTierRef.current = null;
     }, []);
-    const handleDragEnd = (0, import_react5.useCallback)(() => {
+    const handleDragEnd = (0, import_react6.useCallback)(() => {
       setDragOverId(null);
       draggingIdRef.current = null;
       draggingTierRef.current = null;
     }, []);
-    const handleAddKOL = (0, import_react5.useCallback)(async (name, tier) => {
+    const handleAddKOL = (0, import_react6.useCallback)(async (name, tier) => {
       const slug = "kol-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
       const tierKols = kols.filter((k) => k.kolTier === tier);
       const newOrder = tierKols.length;
@@ -14472,7 +14915,7 @@
       });
     }, [kols]);
     if (loading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "flex justify-center py-12", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "loading loading-spinner text-primary" }) });
+      return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "flex justify-center py-12", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "loading loading-spinner text-primary" }) });
     }
     const initialTargets = kols.filter((k) => k.kolTier === "Initial Target");
     const potentialOutreach = kols.filter((k) => k.kolTier === "Potential Outreach");
@@ -14490,9 +14933,9 @@
       onDrop: handleDrop,
       onDragEnd: handleDragEnd
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "space-y-6", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center justify-between", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { className: "text-xs text-base-content/50", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "space-y-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("p", { className: "text-xs text-base-content/50", children: [
           kols.length,
           " KOLs \xB7 ",
           initialTargets.length,
@@ -14501,12 +14944,12 @@
           " potential outreach",
           converted.length > 0 && ` \xB7 ${converted.length} converted \u{1F389}`
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("button", { className: "btn btn-primary btn-sm gap-1", onClick: () => setShowAddModal(true), children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Plus, { size: 14 }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("button", { className: "btn btn-primary btn-sm gap-1", onClick: () => setShowAddModal(true), children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Plus, { size: 14 }),
           " Add KOL"
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
         KOLSection,
         {
           title: "Initial Target",
@@ -14516,7 +14959,7 @@
           ...sharedSectionProps
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
         KOLSection,
         {
           title: "Potential Outreach",
@@ -14526,12 +14969,12 @@
           ...sharedSectionProps
         }
       ),
-      showAddModal && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(AddKOLModal, { onAdd: handleAddKOL, onClose: () => setShowAddModal(false) })
+      showAddModal && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(AddKOLModal, { onAdd: handleAddKOL, onClose: () => setShowAddModal(false) })
     ] });
   };
 
   // app.tsx
-  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime7 = __toESM(require_jsx_runtime());
   async function loadEdits() {
     const rows = await loadAllEdits();
     const edits = {};
@@ -14651,22 +15094,22 @@
     saveField(partnerId, field, value).catch((err) => console.error("Failed to save edit:", err));
   }
   var AddPartnerModal = ({ onAdd, onClose }) => {
-    const [name, setName] = (0, import_react6.useState)("");
-    const [email, setEmail] = (0, import_react6.useState)("");
-    const [company, setCompany] = (0, import_react6.useState)("");
-    const [stage, setStage] = (0, import_react6.useState)("\u{1F7E1} Prospect");
-    const [manager, setManager] = (0, import_react6.useState)("");
+    const [name, setName] = (0, import_react7.useState)("");
+    const [email, setEmail] = (0, import_react7.useState)("");
+    const [company, setCompany] = (0, import_react7.useState)("");
+    const [stage, setStage] = (0, import_react7.useState)("\u{1F7E1} Prospect");
+    const [manager, setManager] = (0, import_react7.useState)("");
     const handleSubmit = () => {
       if (!name.trim()) return;
       onAdd({ name: name.trim(), email: email.trim(), company: company.trim(), stage, manager });
       onClose();
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "modal modal-open", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "modal-box max-w-sm", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h3", { className: "font-bold text-lg mb-4", children: "Add Partner" }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "space-y-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "label-text text-xs", children: "Name *" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "modal modal-open", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "modal-box max-w-sm", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "font-bold text-lg mb-4", children: "Add Partner" }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "space-y-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "label-text text-xs", children: "Name *" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "input",
             {
               className: "input input-bordered w-full",
@@ -14677,8 +15120,8 @@
               onKeyDown: (e) => e.key === "Enter" && handleSubmit()
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "label-text text-xs", children: "Email" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "label-text text-xs", children: "Email" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "input",
             {
               className: "input input-bordered w-full",
@@ -14688,8 +15131,8 @@
               onChange: (e) => setEmail(e.target.value)
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "label-text text-xs", children: "Company" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "label-text text-xs", children: "Company" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "input",
             {
               className: "input input-bordered w-full",
@@ -14698,49 +15141,52 @@
               onChange: (e) => setCompany(e.target.value)
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex-1", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "label-text text-xs", children: "Stage" }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("select", { className: "select select-bordered w-full select-sm", value: stage, onChange: (e) => setStage(e.target.value), children: ["\u{1F7E1} Prospect", "\u{1F7E0} Active Onboarding", "\u{1F7E2} Ongoing Management", "\u{1F535} Self Sufficient", "\u{1F534} Churned", "\u{1F4E6} Archived"].map((s) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: s, children: s }, s)) })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "label-text text-xs", children: "Stage" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("select", { className: "select select-bordered w-full select-sm", value: stage, onChange: (e) => setStage(e.target.value), children: ["\u{1F7E1} Prospect", "\u{1F7E0} Active Onboarding", "\u{1F7E2} Ongoing Management", "\u{1F535} Self Sufficient", "\u{1F534} Churned", "\u{1F4E6} Archived"].map((s) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: s, children: s }, s)) })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex-1", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "label-text text-xs", children: "Manager" }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("select", { className: "select select-bordered w-full select-sm", value: manager, onChange: (e) => setManager(e.target.value), children: [
-                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "", children: "\u2014 Unassigned" }),
-                ["Tess", "Ben", "Maria", "Cydel", "Adi"].map((m) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: m, children: m }, m))
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "label-text text-xs", children: "Manager" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("select", { className: "select select-bordered w-full select-sm", value: manager, onChange: (e) => setManager(e.target.value), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "", children: "\u2014 Unassigned" }),
+                ["Tess", "Ben", "Maria", "Cydel", "Adi"].map((m) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: m, children: m }, m))
               ] })
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "modal-action", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn btn-ghost btn-sm", onClick: onClose, children: "Cancel" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn btn-primary btn-sm", onClick: handleSubmit, disabled: !name.trim(), children: "Add Partner" })
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "modal-action", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn btn-ghost btn-sm", onClick: onClose, children: "Cancel" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn btn-primary btn-sm", onClick: handleSubmit, disabled: !name.trim(), children: "Add Partner" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "modal-backdrop", onClick: onClose })
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "modal-backdrop", onClick: onClose })
     ] });
   };
   var App = () => {
-    const [activeTab, setActiveTab] = (0, import_react6.useState)("partners");
-    const [partners, setPartners] = (0, import_react6.useState)([]);
-    const [loading, setLoading] = (0, import_react6.useState)(true);
-    const [refreshing, setRefreshing] = (0, import_react6.useState)(false);
-    const [error, setError] = (0, import_react6.useState)(null);
-    const [selectedPartner, setSelectedPartner] = (0, import_react6.useState)(null);
-    const [partnerConversations, setPartnerConversations] = (0, import_react6.useState)([]);
-    const [loadingDetail, setLoadingDetail] = (0, import_react6.useState)(false);
-    const [filters, setFilters] = (0, import_react6.useState)({
+    const [activeTab, setActiveTab] = (0, import_react7.useState)("partners");
+    const [partners, setPartners] = (0, import_react7.useState)([]);
+    const [loading, setLoading] = (0, import_react7.useState)(true);
+    const [refreshing, setRefreshing] = (0, import_react7.useState)(false);
+    const [error, setError] = (0, import_react7.useState)(null);
+    const [selectedPartner, setSelectedPartner] = (0, import_react7.useState)(null);
+    const [partnerConversations, setPartnerConversations] = (0, import_react7.useState)([]);
+    const [loadingDetail, setLoadingDetail] = (0, import_react7.useState)(false);
+    const [filters, setFilters] = (0, import_react7.useState)({
       stage: "All",
       priority: "All",
       accountManager: "All",
       search: ""
     });
-    const [showArchived, setShowArchived] = (0, import_react6.useState)(false);
-    const [showAddModal, setShowAddModal] = (0, import_react6.useState)(false);
-    const [kolCount, setKolCount] = (0, import_react6.useState)(0);
-    const editsRef = (0, import_react6.useRef)({});
-    const loadingRef = (0, import_react6.useRef)(false);
-    const loadData = (0, import_react6.useCallback)(async (isRefresh = false) => {
+    const [showArchived, setShowArchived] = (0, import_react7.useState)(false);
+    const [showAddModal, setShowAddModal] = (0, import_react7.useState)(false);
+    const [kolCount, setKolCount] = (0, import_react7.useState)(0);
+    const [expandedPartnerId, setExpandedPartnerId] = (0, import_react7.useState)(null);
+    const [expandedConversations, setExpandedConversations] = (0, import_react7.useState)([]);
+    const [loadingExpandConversations, setLoadingExpandConversations] = (0, import_react7.useState)(false);
+    const editsRef = (0, import_react7.useRef)({});
+    const loadingRef = (0, import_react7.useRef)(false);
+    const loadData = (0, import_react7.useCallback)(async (isRefresh = false) => {
       if (loadingRef.current && !isRefresh) return;
       loadingRef.current = true;
       if (isRefresh) setRefreshing(true);
@@ -14769,10 +15215,10 @@
         setRefreshing(false);
       }
     }, []);
-    (0, import_react6.useEffect)(() => {
+    (0, import_react7.useEffect)(() => {
       loadData();
     }, [loadData]);
-    const handleSelectPartner = (0, import_react6.useCallback)(async (partner) => {
+    const handleSelectPartner = (0, import_react7.useCallback)(async (partner) => {
       setSelectedPartner(partner);
       setPartnerConversations([]);
       fetchConversationsForPartner(partner.id).then(setPartnerConversations).catch((err) => console.error("Failed to load conversations:", err));
@@ -14817,7 +15263,7 @@
         setLoadingDetail(false);
       }
     }, []);
-    const { activeFiltered, archivedFiltered } = (0, import_react6.useMemo)(() => {
+    const { activeFiltered, archivedFiltered } = (0, import_react7.useMemo)(() => {
       const applyFilters = (p) => {
         if (p.detailsLoaded) {
           if (filters.stage !== "All" && p.onboardingStage !== filters.stage) return false;
@@ -14844,7 +15290,7 @@
       const archived = all.filter((p) => p.onboardingStage === "\u{1F4E6} Archived").sort(sortFn);
       return { activeFiltered: active, archivedFiltered: archived };
     }, [partners, filters]);
-    const handleFieldChange = (0, import_react6.useCallback)((partnerId, field, value) => {
+    const handleFieldChange = (0, import_react7.useCallback)((partnerId, field, value) => {
       setPartners(
         (prev) => prev.map((p) => p.id === partnerId ? { ...p, [field]: value } : p)
       );
@@ -14855,17 +15301,38 @@
       editsRef.current[partnerId][field] = value;
       saveEdit(partnerId, field, value);
     }, []);
-    const handleStageChange = (0, import_react6.useCallback)((id, v) => handleFieldChange(id, "onboardingStage", v), [handleFieldChange]);
-    const handleManagerChange = (0, import_react6.useCallback)((id, v) => handleFieldChange(id, "accountManager", v), [handleFieldChange]);
-    const handleDescriptionChange = (0, import_react6.useCallback)((id, v) => handleFieldChange(id, "useCase", v), [handleFieldChange]);
-    const handleNextStepsChange = (0, import_react6.useCallback)((id, v) => handleFieldChange(id, "nextSteps", v), [handleFieldChange]);
-    const handleDriveFolderChange = (0, import_react6.useCallback)((id, v) => handleFieldChange(id, "driveFolder", v), [handleFieldChange]);
-    const handleFollowUpChange = (0, import_react6.useCallback)((id, v) => handleFieldChange(id, "nextFollowUp", v), [handleFieldChange]);
-    const handleAddConversation = (0, import_react6.useCallback)(async (partnerId, entry) => {
+    const handleStageChange = (0, import_react7.useCallback)((id, v) => handleFieldChange(id, "onboardingStage", v), [handleFieldChange]);
+    const handleManagerChange = (0, import_react7.useCallback)((id, v) => handleFieldChange(id, "accountManager", v), [handleFieldChange]);
+    const handleDescriptionChange = (0, import_react7.useCallback)((id, v) => handleFieldChange(id, "useCase", v), [handleFieldChange]);
+    const handleNextStepsChange = (0, import_react7.useCallback)((id, v) => handleFieldChange(id, "nextSteps", v), [handleFieldChange]);
+    const handleDriveFolderChange = (0, import_react7.useCallback)((id, v) => handleFieldChange(id, "driveFolder", v), [handleFieldChange]);
+    const handleFollowUpChange = (0, import_react7.useCallback)((id, v) => handleFieldChange(id, "nextFollowUp", v), [handleFieldChange]);
+    const handleExpandPartner = (0, import_react7.useCallback)(async (partner) => {
+      if (!partner) {
+        setExpandedPartnerId(null);
+        setExpandedConversations([]);
+        return;
+      }
+      setExpandedPartnerId(partner.id);
+      setExpandedConversations([]);
+      setLoadingExpandConversations(true);
+      try {
+        const convos = await fetchConversationsForPartner(partner.id);
+        setExpandedConversations(convos);
+      } catch (err) {
+        console.error("Failed to load conversations for expansion:", err);
+      } finally {
+        setLoadingExpandConversations(false);
+      }
+    }, []);
+    const handleAddConversation = (0, import_react7.useCallback)(async (partnerId, entry) => {
       try {
         await saveConversation(partnerId, entry);
         const convos = await fetchConversationsForPartner(partnerId);
         setPartnerConversations(convos);
+        if (expandedPartnerId === partnerId) {
+          setExpandedConversations(convos);
+        }
         if (convos.length > 0) {
           const sorted = [...convos].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
           if (sorted[0].date) {
@@ -14875,17 +15342,18 @@
       } catch (err) {
         console.error("Failed to save conversation:", err);
       }
-    }, [handleFieldChange]);
-    const handleDeletePartner = (0, import_react6.useCallback)(async (id) => {
+    }, [handleFieldChange, expandedPartnerId]);
+    const handleDeletePartner = (0, import_react7.useCallback)(async (id) => {
       setPartners((prev) => prev.filter((p) => p.id !== id));
       setSelectedPartner((prev) => prev?.id === id ? null : prev);
+      setExpandedPartnerId((prev) => prev === id ? null : prev);
       try {
         await deletePartner(id);
       } catch (err) {
         console.error("Failed to delete partner:", err);
       }
     }, []);
-    const handleAddPartner = (0, import_react6.useCallback)(async (data) => {
+    const handleAddPartner = (0, import_react7.useCallback)(async (data) => {
       const slug = "manual-" + data.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
       const id = `${slug}-${Date.now().toString(36)}`;
       const fields = {
@@ -14929,18 +15397,18 @@
       setPartners((prev) => [...prev, newPartner]);
     }, []);
     if (loading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex flex-col items-center justify-center min-h-[60vh] gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "loading loading-spinner loading-lg text-primary" }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "text-sm text-base-content/60", children: "Loading partners from Notion..." })
+      return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex flex-col items-center justify-center min-h-[60vh] gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "loading loading-spinner loading-lg text-primary" }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-sm text-base-content/60", children: "Loading partners from Notion..." })
       ] });
     }
     if (error) {
-      return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex flex-col items-center justify-center min-h-[60vh] gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "alert alert-error max-w-md", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: error }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn btn-primary btn-sm", onClick: () => loadData(), children: "Retry" })
+      return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex flex-col items-center justify-center min-h-[60vh] gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "alert alert-error max-w-md", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: error }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn btn-primary btn-sm", onClick: () => loadData(), children: "Retry" })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "p-4 max-w-4xl mx-auto space-y-4", children: selectedPartner ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "p-4 max-w-4xl mx-auto space-y-4", children: selectedPartner ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       PartnerDetail,
       {
         partner: selectedPartner,
@@ -14958,37 +15426,37 @@
         onFollowUpChange: handleFollowUpChange,
         onAddConversation: handleAddConversation
       }
-    ) : /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex gap-3 mb-1", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+    ) : /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex gap-3 mb-1", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
           "button",
           {
             className: `btn btn-lg gap-3 flex-1 text-lg font-bold ${activeTab === "partners" ? "btn-primary shadow-lg" : "btn-ghost bg-base-200 hover:bg-base-300"}`,
             onClick: () => setActiveTab("partners"),
             children: [
               "\u{1F91D} Partners",
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: `badge badge-lg ${activeTab === "partners" ? "badge-primary-content bg-white/20" : "badge-ghost"}`, children: partners.filter((p) => p.onboardingStage !== "\u{1F4E6} Archived").length })
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: `badge badge-lg ${activeTab === "partners" ? "badge-primary-content bg-white/20" : "badge-ghost"}`, children: partners.filter((p) => p.onboardingStage !== "\u{1F4E6} Archived").length })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
           "button",
           {
             className: `btn btn-lg gap-3 flex-1 text-lg font-bold ${activeTab === "kols" ? "btn-primary shadow-lg" : "btn-ghost bg-base-200 hover:bg-base-300"}`,
             onClick: () => setActiveTab("kols"),
             children: [
               "\u{1F3AF} KOLs",
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: `badge badge-lg ${activeTab === "kols" ? "badge-primary-content bg-white/20" : "badge-ghost"}`, children: kolCount })
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: `badge badge-lg ${activeTab === "kols" ? "badge-primary-content bg-white/20" : "badge-ghost"}`, children: kolCount })
             ]
           }
         )
       ] }),
-      activeTab === "partners" && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(StatsBar, { partners }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center justify-between gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(FilterBar, { filters, onFiltersChange: setFilters }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center gap-1 shrink-0", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+      activeTab === "partners" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(StatsBar, { partners }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center justify-between gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(FilterBar, { filters, onFiltersChange: setFilters }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center gap-1 shrink-0", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               "button",
               {
                 className: "btn btn-primary btn-sm gap-1",
@@ -14996,26 +15464,26 @@
                 children: "+ Add Partner"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               "button",
               {
                 className: `btn btn-ghost btn-sm btn-square ${refreshing ? "animate-spin" : ""}`,
                 onClick: () => loadData(true),
                 disabled: refreshing,
                 title: "Refresh from Notion",
-                children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(RefreshCw, { size: 16 })
+                children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(RefreshCw, { size: 16 })
               }
             )
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("p", { className: "text-xs text-base-content/50", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("p", { className: "text-xs text-base-content/50", children: [
           "Showing ",
           activeFiltered.length,
           " active partner",
           activeFiltered.length !== 1 ? "s" : "",
           archivedFiltered.length > 0 && ` \xB7 ${archivedFiltered.length} archived`
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
           PartnerList,
           {
             partners: activeFiltered,
@@ -15023,17 +15491,26 @@
             selectedId: selectedPartner?.id ?? null,
             onStageChange: handleStageChange,
             onManagerChange: handleManagerChange,
-            onDelete: handleDeletePartner
+            onDelete: handleDeletePartner,
+            expandedId: expandedPartnerId,
+            onExpand: handleExpandPartner,
+            expandedConversations,
+            loadingExpandConversations,
+            onDescriptionChange: handleDescriptionChange,
+            onNextStepsChange: handleNextStepsChange,
+            onDriveFolderChange: handleDriveFolderChange,
+            onFollowUpChange: handleFollowUpChange,
+            onAddConversation: handleAddConversation
           }
         ),
-        archivedFiltered.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "mt-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+        archivedFiltered.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "mt-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
             "button",
             {
               className: `btn btn-sm gap-2 ${showArchived ? "btn-neutral" : "btn-ghost"}`,
               onClick: () => setShowArchived(!showArchived),
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "text-base", children: "\u{1F4E6}" }),
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-base", children: "\u{1F4E6}" }),
                 showArchived ? "Hide" : "Show",
                 " Archived (",
                 archivedFiltered.length,
@@ -15041,7 +15518,7 @@
               ]
             }
           ),
-          showArchived && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "mt-2 opacity-75", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+          showArchived && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "mt-2 opacity-75", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             PartnerList,
             {
               partners: archivedFiltered,
@@ -15049,13 +15526,22 @@
               selectedId: selectedPartner?.id ?? null,
               onStageChange: handleStageChange,
               onManagerChange: handleManagerChange,
-              onDelete: handleDeletePartner
+              onDelete: handleDeletePartner,
+              expandedId: expandedPartnerId,
+              onExpand: handleExpandPartner,
+              expandedConversations,
+              loadingExpandConversations,
+              onDescriptionChange: handleDescriptionChange,
+              onNextStepsChange: handleNextStepsChange,
+              onDriveFolderChange: handleDriveFolderChange,
+              onFollowUpChange: handleFollowUpChange,
+              onAddConversation: handleAddConversation
             }
           ) })
         ] })
       ] }),
-      activeTab === "kols" && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(KOLTab, { onCountChange: setKolCount }),
-      showAddModal && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+      activeTab === "kols" && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(KOLTab, { onCountChange: setKolCount }),
+      showAddModal && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
         AddPartnerModal,
         {
           onAdd: handleAddPartner,
@@ -15064,7 +15550,7 @@
       )
     ] }) });
   };
-  (0, import_client.createRoot)(document.getElementById("root")).render(/* @__PURE__ */ (0, import_jsx_runtime6.jsx)(App, {}));
+  (0, import_client.createRoot)(document.getElementById("root")).render(/* @__PURE__ */ (0, import_jsx_runtime7.jsx)(App, {}));
 })();
 /*! Bundled license information:
 
@@ -15171,6 +15657,14 @@ lucide-react/dist/esm/icons/calendar-days.js:
    * See the LICENSE file in the root directory of this source tree.
    *)
 
+lucide-react/dist/esm/icons/chevron-down.js:
+  (**
+   * @license lucide-react v0.523.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
 lucide-react/dist/esm/icons/chevron-right.js:
   (**
    * @license lucide-react v0.523.0 - ISC
@@ -15244,6 +15738,14 @@ lucide-react/dist/esm/icons/link.js:
    *)
 
 lucide-react/dist/esm/icons/mail.js:
+  (**
+   * @license lucide-react v0.523.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/maximize-2.js:
   (**
    * @license lucide-react v0.523.0 - ISC
    *

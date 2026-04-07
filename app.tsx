@@ -255,6 +255,10 @@ const App: React.FC = () => {
   const [showArchived, setShowArchived] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [kolCount, setKolCount] = useState(0);
+  // Expansion panel state
+  const [expandedPartnerId, setExpandedPartnerId] = useState<string | null>(null);
+  const [expandedConversations, setExpandedConversations] = useState<Conversation[]>([]);
+  const [loadingExpandConversations, setLoadingExpandConversations] = useState(false);
   const editsRef = useRef<Record<string, Record<string, string>>>({});
   const loadingRef = useRef(false);
 
@@ -406,6 +410,26 @@ const App: React.FC = () => {
   const handleFollowUpChange = useCallback((id: string, v: string) => handleFieldChange(id, 'nextFollowUp', v), [handleFieldChange]);
   // channelStatus handler removed
 
+  // Expansion panel: load conversations when expanding a partner
+  const handleExpandPartner = useCallback(async (partner: Partner | null) => {
+    if (!partner) {
+      setExpandedPartnerId(null);
+      setExpandedConversations([]);
+      return;
+    }
+    setExpandedPartnerId(partner.id);
+    setExpandedConversations([]);
+    setLoadingExpandConversations(true);
+    try {
+      const convos = await fetchConversationsForPartner(partner.id);
+      setExpandedConversations(convos);
+    } catch (err) {
+      console.error('Failed to load conversations for expansion:', err);
+    } finally {
+      setLoadingExpandConversations(false);
+    }
+  }, []);
+
   const handleAddConversation = useCallback(async (partnerId: string, entry: {
     title: string; date: string; channel: string; summary: string;
     key_takeaways: string; next_steps: string; logged_by: string;
@@ -415,6 +439,10 @@ const App: React.FC = () => {
       // Refresh conversations
       const convos = await fetchConversationsForPartner(partnerId);
       setPartnerConversations(convos);
+      // Also refresh expanded panel conversations if same partner
+      if (expandedPartnerId === partnerId) {
+        setExpandedConversations(convos);
+      }
       // Auto-update lastConversation to the most recent date
       if (convos.length > 0) {
         const sorted = [...convos].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -425,11 +453,12 @@ const App: React.FC = () => {
     } catch (err) {
       console.error('Failed to save conversation:', err);
     }
-  }, [handleFieldChange]);
+  }, [handleFieldChange, expandedPartnerId]);
 
   const handleDeletePartner = useCallback(async (id: string) => {
     setPartners(prev => prev.filter(p => p.id !== id));
     setSelectedPartner(prev => prev?.id === id ? null : prev);
+    setExpandedPartnerId(prev => prev === id ? null : prev);
     try { await deletePartner(id); } catch (err) { console.error('Failed to delete partner:', err); }
   }, []);
 
@@ -584,6 +613,15 @@ const App: React.FC = () => {
                 onStageChange={handleStageChange}
                 onManagerChange={handleManagerChange}
                 onDelete={handleDeletePartner}
+                expandedId={expandedPartnerId}
+                onExpand={handleExpandPartner}
+                expandedConversations={expandedConversations}
+                loadingExpandConversations={loadingExpandConversations}
+                onDescriptionChange={handleDescriptionChange}
+                onNextStepsChange={handleNextStepsChange}
+                onDriveFolderChange={handleDriveFolderChange}
+                onFollowUpChange={handleFollowUpChange}
+                onAddConversation={handleAddConversation}
               />
 
               {/* Archived Section */}
@@ -605,6 +643,15 @@ const App: React.FC = () => {
                         onStageChange={handleStageChange}
                         onManagerChange={handleManagerChange}
                         onDelete={handleDeletePartner}
+                        expandedId={expandedPartnerId}
+                        onExpand={handleExpandPartner}
+                        expandedConversations={expandedConversations}
+                        loadingExpandConversations={loadingExpandConversations}
+                        onDescriptionChange={handleDescriptionChange}
+                        onNextStepsChange={handleNextStepsChange}
+                        onDriveFolderChange={handleDriveFolderChange}
+                        onFollowUpChange={handleFollowUpChange}
+                        onAddConversation={handleAddConversation}
                       />
                     </div>
                   )}
