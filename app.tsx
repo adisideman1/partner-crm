@@ -1,6 +1,68 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, Lock, LogOut } from 'lucide-react';
+
+// ---- Password Gate ----
+const PASS_HASH = '5a39c3bfa498e8dff5e75bed7fcbc9342b498b73581cdbb63f78a45473c52af6'; // SHA-256 of "CRM2026"
+const AUTH_KEY = 'crm_auth';
+
+async function hashPassword(pw: string): Promise<string> {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+const PasswordGate: React.FC<{ children: React.ReactNode; onLockRef: React.MutableRefObject<(() => void) | null> }> = ({ children, onLockRef }) => {
+  const [authed, setAuthed] = useState(() => localStorage.getItem(AUTH_KEY) === 'true');
+  const [input, setInput] = useState('');
+  const [error, setError] = useState(false);
+  const [checking, setChecking] = useState(false);
+
+  onLockRef.current = () => { localStorage.removeItem(AUTH_KEY); setAuthed(false); setInput(''); };
+
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    setChecking(true);
+    setError(false);
+    const h = await hashPassword(input);
+    if (h === PASS_HASH) {
+      localStorage.setItem(AUTH_KEY, 'true');
+      setAuthed(true);
+    } else {
+      setError(true);
+    }
+    setChecking(false);
+  };
+
+  if (authed) return <>{children}</>;
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-base-200 to-base-300 p-4">
+      <div className="card bg-base-100 shadow-2xl w-full max-w-sm">
+        <div className="card-body items-center text-center gap-4">
+          <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+            <Lock className="w-8 h-8 text-primary" />
+          </div>
+          <h2 className="card-title text-2xl">Partner CRM</h2>
+          <p className="text-base-content/60 text-sm">Enter password to continue</p>
+          <form onSubmit={handleSubmit} className="w-full space-y-3">
+            <input
+              type="password"
+              placeholder="Password"
+              className={`input input-bordered w-full ${error ? 'input-error' : ''}`}
+              value={input}
+              onChange={e => { setInput(e.target.value); setError(false); }}
+              autoFocus
+            />
+            {error && <p className="text-error text-xs">Incorrect password</p>}
+            <button type="submit" className="btn btn-primary w-full" disabled={checking || !input}>
+              {checking ? <span className="loading loading-spinner loading-sm" /> : 'Unlock'}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
 import { Partner, Conversation, Filters, STAGE_SORT_ORDER } from './types';
 import {
   fetchPartnerList,
@@ -237,7 +299,7 @@ const AddPartnerModal: React.FC<{ onAdd: (data: AddPartnerData) => void; onClose
 
 // ---- App ----
 
-const App: React.FC = () => {
+const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
   const [activeTab, setActiveTab] = useState<AppTab>('partners');
   const [partners, setPartners] = useState<Partner[]>([]);
   const [loading, setLoading] = useState(true);
@@ -544,7 +606,16 @@ const App: React.FC = () => {
       ) : (
         <>
           {/* Tab Navigation */}
-          <div className="flex gap-3 mb-1">
+          <div className="flex gap-3 mb-1 relative">
+            {onLock && (
+              <button
+                className="btn btn-ghost btn-sm btn-circle absolute -top-1 right-0 opacity-40 hover:opacity-100 tooltip tooltip-left z-10"
+                data-tip="Lock CRM"
+                onClick={onLock}
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
+            )}
             <button
               className={`btn btn-lg gap-3 flex-1 text-lg font-bold ${
                 activeTab === 'partners'
@@ -674,4 +745,13 @@ const App: React.FC = () => {
   );
 };
 
-createRoot(document.getElementById('root')!).render(<App />);
+const Root: React.FC = () => {
+  const lockRef = useRef<(() => void) | null>(null);
+  return (
+    <PasswordGate onLockRef={lockRef}>
+      <App onLock={() => lockRef.current?.()} />
+    </PasswordGate>
+  );
+};
+
+createRoot(document.getElementById('root')!).render(<Root />);
