@@ -82,6 +82,17 @@
   </head>
   <body class="bg-base-100 text-base-content">
     <div id="root"></div>
-    <script src="bundle.js"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.3.1",
+        "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+        "react-dom": "https://esm.sh/react-dom@18.3.1",
+        "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+        "lucide-react": "https://esm.sh/lucide-react@0.454.0"
+      }
+    }
+    </script>
+    <script type="module" src="bundle.js"></script>
   </body>
 </html>
