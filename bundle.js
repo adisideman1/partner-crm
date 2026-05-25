@@ -22060,6 +22060,7 @@
     "\u{1F7E2} In Good Discussion",
     "\u{1F7E1} Prospect",
     "\u{1F3AF} Identified Opportunity",
+    "\u{1F4DE} Outreach",
     "\u23F3 Wait",
     "\u{1F4E6} Archived",
     "\u{1F534} Churned"
@@ -22070,6 +22071,7 @@
     "\u{1F7E2} In Good Discussion",
     "\u{1F7E1} Prospect",
     "\u{1F3AF} Identified Opportunity",
+    "\u{1F4DE} Outreach",
     "\u23F3 Wait",
     "\u{1F4E6} Archived",
     "\u{1F534} Churned"
@@ -22077,6 +22079,7 @@
   var STAGE_COLORS = {
     "\u{1F7E1} Prospect": "badge-warning",
     "\u{1F3AF} Identified Opportunity": "badge-accent",
+    "\u{1F4DE} Outreach": "badge-secondary",
     "\u23F3 Wait": "badge-neutral",
     "\u{1F535} Negotiations": "badge-info",
     "\u{1F7E2} In Good Discussion": "badge-success",
@@ -22090,9 +22093,10 @@
     "\u{1F7E2} In Good Discussion": 2,
     "\u{1F7E1} Prospect": 3,
     "\u{1F3AF} Identified Opportunity": 4,
-    "\u23F3 Wait": 5,
-    "\u{1F534} Churned": 6,
-    "\u{1F4E6} Archived": 7
+    "\u{1F4DE} Outreach": 5,
+    "\u23F3 Wait": 6,
+    "\u{1F534} Churned": 7,
+    "\u{1F4E6} Archived": 8
   };
   var PRIORITIES = ["All", "\u2B50 VIP", "Standard"];
   var ACCOUNT_MANAGERS = ["All", "Adi", "Tess", "Cydel", "Ben", "Caron"];
@@ -24510,7 +24514,10 @@
           /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex gap-2", children: [
             /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex-1", children: [
               /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "label-text text-xs", children: "Stage" }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("select", { className: "select select-bordered w-full select-sm", value: stage, onChange: (e) => setStage(e.target.value), children: ["\u2705 Signed", "\u{1F535} Negotiations", "\u{1F7E2} In Good Discussion", "\u{1F7E1} Prospect", "\u23F3 Wait", "\u{1F534} Churned", "\u{1F4E6} Archived"].map((s) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: s, children: s }, s)) })
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("select", { className: "select select-bordered w-full select-sm", value: stage, onChange: (e) => {
+                setStage(e.target.value);
+                if (e.target.value === "\u{1F4DE} Outreach" && !manager) setManager("Caron");
+              }, children: ["\u2705 Signed", "\u{1F535} Negotiations", "\u{1F7E2} In Good Discussion", "\u{1F7E1} Prospect", "\u{1F3AF} Identified Opportunity", "\u{1F4DE} Outreach", "\u23F3 Wait", "\u{1F534} Churned", "\u{1F4E6} Archived"].map((s) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: s, children: s }, s)) })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex-1", children: [
               /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "label pb-0", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "label-text text-xs", children: "Manager" }) }),
