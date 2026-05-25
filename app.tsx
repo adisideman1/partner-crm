@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { RefreshCw, Lock, LogOut } from 'lucide-react';
 
 // ---- Password Gate ----
-const PASS_HASH = '5a39c3bfa498e8dff5e75bed7fcbc9342b498b73581cdbb63f78a45473c52af6'; // SHA-256 of "CRM2026"
+const PASS_HASH = '130f70ae5b44ed4c645aad5cf7cf18ad2413c48e754dbfdec86cc781a26a5624'; // SHA-256 of "CRM"
 const AUTH_KEY = 'crm_auth';
 
 async function hashPassword(pw: string): Promise<string> {
@@ -42,7 +42,7 @@ const PasswordGate: React.FC<{ children: React.ReactNode; onLockRef: React.Mutab
           <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
             <Lock className="w-8 h-8 text-primary" />
           </div>
-          <h2 className="card-title text-2xl">Partner CRM</h2>
+          <h2 className="card-title text-2xl">🍿 Popcorn CRM</h2>
           <p className="text-base-content/60 text-sm">Enter password to continue</p>
           <form onSubmit={handleSubmit} className="w-full space-y-3">
             <input
@@ -83,8 +83,24 @@ type AppTab = 'partners' | 'kols';
 
 // ---- Persistence helpers ----
 
-const EDITABLE_FIELDS = ['onboardingStage', 'accountManager', 'useCase', 'nextSteps', 'driveFolder', 'nextFollowUp', 'lastConversation'] as const;
+const EDITABLE_FIELDS = ['onboardingStage', 'accountManager', 'useCase', 'nextSteps', 'driveFolder', 'nextFollowUp', 'lastConversation', 'connector', 'sortOrder'] as const;
 type EditableField = typeof EDITABLE_FIELDS[number];
+
+/** Normalize stage names to canonical emoji-prefixed format */
+function normalizeStage(stage: string): string {
+  if (!stage) return '🟡 Prospect';
+  if (stage.startsWith('✅') || stage.startsWith('🔵') || stage.startsWith('🟢') ||
+      stage.startsWith('🟡') || stage.startsWith('⏳') || stage.startsWith('🔴') ||
+      stage.startsWith('📦')) return stage;
+  const map: Record<string, string> = {
+    'signed': '✅ Signed', 'negotiations': '🔵 Negotiations',
+    'active onboarding': '🔵 Negotiations', 'in good discussion': '🟢 In Good Discussion',
+    'ongoing management': '🟢 In Good Discussion', 'prospect': '🟡 Prospect',
+    'wait': '⏳ Wait', 'churned': '🔴 Churned', 'not interested': '🔴 Churned',
+    'archived': '📦 Archived', 'paused': '📦 Archived',
+  };
+  return map[stage.toLowerCase().trim()] || '🟡 Prospect';
+}
 
 async function loadEdits(): Promise<Record<string, Record<string, string>>> {
   const rows = await loadAllEdits();
@@ -150,6 +166,7 @@ function applyEdits(partners: Partner[], edits: Record<string, Record<string, st
           if (e.company !== undefined) stub.company = e.company;
           if (e.appUserId !== undefined) stub.appUserId = e.appUserId;
           if (e.priority !== undefined) stub.priority = e.priority;
+          if (e.connector !== undefined) stub.connector = e.connector;
         }
         result.push(stub);
         continue;
@@ -172,6 +189,7 @@ function applyEdits(partners: Partner[], edits: Record<string, Record<string, st
     if (e.company !== undefined && !updated.company) updated.company = e.company;
     if (e.appUserId !== undefined && !updated.appUserId) updated.appUserId = e.appUserId;
     if (e.priority !== undefined) updated.priority = e.priority;
+    if (e.connector !== undefined) updated.connector = e.connector;
     result.push(updated);
   }
 
@@ -198,6 +216,7 @@ function applyEdits(partners: Partner[], edits: Record<string, Record<string, st
         youtubeChannel: e.youtubeChannel || '',
         popcornChannel: e.popcornChannel || '',
         driveFolder: e.driveFolder || '',
+        connector: e.connector || '',
         useCase: e.useCase || '',
         nextSteps: e.nextSteps || '',
         lastConversation: e.lastConversation || '',
@@ -208,7 +227,14 @@ function applyEdits(partners: Partner[], edits: Record<string, Record<string, st
     }
   }
 
-  return result;
+  return result.map(p => {
+    const e = edits[p.id];
+    return {
+      ...p,
+      onboardingStage: normalizeStage(p.onboardingStage),
+      sortOrder: e?.sortOrder !== undefined ? parseInt(e.sortOrder) || 0 : undefined,
+    };
+  });
 }
 
 function saveEdit(partnerId: string, field: EditableField, value: string) {
@@ -223,6 +249,7 @@ interface AddPartnerData {
   company: string;
   stage: string;
   manager: string;
+  connector: string;
 }
 
 const AddPartnerModal: React.FC<{ onAdd: (data: AddPartnerData) => void; onClose: () => void }> = ({ onAdd, onClose }) => {
@@ -231,25 +258,34 @@ const AddPartnerModal: React.FC<{ onAdd: (data: AddPartnerData) => void; onClose
   const [company, setCompany] = useState('');
   const [stage, setStage] = useState('🟡 Prospect');
   const [manager, setManager] = useState('');
+  const [connector, setConnector] = useState('');
 
   const handleSubmit = () => {
     if (!name.trim()) return;
-    onAdd({ name: name.trim(), email: email.trim(), company: company.trim(), stage, manager });
+    onAdd({ name: name.trim(), email: email.trim(), company: company.trim(), stage, manager, connector: connector.trim() });
     onClose();
   };
 
   return (
     <div className="modal modal-open">
       <div className="modal-box max-w-sm">
-        <h3 className="font-bold text-lg mb-4">Add Partner</h3>
+        <h3 className="font-bold text-lg mb-4">Add Opportunity</h3>
         <div className="space-y-3">
-          <label className="label pb-0"><span className="label-text text-xs">Name *</span></label>
+          <label className="label pb-0"><span className="label-text text-xs">Company *</span></label>
+          <input
+            className="input input-bordered w-full"
+            placeholder="Company name"
+            value={company}
+            onChange={e => setCompany(e.target.value)}
+            autoFocus
+            onKeyDown={e => e.key === 'Enter' && handleSubmit()}
+          />
+          <label className="label pb-0"><span className="label-text text-xs">Contact Name *</span></label>
           <input
             className="input input-bordered w-full"
             placeholder="Full name"
             value={name}
             onChange={e => setName(e.target.value)}
-            autoFocus
             onKeyDown={e => e.key === 'Enter' && handleSubmit()}
           />
           <label className="label pb-0"><span className="label-text text-xs">Email</span></label>
@@ -260,18 +296,18 @@ const AddPartnerModal: React.FC<{ onAdd: (data: AddPartnerData) => void; onClose
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
-          <label className="label pb-0"><span className="label-text text-xs">Company</span></label>
+          <label className="label pb-0"><span className="label-text text-xs">Introduced via</span></label>
           <input
             className="input input-bordered w-full"
-            placeholder="Company name"
-            value={company}
-            onChange={e => setCompany(e.target.value)}
+            placeholder="Connector name (e.g. Nick Grossman)"
+            value={connector}
+            onChange={e => setConnector(e.target.value)}
           />
           <div className="flex gap-2">
             <div className="flex-1">
               <label className="label pb-0"><span className="label-text text-xs">Stage</span></label>
               <select className="select select-bordered w-full select-sm" value={stage} onChange={e => setStage(e.target.value)}>
-                {(['🟡 Prospect','🟠 Active Onboarding','🟢 Ongoing Management','🔵 Self Sufficient','🔴 Churned','📦 Archived'] as string[]).map(s => (
+                {(['✅ Signed','🔵 Negotiations','🟢 In Good Discussion','🟡 Prospect','⏳ Wait','🔴 Churned','📦 Archived'] as string[]).map(s => (
                   <option key={s} value={s}>{s}</option>
                 ))}
               </select>
@@ -289,7 +325,7 @@ const AddPartnerModal: React.FC<{ onAdd: (data: AddPartnerData) => void; onClose
         </div>
         <div className="modal-action">
           <button className="btn btn-ghost btn-sm" onClick={onClose}>Cancel</button>
-          <button className="btn btn-primary btn-sm" onClick={handleSubmit} disabled={!name.trim()}>Add Partner</button>
+          <button className="btn btn-primary btn-sm" onClick={handleSubmit} disabled={!name.trim()}>Add Opportunity</button>
         </div>
       </div>
       <div className="modal-backdrop" onClick={onClose} />
@@ -317,6 +353,8 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
   const [showArchived, setShowArchived] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [kolCount, setKolCount] = useState(0);
+  const [dragOverTab, setDragOverTab] = useState<AppTab | null>(null);
+  const kolReloadRef = useRef<(() => void) | null>(null);
   // Expansion panel state
   const [expandedPartnerId, setExpandedPartnerId] = useState<string | null>(null);
   const [expandedConversations, setExpandedConversations] = useState<Conversation[]>([]);
@@ -404,7 +442,7 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
           if (e.driveFolder !== undefined) (merged as any).driveFolder = e.driveFolder;
           if (e.nextFollowUp !== undefined) merged.nextFollowUp = e.nextFollowUp;
           if (e.lastConversation !== undefined) merged.lastConversation = e.lastConversation;
-          // channelStatus removed — merged into nextSteps
+          if (e.connector !== undefined) merged.connector = e.connector;
         }
         setSelectedPartner(merged);
         setPartners((prev) => prev.map((p) => (p.id === partner.id ? merged : p)));
@@ -427,7 +465,7 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
       if (filters.accountManager !== 'All' && p.accountManager !== filters.accountManager) return false;
       if (filters.search) {
         const q = filters.search.toLowerCase();
-        const searchable = [p.name, p.company, p.email, p.useCase, p.nextSteps].join(' ').toLowerCase();
+        const searchable = [p.name, p.company, p.email, p.useCase, p.nextSteps, p.connector].join(' ').toLowerCase();
         if (!searchable.includes(q)) return false;
       }
       return true;
@@ -437,9 +475,12 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
       const orderA = STAGE_SORT_ORDER[a.onboardingStage] ?? 99;
       const orderB = STAGE_SORT_ORDER[b.onboardingStage] ?? 99;
       if (orderA !== orderB) return orderA - orderB;
+      if (a.sortOrder !== undefined && b.sortOrder !== undefined && a.sortOrder !== b.sortOrder) {
+        return a.sortOrder - b.sortOrder;
+      }
       if (a.priority === '⭐ VIP' && b.priority !== '⭐ VIP') return -1;
       if (b.priority === '⭐ VIP' && a.priority !== '⭐ VIP') return 1;
-      return a.name.localeCompare(b.name);
+      return (a.company || a.name).localeCompare(b.company || b.name);
     };
 
     const all = partners.filter(applyFilters);
@@ -470,6 +511,18 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
   const handleNextStepsChange = useCallback((id: string, v: string) => handleFieldChange(id, 'nextSteps', v), [handleFieldChange]);
   const handleDriveFolderChange = useCallback((id: string, v: string) => handleFieldChange(id, 'driveFolder', v), [handleFieldChange]);
   const handleFollowUpChange = useCallback((id: string, v: string) => handleFieldChange(id, 'nextFollowUp', v), [handleFieldChange]);
+
+  const handleReorder = useCallback((partnerIds: string[], _stage: string) => {
+    setPartners(prev => prev.map(p => {
+      const idx = partnerIds.indexOf(p.id);
+      return idx >= 0 ? { ...p, sortOrder: idx } : p;
+    }));
+    partnerIds.forEach((id, idx) => {
+      if (!editsRef.current[id]) editsRef.current[id] = {};
+      editsRef.current[id].sortOrder = String(idx);
+      saveEdit(id, 'sortOrder', String(idx));
+    });
+  }, []);
   // channelStatus handler removed
 
   // Expansion panel: load conversations when expanding a partner
@@ -517,6 +570,42 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
     }
   }, [handleFieldChange, expandedPartnerId]);
 
+  // Cross-tab drag: convert partner → KOL or KOL → partner
+  const handleDropOnTab = useCallback(async (targetTab: AppTab, e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOverTab(null);
+    const raw = e.dataTransfer.getData('application/x-cross-tab');
+    if (!raw) return;
+    try {
+      const { id, name, fromTab } = JSON.parse(raw);
+      if (fromTab === targetTab) return; // same tab, noop
+
+      if (targetTab === 'kols') {
+        // Partner → KOL: flag as KOL
+        await saveField(id, 'isKOL', 'true');
+        if (!editsRef.current[id]) editsRef.current[id] = {};
+        editsRef.current[id].isKOL = 'true';
+        // Remove from partners list
+        setPartners(prev => prev.filter(p => p.id !== id));
+        // Reload KOL tab
+        kolReloadRef.current?.();
+        setKolCount(prev => prev + 1);
+        setActiveTab('kols');
+      } else {
+        // KOL → Partner: unflag KOL
+        await saveField(id, 'isKOL', 'false');
+        if (!editsRef.current[id]) editsRef.current[id] = {};
+        editsRef.current[id].isKOL = 'false';
+        setKolCount(prev => Math.max(0, prev - 1));
+        // Reload data to pick up partner
+        await loadData(true);
+        setActiveTab('partners');
+      }
+    } catch (err) {
+      console.error('Cross-tab drop failed:', err);
+    }
+  }, [loadData]);
+
   const handleDeletePartner = useCallback(async (id: string) => {
     setPartners(prev => prev.filter(p => p.id !== id));
     setSelectedPartner(prev => prev?.id === id ? null : prev);
@@ -524,7 +613,7 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
     try { await deletePartner(id); } catch (err) { console.error('Failed to delete partner:', err); }
   }, []);
 
-  const handleAddPartner = useCallback(async (data: { name: string; email: string; company: string; stage: string; manager: string }) => {
+  const handleAddPartner = useCallback(async (data: { name: string; email: string; company: string; stage: string; manager: string; connector: string }) => {
     const slug = 'manual-' + data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     const id = `${slug}-${Date.now().toString(36)}`;
     const fields: Record<string, string> = {
@@ -534,6 +623,7 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
     if (data.email) fields.email = data.email;
     if (data.company) fields.company = data.company;
     if (data.manager) fields.accountManager = data.manager;
+    if (data.connector) fields.connector = data.connector;
     try { await saveFields(id, fields); } catch (err) { console.error('Failed to add partner:', err); }
     const newPartner: Partner = {
       id,
@@ -550,6 +640,7 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
       youtubeChannel: '',
       popcornChannel: '',
       driveFolder: '',
+      connector: data.connector,
       useCase: '',
       nextSteps: '',
       lastConversation: '',
@@ -617,25 +708,31 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
               </button>
             )}
             <button
-              className={`btn btn-lg gap-3 flex-1 text-lg font-bold ${
+              className={`btn btn-lg gap-3 flex-1 text-lg font-bold transition-all ${
                 activeTab === 'partners'
                   ? 'btn-primary shadow-lg'
                   : 'btn-ghost bg-base-200 hover:bg-base-300'
-              }`}
+              } ${dragOverTab === 'partners' ? 'ring-4 ring-primary ring-offset-2 scale-105' : ''}`}
               onClick={() => setActiveTab('partners')}
+              onDragOver={(e) => { e.preventDefault(); setDragOverTab('partners'); }}
+              onDragLeave={() => setDragOverTab(null)}
+              onDrop={(e) => handleDropOnTab('partners', e)}
             >
-              🤝 Partners
+              🤝 Potential Clients
               <span className={`badge badge-lg ${activeTab === 'partners' ? 'badge-primary-content bg-white/20' : 'badge-ghost'}`}>
                 {partners.filter(p => p.onboardingStage !== '📦 Archived').length}
               </span>
             </button>
             <button
-              className={`btn btn-lg gap-3 flex-1 text-lg font-bold ${
+              className={`btn btn-lg gap-3 flex-1 text-lg font-bold transition-all ${
                 activeTab === 'kols'
                   ? 'btn-primary shadow-lg'
                   : 'btn-ghost bg-base-200 hover:bg-base-300'
-              }`}
+              } ${dragOverTab === 'kols' ? 'ring-4 ring-primary ring-offset-2 scale-105' : ''}`}
               onClick={() => setActiveTab('kols')}
+              onDragOver={(e) => { e.preventDefault(); setDragOverTab('kols'); }}
+              onDragLeave={() => setDragOverTab(null)}
+              onDrop={(e) => handleDropOnTab('kols', e)}
             >
               🎯 KOLs
               <span className={`badge badge-lg ${activeTab === 'kols' ? 'badge-primary-content bg-white/20' : 'badge-ghost'}`}>
@@ -657,7 +754,7 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
                     className="btn btn-primary btn-sm gap-1"
                     onClick={() => setShowAddModal(true)}
                   >
-                    + Add Partner
+                    + Add Opportunity
                   </button>
                   <button
                     className={`btn btn-ghost btn-sm btn-square ${refreshing ? 'animate-spin' : ''}`}
@@ -672,7 +769,7 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
 
               {/* Count */}
               <p className="text-xs text-base-content/50">
-                Showing {activeFiltered.length} active partner{activeFiltered.length !== 1 ? 's' : ''}
+                Showing {activeFiltered.length} active opportunit{activeFiltered.length !== 1 ? 'ies' : 'y'}
                 {archivedFiltered.length > 0 && ` · ${archivedFiltered.length} archived`}
               </p>
 
@@ -693,6 +790,7 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
                 onDriveFolderChange={handleDriveFolderChange}
                 onFollowUpChange={handleFollowUpChange}
                 onAddConversation={handleAddConversation}
+                onReorder={handleReorder}
               />
 
               {/* Archived Section */}
@@ -723,6 +821,7 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
                         onDriveFolderChange={handleDriveFolderChange}
                         onFollowUpChange={handleFollowUpChange}
                         onAddConversation={handleAddConversation}
+                        onReorder={handleReorder}
                       />
                     </div>
                   )}
@@ -731,7 +830,7 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
             </>
           )}
 
-          {activeTab === 'kols' && <KOLTab onCountChange={setKolCount} />}
+          {activeTab === 'kols' && <KOLTab onCountChange={setKolCount} reloadRef={kolReloadRef} />}
 
           {showAddModal && (
             <AddPartnerModal

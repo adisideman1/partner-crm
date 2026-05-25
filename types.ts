@@ -13,6 +13,8 @@ export interface Partner {
   youtubeChannel: string;
   popcornChannel: string;
   driveFolder: string;
+  connector: string;
+  sortOrder?: number;
   useCase: string;
   nextSteps: string;
   lastConversation: string;
@@ -45,9 +47,11 @@ export interface Conversation {
 
 export type OnboardingStage =
   | '🟡 Prospect'
-  | '🔵 Active Onboarding'
-  | '🟢 Ongoing Management'
-  | '💪 Self Sufficient'
+  | '⏳ Wait'
+  | '🔵 Negotiations'
+  | '🟢 In Good Discussion'
+  | '✅ Signed'
+
   | '📦 Archived'
   | '🔴 Churned'
   | 'All';
@@ -63,39 +67,47 @@ export interface Filters {
 
 export const STAGES: OnboardingStage[] = [
   'All',
-  '🔵 Active Onboarding',
-  '🟢 Ongoing Management',
+  '✅ Signed',
+  '🔵 Negotiations',
+  '🟢 In Good Discussion',
   '🟡 Prospect',
-  '💪 Self Sufficient',
+  '⏳ Wait',
+
   '📦 Archived',
   '🔴 Churned',
 ];
 
 /** Stages available for the dropdown (excludes "All") */
 export const EDITABLE_STAGES: string[] = [
-  '🔵 Active Onboarding',
-  '🟢 Ongoing Management',
+  '✅ Signed',
+  '🔵 Negotiations',
+  '🟢 In Good Discussion',
   '🟡 Prospect',
-  '💪 Self Sufficient',
+  '⏳ Wait',
+
   '📦 Archived',
   '🔴 Churned',
 ];
 
 export const STAGE_COLORS: Record<string, string> = {
   '🟡 Prospect': 'badge-warning',
-  '🔵 Active Onboarding': 'badge-info',
-  '🟢 Ongoing Management': 'badge-success',
-  '💪 Self Sufficient': 'badge-accent',
+  '⏳ Wait': 'badge-neutral',
+  '🔵 Negotiations': 'badge-info',
+  '🟢 In Good Discussion': 'badge-success',
+  '✅ Signed': 'badge-primary',
+
   '📦 Archived': 'badge-ghost',
   '🔴 Churned': 'badge-error',
 };
 
 /** Sort priority — lower number = listed first */
 export const STAGE_SORT_ORDER: Record<string, number> = {
-  '🔵 Active Onboarding': 1,
-  '🟢 Ongoing Management': 2,
+  '✅ Signed': 0,
+  '🔵 Negotiations': 1,
+  '🟢 In Good Discussion': 2,
   '🟡 Prospect': 3,
-  '💪 Self Sufficient': 4,
+  '⏳ Wait': 4,
+
   '🔴 Churned': 5,
   '📦 Archived': 6,
 };
