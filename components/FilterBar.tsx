@@ -15,7 +15,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({ filters, onFiltersChange }
         <input
           type="search"
           className="grow"
-          placeholder="Search partners..."
+          placeholder="Search opportunities..."
           value={filters.search}
           onChange={(e) => onFiltersChange({ ...filters, search: e.target.value })}
         />

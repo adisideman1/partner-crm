@@ -120,7 +120,11 @@ const KOLRow: React.FC<{
   return (
     <tr
       draggable
-      onDragStart={onDragStart}
+      onDragStart={(e) => {
+        e.dataTransfer.setData('application/x-crm-kol', JSON.stringify({ id: kol.id, name: kol.name, type: 'kol' }));
+        e.dataTransfer.setData('application/x-cross-tab', JSON.stringify({ id: kol.id, name: kol.name, fromTab: 'kols' }));
+        onDragStart(e);
+      }}
       onDragOver={onDragOver}
       onDrop={onDrop}
       onDragEnd={onDragEnd}
@@ -300,7 +304,7 @@ const KOLSection: React.FC<{
 };
 
 // ---- Main KOL Tab ----
-export const KOLTab: React.FC<{ onCountChange?: (n: number) => void }> = ({ onCountChange }) => {
+export const KOLTab: React.FC<{ onCountChange?: (n: number) => void; reloadRef?: React.MutableRefObject<(() => void) | null> }> = ({ onCountChange, reloadRef }) => {
   const [kols, setKols] = useState<KOL[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -312,7 +316,8 @@ export const KOLTab: React.FC<{ onCountChange?: (n: number) => void }> = ({ onCo
   // Report count changes up to parent
   useEffect(() => { onCountChange?.(kols.length); }, [kols.length, onCountChange]);
 
-  useEffect(() => {
+  const reload = useCallback(() => {
+    setLoading(true);
     loadKOLs().then(k => {
       const sorted = [...k].sort((a, b) => {
         const tierOrder = (t: string) => t === 'Initial Target' ? 0 : 1;
@@ -324,6 +329,14 @@ export const KOLTab: React.FC<{ onCountChange?: (n: number) => void }> = ({ onCo
       setLoading(false);
     });
   }, []);
+
+  // Expose reload to parent for cross-tab drag
+  useEffect(() => {
+    if (reloadRef) reloadRef.current = reload;
+    return () => { if (reloadRef) reloadRef.current = null; };
+  }, [reloadRef, reload]);
+
+  useEffect(() => { reload(); }, [reload]);
 
   const handleStatusChange = useCallback((id: string, value: string) => {
     setKols(prev => prev.map(k => k.id === id ? { ...k, kolStatus: value } : k));
@@ -396,13 +409,20 @@ export const KOLTab: React.FC<{ onCountChange?: (n: number) => void }> = ({ onCo
       const newTargetTierKols = [...targetTierKols];
       newTargetTierKols.splice(insertAt, 0, updatedDragged);
 
-      // Persist new order + tier change
+      // Persist only changed order values + tier change (sequential to avoid rate limits)
+      const savesNeeded: { id: string; order: number }[] = [];
       newTargetTierKols.forEach((k, i) => {
-        saveField(k.id, 'kolOrder', String(i)).catch(console.error);
+        if (k.kolOrder !== i) savesNeeded.push({ id: k.id, order: i });
       });
-      if (tierChanged) {
-        saveKOLField(fromId, 'kolTier', targetTier);
-      }
+      (async () => {
+        for (const s of savesNeeded) {
+          try { await saveField(s.id, 'kolOrder', String(s.order)); } catch (err) { console.error('kolOrder save failed', err); }
+          if (savesNeeded.length > 5) await new Promise(r => setTimeout(r, 200));
+        }
+        if (tierChanged) {
+          try { await saveField(fromId, 'kolTier', targetTier); } catch (err) { console.error('kolTier save failed', err); }
+        }
+      })();
 
       // Combine back with updated kolOrder values
       const otherKols = rest.filter(k => k.kolTier !== targetTier);

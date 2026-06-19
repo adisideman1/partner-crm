@@ -10,7 +10,7 @@ import {
   MessageSquare,
   Clock,
   CalendarDays,
-  Youtube,
+  Play,
   Plus,
 } from 'lucide-react';
 
@@ -327,7 +327,7 @@ export const PartnerDetail: React.FC<PartnerDetailProps> = ({
                   className="btn btn-sm btn-outline gap-2"
                   onClick={(e) => openExternal(e, partner.youtubeChannel!)}
                 >
-                  <Youtube size={16} className="text-red-500" />
+                  <Play size={16} className="text-red-500" />
                   YouTube Channel
                 </a>
               )}

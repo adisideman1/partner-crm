@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   Mail, Link, User, Lightbulb, MessageSquare, Clock,
-  CalendarDays, Youtube, Plus, ExternalLink, Maximize2,
+  CalendarDays, Play, Plus, ExternalLink, Maximize2,
 } from 'lucide-react';
 import { Partner, Conversation, STAGE_COLORS, EDITABLE_MANAGERS } from '../types';
 
@@ -188,7 +188,7 @@ export const PartnerExpandPanel: React.FC<PartnerExpandPanelProps> = ({
           <a href={partner.youtubeChannel}
             className="flex items-center gap-1 text-red-500 hover:text-red-400 cursor-pointer"
             onClick={(e) => openExternal(e, partner.youtubeChannel!)}>
-            <Youtube size={14} /> YouTube
+            <Play size={14} /> YouTube
           </a>
         )}
         {partner.popcornChannel && (

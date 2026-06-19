@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { ExternalLink, Star, ChevronRight, ChevronDown, Clock, Lightbulb, Youtube, Trash2, GripVertical } from 'lucide-react';
+import { ExternalLink, Star, ChevronRight, ChevronDown, Clock, Lightbulb, Play, Trash2, GripVertical } from 'lucide-react';
 import { Partner, Conversation, STAGE_COLORS, STAGE_SORT_ORDER, EDITABLE_STAGES, EDITABLE_MANAGERS } from '../types';
 import { PartnerExpandPanel } from './PartnerExpandPanel';
 
@@ -116,7 +116,7 @@ const ChannelBadge: React.FC<{ url: string }> = ({ url }) => {
         onClick={(e) => openExternal(e, url)}
         title="YouTube Channel"
       >
-        <Youtube size={12} /> YouTube
+        <Play size={12} /> YouTube
       </a>
     );
   }

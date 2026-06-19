@@ -50,12 +50,15 @@ export async function sbGet(path: string): Promise<unknown> {
 /**
  * POST/PATCH/DELETE request to Supabase REST API.
  * Uses base64 encoding to safely pass arbitrary JSON through the shell.
+ * @param prefer - Prefer header value (default: 'return=minimal')
+ * @returns response body as string (useful with return=representation)
  */
 export async function sbWrite(
   path: string,
   body: object | object[] | null,
   method = 'POST',
-): Promise<void> {
+  prefer = 'return=minimal',
+): Promise<string> {
   if (IN_TASKLET) {
     if (body !== null) {
       const json = JSON.stringify(body);
@@ -67,24 +70,33 @@ export async function sbWrite(
       );
       const tmp = `/tmp/sb_${Date.now()}.json`;
       const result = await window.tasklet.runCommand(
-        `printf '%s' "${b64}" | base64 -d > ${tmp} && curl -sf -X ${method} "${REST}/${path}" -H "apikey: ${SUPABASE_KEY}" -H "Authorization: Bearer ${SUPABASE_KEY}" -H "Content-Type: application/json" -H "Prefer: resolution=merge-duplicates,return=minimal" -d @${tmp}; rm -f ${tmp}`,
+        `printf '%s' "${b64}" | base64 -d > ${tmp} && curl -s -w "\\n__HTTP__%{http_code}" -X ${method} "${REST}/${path}" -H "apikey: ${SUPABASE_KEY}" -H "Authorization: Bearer ${SUPABASE_KEY}" -H "Content-Type: application/json" -H "Prefer: ${prefer}" -d @${tmp}; rm -f ${tmp}`,
         30,
       );
-      if (result.exitCode !== 0) {
-        console.error('sbWrite failed:', result.log);
-        throw new Error(`Supabase write failed: ${result.log}`);
+      // Parse HTTP status from the tail
+      const lines = result.log.split('\n');
+      const statusLine = lines.find((l: string) => l.startsWith('__HTTP__')) || '';
+      const httpCode = parseInt(statusLine.replace('__HTTP__', ''), 10) || 0;
+      const responseBody = lines.filter((l: string) => !l.startsWith('__HTTP__')).join('\n').trim();
+      if (httpCode >= 400 || result.exitCode !== 0) {
+        console.error('sbWrite failed:', httpCode, responseBody);
+        throw new Error(`Supabase write failed (${httpCode}): ${responseBody}`);
       }
+      return responseBody;
     } else {
       const result = await window.tasklet.runCommand(
-        `curl -sf -X ${method} "${REST}/${path}" -H "apikey: ${SUPABASE_KEY}" -H "Authorization: Bearer ${SUPABASE_KEY}"`,
+        `curl -s -w "\\n__HTTP__%{http_code}" -X ${method} "${REST}/${path}" -H "apikey: ${SUPABASE_KEY}" -H "Authorization: Bearer ${SUPABASE_KEY}" -H "Prefer: ${prefer}"`,
         30,
       );
-      if (result.exitCode !== 0) {
-        console.error('sbWrite failed:', result.log);
-        throw new Error(`Supabase write failed: ${result.log}`);
+      const lines = result.log.split('\n');
+      const statusLine = lines.find((l: string) => l.startsWith('__HTTP__')) || '';
+      const httpCode = parseInt(statusLine.replace('__HTTP__', ''), 10) || 0;
+      const responseBody = lines.filter((l: string) => !l.startsWith('__HTTP__')).join('\n').trim();
+      if (httpCode >= 400 || result.exitCode !== 0) {
+        throw new Error(`Supabase write failed (${httpCode}): ${responseBody}`);
       }
+      return responseBody;
     }
-    return;
   }
 
   const r = await fetch(`${REST}/${path}`, {
@@ -93,9 +105,11 @@ export async function sbWrite(
       apikey: SUPABASE_KEY,
       Authorization: `Bearer ${SUPABASE_KEY}`,
       'Content-Type': 'application/json',
-      Prefer: 'resolution=merge-duplicates,return=minimal',
+      Prefer: prefer,
     },
     body: body !== null ? JSON.stringify(body) : undefined,
   });
   if (!r.ok) throw new Error(`Supabase ${r.status}: ${await r.text()}`);
+  const text = await r.text();
+  return text;
 }

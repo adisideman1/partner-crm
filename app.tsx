@@ -77,9 +77,10 @@ import { FilterBar } from './components/FilterBar';
 import { PartnerList } from './components/PartnerList';
 import { PartnerDetail } from './components/PartnerDetail';
 import { KOLTab } from './components/KOLTab';
+import { MeetingAgendaTab } from './components/MeetingAgendaTab';
 import { loadAllEdits as loadAllEditsRaw } from './utils/db';
 
-type AppTab = 'partners' | 'kols';
+type AppTab = 'partners' | 'kols' | 'agenda';
 
 // ---- Persistence helpers ----
 
@@ -306,8 +307,8 @@ const AddPartnerModal: React.FC<{ onAdd: (data: AddPartnerData) => void; onClose
           <div className="flex gap-2">
             <div className="flex-1">
               <label className="label pb-0"><span className="label-text text-xs">Stage</span></label>
-              <select className="select select-bordered w-full select-sm" value={stage} onChange={e => setStage(e.target.value)}>
-                {(['✅ Signed','🔵 Negotiations','🟢 In Good Discussion','🟡 Prospect','⏳ Wait','🔴 Churned','📦 Archived'] as string[]).map(s => (
+              <select className="select select-bordered w-full select-sm" value={stage} onChange={e => { setStage(e.target.value); if (e.target.value === '📞 Outreach' && !manager) setManager('Caron'); }}>
+                {(['✅ Signed','🔵 Negotiations','🟢 In Good Discussion','🟡 Prospect','🎯 Identified Opportunity','📞 Outreach','⏳ Wait','🔴 Churned','📦 Archived'] as string[]).map(s => (
                   <option key={s} value={s}>{s}</option>
                 ))}
               </select>
@@ -316,7 +317,7 @@ const AddPartnerModal: React.FC<{ onAdd: (data: AddPartnerData) => void; onClose
               <label className="label pb-0"><span className="label-text text-xs">Manager</span></label>
               <select className="select select-bordered w-full select-sm" value={manager} onChange={e => setManager(e.target.value)}>
                 <option value="">— Unassigned</option>
-                {['Tess','Ben','Maria','Cydel','Adi'].map(m => (
+                {['Tess','Ben','Caron','Cydel','Adi'].map(m => (
                   <option key={m} value={m}>{m}</option>
                 ))}
               </select>
@@ -512,16 +513,45 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
   const handleDriveFolderChange = useCallback((id: string, v: string) => handleFieldChange(id, 'driveFolder', v), [handleFieldChange]);
   const handleFollowUpChange = useCallback((id: string, v: string) => handleFieldChange(id, 'nextFollowUp', v), [handleFieldChange]);
 
+  const reorderQueueRef = useRef<Promise<void>>(Promise.resolve());
   const handleReorder = useCallback((partnerIds: string[], _stage: string) => {
+    // Only save partners whose sort order actually changed
+    const changed: { id: string; idx: number }[] = [];
+    partnerIds.forEach((id, idx) => {
+      const prev = editsRef.current[id]?.sortOrder;
+      if (prev === undefined || parseInt(prev) !== idx) {
+        changed.push({ id, idx });
+      }
+    });
+
+    // Optimistic UI update for ALL
     setPartners(prev => prev.map(p => {
       const idx = partnerIds.indexOf(p.id);
       return idx >= 0 ? { ...p, sortOrder: idx } : p;
     }));
+
+    // Update refs for ALL
     partnerIds.forEach((id, idx) => {
       if (!editsRef.current[id]) editsRef.current[id] = {};
       editsRef.current[id].sortOrder = String(idx);
-      saveEdit(id, 'sortOrder', String(idx));
     });
+
+    // Sequentially persist only changed items (max ~5 per drag), with small delay between each
+    if (changed.length > 0) {
+      reorderQueueRef.current = reorderQueueRef.current.then(async () => {
+        for (const { id, idx } of changed) {
+          try {
+            await saveField(id, 'sortOrder', String(idx));
+          } catch (err) {
+            console.error('Failed to save sortOrder for', id, err);
+          }
+          // Small delay to avoid rate limits
+          if (changed.length > 5) {
+            await new Promise(r => setTimeout(r, 200));
+          }
+        }
+      });
+    }
   }, []);
   // channelStatus handler removed
 
@@ -739,6 +769,16 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
                 {kolCount}
               </span>
             </button>
+            <button
+              className={`btn btn-lg gap-3 flex-1 text-lg font-bold transition-all ${
+                activeTab === 'agenda'
+                  ? 'btn-primary shadow-lg'
+                  : 'btn-ghost bg-base-200 hover:bg-base-300'
+              }`}
+              onClick={() => setActiveTab('agenda')}
+            >
+              📋 Agenda
+            </button>
           </div>
 
           {activeTab === 'partners' && (
@@ -831,6 +871,8 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
           )}
 
           {activeTab === 'kols' && <KOLTab onCountChange={setKolCount} reloadRef={kolReloadRef} />}
+
+          {activeTab === 'agenda' && <MeetingAgendaTab />}
 
           {showAddModal && (
             <AddPartnerModal

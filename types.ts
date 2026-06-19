@@ -47,6 +47,8 @@ export interface Conversation {
 
 export type OnboardingStage =
   | '🟡 Prospect'
+  | '🎯 Identified Opportunity'
+  | '📞 Outreach'
   | '⏳ Wait'
   | '🔵 Negotiations'
   | '🟢 In Good Discussion'
@@ -71,6 +73,8 @@ export const STAGES: OnboardingStage[] = [
   '🔵 Negotiations',
   '🟢 In Good Discussion',
   '🟡 Prospect',
+  '🎯 Identified Opportunity',
+  '📞 Outreach',
   '⏳ Wait',
 
   '📦 Archived',
@@ -83,6 +87,8 @@ export const EDITABLE_STAGES: string[] = [
   '🔵 Negotiations',
   '🟢 In Good Discussion',
   '🟡 Prospect',
+  '🎯 Identified Opportunity',
+  '📞 Outreach',
   '⏳ Wait',
 
   '📦 Archived',
@@ -91,6 +97,8 @@ export const EDITABLE_STAGES: string[] = [
 
 export const STAGE_COLORS: Record<string, string> = {
   '🟡 Prospect': 'badge-warning',
+  '🎯 Identified Opportunity': 'badge-accent',
+  '📞 Outreach': 'badge-secondary',
   '⏳ Wait': 'badge-neutral',
   '🔵 Negotiations': 'badge-info',
   '🟢 In Good Discussion': 'badge-success',
@@ -106,14 +114,16 @@ export const STAGE_SORT_ORDER: Record<string, number> = {
   '🔵 Negotiations': 1,
   '🟢 In Good Discussion': 2,
   '🟡 Prospect': 3,
-  '⏳ Wait': 4,
+  '🎯 Identified Opportunity': 4,
+  '📞 Outreach': 5,
+  '⏳ Wait': 6,
 
-  '🔴 Churned': 5,
-  '📦 Archived': 6,
+  '🔴 Churned': 7,
+  '📦 Archived': 8,
 };
 
 export const PRIORITIES = ['All', '⭐ VIP', 'Standard'];
-export const ACCOUNT_MANAGERS = ['All', 'Adi', 'Tess', 'Cydel', 'Ben', 'Maria'];
+export const ACCOUNT_MANAGERS = ['All', 'Adi', 'Tess', 'Cydel', 'Ben', 'Caron'];
 
 /** Managers for the assignment dropdown (excludes "All") */
-export const EDITABLE_MANAGERS: string[] = ['Tess', 'Ben', 'Maria', 'Cydel', 'Adi'];
+export const EDITABLE_MANAGERS: string[] = ['Tess', 'Ben', 'Caron', 'Cydel', 'Adi'];
