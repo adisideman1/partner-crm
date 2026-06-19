@@ -731,7 +731,7 @@ const App: React.FC<{ onLock?: () => void }> = ({ onLock }) => {
             {onLock && (
               <button
                 className="btn btn-ghost btn-sm btn-circle absolute -top-1 right-0 opacity-40 hover:opacity-100 tooltip tooltip-left z-10"
-                data-tip="Lock CRM"
+                data-tip="Lock Sales"
                 onClick={onLock}
               >
                 <LogOut className="w-4 h-4" />
